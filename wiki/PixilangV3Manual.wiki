@@ -1,0 +1,5 @@
+= What is Pixilang =
+
+Pixilang — cross-platform programming language for graphics/sound applications.
+
+= Details =
