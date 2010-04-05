@@ -3,3 +3,73 @@
 Pixilang — cross-platform programming language for graphics/sound applications.
 
 = Details =
+
+= Built-in functions =
+
+== new / new_pixi( xsize, ysize, el_size_in_bytes, el_type ) ==
+
+Create new Pixilang data container (pixi-container).
+
+*Parameters*
+ * xsize - width.
+ * ysize - height.
+ * el_size_in_bytes - size (in bytes) of the atomic element of the container. Valid values: 0 (pixel size); 1; 2; 4; 8.
+ * el_type - type of the atomic element of the container. Valid values: 0 - signed integer; 1 - floating point; 2 - dynamic type.
+
+*Return value*
+
+Number of the container, or -1 (error).
+
+*Examples*
+{{{
+p = new() //Create 1x1 pixi-container. Element size = pixel size. Element type = integer.
+p = new( 4 ) //Create 4x1 pixi-container. Element size = pixel size. Element type = integer.
+p = new( 4, 4 ) //Create 4x4 pixi-container. Element size = pixel size. Element type = integer.
+p = new( 4, 4, 2 ) //Create 4x4 pixi-container. Element size = 2 bytes. Element type = integer.
+p = new( 4, 4, 4, 1 ) //Create 4x4 pixi-container. Element size = 4 bytes. Element type = floating point.
+}}}
+
+== remove / remove_pixi( pixi ) ==
+
+Remove pixi-container.
+
+*Parameters*
+ * pixi - number of a pixi-container.
+
+*Examples*
+{{{
+p = new() //Create new pixi-container
+remove( p ) //Remove it
+}}}
+
+== resize / resize_pixi( pixi, xsize, ysize, el_size_in_bytes, el_type ) ==
+
+Resize a pixi-container.
+
+*Parameters*
+ * pixi - number of a pixi-container.
+ * xsize - new width (or -1 if width not changed).
+ * ysize - height (or -1 if width not changed).
+ * el_size_in_bytes - size (in bytes) of the atomic element of the container. Valid values: 0 (pixel size); 1; 2; 4; 8; -1 -  not changed.
+ * el_type - type of the atomic element of the container. Valid values: 0 - signed integer; 1 - floating point; 2 - dynamic type; -1 - not changed.
+
+*Examples*
+{{{
+p = new() //Create new pixi-container
+resize( p, 32 ) //Resize it from 1x1 to 32x1
+remove( p ) //Remove
+}}}
+
+== clean / clean_pixi( pixi ) ==
+
+Clean a pixi-container (fill with zeroes).
+
+*Parameters*
+ * pixi - number of a pixi-container.
+
+*Examples*
+{{{
+p = new() //Create new pixi-container
+clean( p ) //Clean
+remove( p ) //Remove
+}}}
