@@ -1,3 +1,5 @@
+<wiki:toc max_depth="3" />
+
 = What is Pixilang =
 
 Pixilang — cross-platform programming language for graphics/sound applications.
@@ -6,11 +8,13 @@ Pixilang — cross-platform programming language for graphics/sound applications
 
 = Built-in functions =
 
-== new / new_pixi( xsize, ysize, el_size_in_bytes, el_type ) ==
+== Work with containers (memory allocation) ==
 
-Create new Pixilang data container (pixi-container).
+=== new ===
 
-*Parameters*
+Create new data container.
+
+*Parameters ( xsize, ysize, el_size_in_bytes, el_type )*
  * xsize - width.
  * ysize - height.
  * el_size_in_bytes - size (in bytes) of the atomic element of the container. Valid values: 0 (pixel size); 1; 2; 4; 8.
@@ -22,32 +26,32 @@ Number of the container, or -1 (error).
 
 *Examples*
 {{{
-p = new() //Create 1x1 pixi-container. Element size = pixel size. Element type = integer.
-p = new( 4 ) //Create 4x1 pixi-container. Element size = pixel size. Element type = integer.
-p = new( 4, 4 ) //Create 4x4 pixi-container. Element size = pixel size. Element type = integer.
-p = new( 4, 4, 2 ) //Create 4x4 pixi-container. Element size = 2 bytes. Element type = integer.
-p = new( 4, 4, 4, 1 ) //Create 4x4 pixi-container. Element size = 4 bytes. Element type = floating point.
+p = new() //Create 1x1 container. Element size = pixel size. Element type = integer.
+p = new( 4 ) //Create 4x1 container. Element size = pixel size. Element type = integer.
+p = new( 4, 4 ) //Create 4x4 container. Element size = pixel size. Element type = integer.
+p = new( 4, 4, 2 ) //Create 4x4 container. Element size = 2 bytes. Element type = integer.
+p = new( 4, 4, 4, 1 ) //Create 4x4 container. Element size = 4 bytes. Element type = floating point.
 }}}
 
-== remove / remove_pixi( pixi ) ==
+=== remove ===
 
-Remove pixi-container.
+Remove a container.
 
-*Parameters*
- * pixi - number of a pixi-container.
+*Parameters ( pixi )*
+ * pixi - number of a container.
 
 *Examples*
 {{{
-p = new() //Create new pixi-container
+p = new() //Create new container
 remove( p ) //Remove it
 }}}
 
-== resize / resize_pixi( pixi, xsize, ysize, el_size_in_bytes, el_type ) ==
+=== resize ===
 
-Resize a pixi-container.
+Resize a container.
 
-*Parameters*
- * pixi - number of a pixi-container.
+*Parameters ( pixi, xsize, ysize, el_size_in_bytes, el_type )*
+ * pixi - number of a container.
  * xsize - new width (or -1 if width not changed).
  * ysize - height (or -1 if width not changed).
  * el_size_in_bytes - size (in bytes) of the atomic element of the container. Valid values: 0 (pixel size); 1; 2; 4; 8; -1 -  not changed.
@@ -55,21 +59,49 @@ Resize a pixi-container.
 
 *Examples*
 {{{
-p = new() //Create new pixi-container
+p = new() //Create new container
 resize( p, 32 ) //Resize it from 1x1 to 32x1
 remove( p ) //Remove
 }}}
 
-== clean / clean_pixi( pixi ) ==
+=== clean ===
 
-Clean a pixi-container (fill with zeroes).
+Clean a container (fill with zeroes).
 
-*Parameters*
- * pixi - number of a pixi-container.
+*Parameters ( pixi )*
+ * pixi - number of a container.
 
 *Examples*
 {{{
-p = new() //Create new pixi-container
+p = new() //Create new container
 clean( p ) //Clean
 remove( p ) //Remove
 }}}
+
+== System functions (compatibility with POSIX) ==
+
+=== fopen ===
+
+=== fclose ===
+
+=== fputc ===
+
+=== fwrite ===
+
+=== fgetc ===
+
+=== fread ===
+
+=== feof ===
+
+=== fflush ===
+
+=== fseek ===
+
+=== ftell ===
+
+=== remove_file ===
+
+=== rename_file ===
+
+=== system ===
