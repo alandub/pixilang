@@ -4,8 +4,6 @@
 
 Pixilang — cross-platform programming language for graphics/sound applications.
 
-= Details =
-
 = Built-in functions =
 
 == Work with containers (memory allocation) ==
