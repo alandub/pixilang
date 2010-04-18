@@ -90,6 +90,78 @@ clean( p ) //Clean
 remove( p ) //Remove
 }}}
 
+=== get_size ===
+
+Get size of a container (number of elements).
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
+*Examples*
+{{{
+p = new( 8, 8 ) //Create new container 8x8
+size = get_size( p ) //Save its size to the "size" variable
+remove( p )
+}}}
+
+=== get_xsize ===
+
+Get width of a container.
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
+*Examples*
+{{{
+p = new( 8, 8 ) //Create new container 8x8
+xsize = get_xsize( p ) //Save its width to the "xsize" variable
+remove( p )
+}}}
+
+=== get_ysize ===
+
+Get height of a container.
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
+*Examples*
+{{{
+p = new( 8, 8 ) //Create new container 8x8
+ysize = get_xsize( p ) //Save its height to the "ysize" variable
+remove( p )
+}}}
+
+=== get_esize ===
+
+Get the size of the element of a container (in bytes).
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
+*Examples*
+{{{
+p = new( 8, 8, 2 ) //Create new container 8x8; element size = 2
+esize = get_esize( p ) //Save its element's size to the "esize" variable
+//Now esize = 2.
+remove( p )
+}}}
+
+=== get_type ===
+
+Get the type of the element of a container
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
+*Examples*
+{{{
+p = new( 8, 8, 2, 1 ) //Create new container 8x8; element type = 1
+type = get_type( p ) //Save its element's type to the "type" variable
+//Now type = 1.
+remove( p )
+}}}
+
 == System functions (compatibility with POSIX) ==
 
 === fopen ===
