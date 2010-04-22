@@ -26,11 +26,18 @@ x[ 2 ] = WHITE //Assign the white color to a pixel with number 2.
 
 Create new data container.
 
-*Parameters ( xsize, ysize, el_size_in_bytes, el_type )*
+*Parameters ( xsize, ysize, type )*
  * xsize - width.
  * ysize - height.
- * el_size_in_bytes - size (in bytes) of the atomic element of the container. Valid values: 0 (pixel size); 1; 2; 4; 8.
- * el_type - type of the atomic element of the container. Valid values: 0 - signed integer; 1 - floating point; 2 - dynamic type.
+ * type - type of the atomic element of the container. Valid values:
+   * INT8 - signed integer (8 bit);
+   * INT16 - signed integer (16 bit);
+   * INT32 - signed integer (32 bit);
+   * INT64 - signed integer (64 bit);
+   * FLOAT32 - floating point (32 bit);
+   * FLOAT64 - floating point (64 bit);
+   * DYNAMIC - dynamic type;
+   * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
 
 *Return value*
 
@@ -38,11 +45,10 @@ Number of the container, or -1 (error).
 
 *Examples*
 {{{
-p = new() //Create 1x1 container. Element size = pixel size. Element type = integer.
-p = new( 4 ) //Create 4x1 container. Element size = pixel size. Element type = integer.
-p = new( 4, 4 ) //Create 4x4 container. Element size = pixel size. Element type = integer.
-p = new( 4, 4, 2 ) //Create 4x4 container. Element size = 2 bytes. Element type = integer.
-p = new( 4, 4, 4, 1 ) //Create 4x4 container. Element size = 4 bytes. Element type = floating point.
+p = new() //Create 1x1 container. Element type = pixel.
+p = new( 4 ) //Create 4x1 container. Element type = pixel.
+p = new( 4, 4 ) //Create 4x4 container. Element type = pixel.
+p = new( 4, 4, INT32 ) //Create 4x4 container. Element type = INT32.
 }}}
 
 === remove ===
@@ -62,17 +68,25 @@ remove( p ) //Remove it
 
 Resize a container.
 
-*Parameters ( pixi, xsize, ysize, el_size_in_bytes, el_type )*
+*Parameters ( pixi, xsize, ysize, type )*
  * pixi - number of a container.
  * xsize - new width (or -1 if width not changed).
  * ysize - height (or -1 if width not changed).
- * el_size_in_bytes - size (in bytes) of the atomic element of the container. Valid values: 0 (pixel size); 1; 2; 4; 8; -1 -  not changed.
- * el_type - type of the atomic element of the container. Valid values: 0 - signed integer; 1 - floating point; 2 - dynamic type; -1 - not changed.
+ * type - type of the atomic element of the container. Valid values:
+   * INT8 - signed integer (8 bit);
+   * INT16 - signed integer (16 bit);
+   * INT32 - signed integer (32 bit);
+   * INT64 - signed integer (64 bit);
+   * FLOAT32 - floating point (32 bit);
+   * FLOAT64 - floating point (64 bit);
+   * DYNAMIC - dynamic type;
+   * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
 
 *Examples*
 {{{
-p = new() //Create new container
-resize( p, 32 ) //Resize it from 1x1 to 32x1
+p = new( 4, 4 ) //Create new container
+resize( p, 32, 32 ) //Resize it from 4x4 to 32x1
+resize( p, -1, 64 ) //Resize it from 32x32 to 32x64
 remove( p ) //Remove
 }}}
 
@@ -141,9 +155,9 @@ Get the size of the element of a container (in bytes).
 
 *Examples*
 {{{
-p = new( 8, 8, 2 ) //Create new container 8x8; element size = 2
+p = new( 8, 8, INT32 ) //Create new container 8x8; element type = INT32
 esize = get_esize( p ) //Save its element's size to the "esize" variable
-//Now esize = 2.
+//Now esize = 4.
 remove( p )
 }}}
 
@@ -156,9 +170,9 @@ Get the type of the element of a container
 
 *Examples*
 {{{
-p = new( 8, 8, 2, 1 ) //Create new container 8x8; element type = 1
+p = new( 8, 8, FLOAT32 ) //Create new container 8x8; element type = FLOAT32
 type = get_type( p ) //Save its element's type to the "type" variable
-//Now type = 1.
+//Now type = FLOAT32.
 remove( p )
 }}}
 
