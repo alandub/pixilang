@@ -231,9 +231,13 @@ remove( p ) //Удаляем контейнер
 
 === fputc ===
 
+=== fputs ===
+
 === fwrite ===
 
 === fgetc ===
+
+=== fgets ===
 
 === fread ===
 
