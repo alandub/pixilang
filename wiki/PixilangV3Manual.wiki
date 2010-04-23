@@ -224,9 +224,13 @@ remove( p )
 
 === fputc ===
 
+=== fputs ===
+
 === fwrite ===
 
 === fgetc ===
+
+=== fgets ===
 
 === fread ===
 
