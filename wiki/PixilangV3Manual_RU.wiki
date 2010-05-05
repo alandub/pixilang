@@ -254,3 +254,7 @@ remove( p ) //Удаляем контейнер
 === rename_file ===
 
 === system ===
+
+=== argc ===
+
+=== argv ===
