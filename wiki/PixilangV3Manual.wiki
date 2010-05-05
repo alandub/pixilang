@@ -247,3 +247,7 @@ remove( p )
 === rename_file ===
 
 === system ===
+
+=== argc ===
+
+=== argv ===
