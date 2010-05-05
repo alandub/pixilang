@@ -14,8 +14,15 @@ Variable can contain signed integer (for example 25) of floating point number (f
 
 *The simplest example of the use of containers and variables*
 {{{
-x = new( 4 ) //Create a new container with 4 pixels. Store its ID in variable x.
+x = new( 4 ) //Create a new container with 4 pixels. Store its ID into the variable x.
 x[ 2 ] = WHITE //Assign the white color to a pixel with number 2.
+remove( x ) //Remove this container
+}}}
+{{{
+str = "Hello" //"Hello" is the container with five characters.
+//Such containers with strings are created on the stage of compilation of your program. 
+//You don't need to delete them manually.
+str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
 }}}
 
 = Built-in constants =
