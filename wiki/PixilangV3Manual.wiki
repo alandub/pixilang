@@ -56,6 +56,7 @@ str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
 
 == Events ==
 
+ * EVT - number of container with event, which used by get_event() function.
 EVT field numbers:
  * EVT_TYPE - event type;
  * EVT_FLAGS - event flags;
@@ -96,7 +97,6 @@ Constants for the set_quit_action() function:
 
 = Built-in global variables =
 
- * EVT - number of container with event from the get_event() function.
  * WINDOW_XSIZE - user's window width (in pixels).
  * WINDOW_YSIZE - user's window height (in pixels).
 
