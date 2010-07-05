@@ -394,6 +394,18 @@ Color.
 
 === t_point ===
 
+== Time ==
+
+=== start_timer ===
+
+=== get_timer ===
+
+=== get_hours ===
+
+=== get_minutes ===
+
+=== get_seconds ===
+
 == Events ==
 
 === get_event ===
