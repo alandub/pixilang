@@ -364,6 +364,8 @@ Draw a dot.
  * y;
  * color.
 
+=== dot3d ===
+
 === get_dot ===
 
 Get a dot's color.
@@ -375,6 +377,14 @@ Get a dot's color.
 *Return value*
 
 Color.
+
+=== line ===
+
+=== line3d ===
+
+=== rect ===
+
+=== frect ===
 
 == Transformation ==
 
