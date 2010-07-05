@@ -428,6 +428,18 @@ remove( p ) //Удаляем контейнер
 
 === t_point ===
 
+== Время ==
+
+=== start_timer ===
+
+=== get_timer ===
+
+=== get_hours ===
+
+=== get_minutes ===
+
+=== get_seconds ===
+
 == События ==
 
 === get_event ===
