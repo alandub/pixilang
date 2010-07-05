@@ -333,13 +333,48 @@ Blue component intensity. From 0 to 255.
 Get an intermediate color value between two selected colors.
 
 *Parameters ( c1, c2, v )*
- c1 - first color;
- с2 - second color;
- v - position between c1 and c2; 0 - closer to c1; 255 - closer to c2.
+ * c1 - first color;
+ * с2 - second color;
+ * v - position between c1 and c2; 0 - closer to c1; 255 - closer to c2.
 
 *Return value*
 
 Intermediate color.
+
+=== transp ===
+
+Set transparency.
+
+*Parameters ( t )*
+ * t - transparency from 0 to 255.
+
+=== clear ===
+
+Clear current screen.
+
+*Parameters ( color )*
+ * color.
+
+=== dot ===
+
+Draw a dot.
+
+*Parameters ( x, y, color )*
+ * x;
+ * y;
+ * color.
+
+=== get_dot ===
+
+Get a dot's color.
+
+*Parameters ( x, y )*
+ * x;
+ * y.
+
+*Return value*
+
+Color.
 
 == Events ==
 
