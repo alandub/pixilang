@@ -410,6 +410,24 @@ remove( p ) //Удаляем контейнер
 
 Значение цвета в указанной точке.
 
+== Трансформация ==
+
+=== t_reset ===
+
+=== t_rotate ===
+
+=== t_translate ===
+
+=== t_scale ===
+
+=== t_get_matrix ===
+
+=== t_set_matrix ===
+
+=== t_mul_matrix ===
+
+=== t_point ===
+
 == События ==
 
 === get_event ===
