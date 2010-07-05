@@ -376,6 +376,24 @@ Get a dot's color.
 
 Color.
 
+== Transformation ==
+
+=== t_reset ===
+
+=== t_rotate ===
+
+=== t_translate ===
+
+=== t_scale ===
+
+=== t_get_matrix ===
+
+=== t_set_matrix ===
+
+=== t_mul_matrix ===
+
+=== t_point ===
+
 == Events ==
 
 === get_event ===
