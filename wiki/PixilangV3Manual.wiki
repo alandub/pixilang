@@ -382,9 +382,9 @@ Color.
 
 === line3d ===
 
-=== rect ===
+=== box ===
 
-=== frect ===
+=== fbox ===
 
 == Transformation ==
 
