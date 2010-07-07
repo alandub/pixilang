@@ -378,6 +378,8 @@ Get a dot's color.
 
 Color.
 
+=== get_dot3d ===
+
 === line ===
 
 === line3d ===
