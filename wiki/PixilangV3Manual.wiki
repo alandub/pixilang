@@ -451,6 +451,35 @@ Possible values for the action parameter:
  * QA_NONE - do nothing;
  * QA_CLOSE_VM (default) - close the current virtual machine, but don't quit from Pixilang.
 
+== Mathematical ==
+
+=== acos ===
+=== acosh ===
+=== asin ===
+=== asinh ===
+=== atan ===
+=== atanh ===
+=== ceil ===
+=== cos ===
+=== cosh ===
+=== exp ===
+=== exp2 ===
+=== expm1 ===
+=== abs ===
+=== floor ===
+=== mod ===
+=== log ===
+=== log2 ===
+=== log10 ===
+=== pow ===
+=== sin ===
+=== sinh ===
+=== sqrt ===
+=== tan ===
+=== tanh ===
+=== rand ===
+=== rand_seed ===
+
 == System functions (compatibility with POSIX) ==
 
 === fopen ===
