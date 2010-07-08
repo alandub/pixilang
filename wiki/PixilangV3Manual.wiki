@@ -25,6 +25,67 @@ str = "Hello" //"Hello" is the container with five characters.
 str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
 }}}
 
+= Built-in operators =
+
+{{{
+//if, else
+if a == b 
+  { /*This code is executed if a equals b*/ }
+else
+  { /*This code is executed otherwise*/ }
+if x == 4 && y == 2 
+  { /*This code is executed if x equals 4 and y equals 2*/ }
+
+//while
+a = 0
+while( a < 3 )
+{
+  //This code is executed while a less than 3
+  a + 3
+}
+
+//go, goto
+m1:
+a + 1
+goto m1 //Go to the m1 label
+
+//halt, stop
+halt //Stop the program here
+
+//include
+include "prog2.txt" //Include code from prog2.txt
+
+//fn
+fn fff( $x, $y ) //Declare function fff with parameters $x and $y
+{
+  //Function fff body
+  ret //Simple return from the function
+  ret( 4 ) //Return with value 4
+}
+}}}
+
+The following table lists the mathematical operators. Priority 0 - the highest, such operations will be executed in the first place.
+|| Priority || Operator || Description || Result || Example || 
+|| 0 || % || Modulo (remainder) || Integer || a = b % 4 ||
+|| 0 || / || Division || Floating point || a = b / 4 ||
+|| 0 || div || Integer division || Integer || a = b div 4 ||
+|| 0 || `*` || Multiplication || Depends on the operands || a = b `*` 4 ||
+|| 1 || + || Addition || Depends on the operands || a = b + 4 ||
+|| 1 || - || Subtraction || Depends on the operands || a = b - 4 ||
+|| 2 || >> || Bitwise right shift || Integer || a = b >> 4 ||
+|| 2 || << || Bitwise left shift || Integer || a = b << 4 ||
+|| 3 || == || Equal to || Integer 1 or 0 || if a == b {} ||
+|| 3 || != || Not equal to || Integer 1 or 0 || if a != b {} ||
+|| 3 || < || Less than || Integer 1 or 0 || if a < b {} ||
+|| 3 || > || Greater than || Integer 1 or 0 || if a > b {} ||
+|| 3 || <= || Less than or equal to || Integer 1 or 0 || if a <= b {} ||
+|| 3 || >= || Greater than or equal to || Integer 1 or 0 || if a >= b {} ||
+|| 4 || | || Bitwise OR || Integer || a = b | 4 ||
+|| 4 || ^ || Bitwise XOR || Integer || a = b ^ 4 ||
+|| 4 || & || Bitwise AND || Integer || a = b & 4 ||
+|| 5 ||  `|``|` || Logical OR || Integer 1 or 0 || if a `|``|` b {} ||
+|| 5 || && || Logical AND || Integer 1 or 0 || if a && b {} ||
+
 = Built-in constants =
 
 == Colors ==
