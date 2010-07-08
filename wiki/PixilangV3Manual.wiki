@@ -80,9 +80,17 @@ Constants for the set_quit_action() function:
  * QA_NONE;
  * QA_CLOSE_VM.
 
-== Various ==
+== Mathematical ==
 
- * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100).
+ * M_E - e.
+ * M_LOG2E - log,,2,,e.
+ * M_LOG10E - log,,10,,e.
+ * M_LN2 - log,,e,,2.
+ * M_LN10 - log,,e,,10.
+ * M_PI - PI.
+ * M_2_SQRTPI - 2 / sqrt( PI ).
+ * M_SQRT2 - sqrt( 2 ).
+ * M_SQRT1_2 - 1 / sqrt( 2 ).
 
 == Constants for POSIX compatibility ==
 
@@ -94,6 +102,10 @@ Constants for the set_quit_action() function:
  * STDIN.
  * STDOUT.
  * STDERR.
+
+== Various ==
+
+ * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100).
 
 = Built-in global variables =
 
