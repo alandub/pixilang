@@ -2,11 +2,11 @@
 
 = What is Pixilang =
 
-Pixilang — cross-platform programming language for graphics/sound applications.
+Pixilang — cross-platform programming language for graphic/sound applications.
 
 = Basics =
 
-The basis of the Pixilang are containers and variables.
+The basis of the Pixilang - are containers and variables.
 
 Container is a two-dimensional array of elements. Each element is the number in a specific format. Each container has one format for all its elements. Each container has its own unique ID number.
 
