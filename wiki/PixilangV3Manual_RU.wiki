@@ -93,9 +93,17 @@ str[ 0 ] = 'h' //Меняем самую первую букву в строке
  * QA_NONE;
  * QA_CLOSE_VM.
 
-== Разное ==
+== Математические константы ==
 
- * PIXILANG_VERSION - версия Pixilang (major*100000 + minor*100).
+ * M_E - e.
+ * M_LOG2E - log,,2,,e.
+ * M_LOG10E - log,,10,,e.
+ * M_LN2 - log,,e,,2.
+ * M_LN10 - log,,e,,10.
+ * M_PI - PI.
+ * M_2_SQRTPI - 2 / sqrt( PI ).
+ * M_SQRT2 - sqrt( 2 ).
+ * M_SQRT1_2 - 1 / sqrt( 2 ).
 
 == Константы для совместимости с POSIX ==
 
@@ -107,6 +115,10 @@ str[ 0 ] = 'h' //Меняем самую первую букву в строке
  * STDIN.
  * STDOUT.
  * STDERR.
+
+== Разное ==
+
+ * PIXILANG_VERSION - версия Pixilang (major*100000 + minor*100).
 
 = Встроенные глобальные переменные =
 
