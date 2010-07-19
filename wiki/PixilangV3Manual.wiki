@@ -247,10 +247,11 @@ remove( p ) //Remove
 
 === clean ===
 
-Clean a container (fill with zeroes).
+Clean a container (fill with zeroes or with selected values).
 
-*Parameters ( pixi )*
- * pixi - number of a container.
+*Parameters ( pixi, v )*
+ * pixi - number of a container;
+ * v - value.
 
 *Examples*
 {{{
