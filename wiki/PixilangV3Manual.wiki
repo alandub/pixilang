@@ -360,6 +360,10 @@ Get current screen.
 
 Container's number.
 
+=== set_zbuf ===
+
+=== get_zbuf ===
+
 === get_color ===
 
 Get color by r,g,b (red,green,blue).
