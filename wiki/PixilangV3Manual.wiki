@@ -487,6 +487,8 @@ Set / reset the color of transparency in the container.
  * pixi - container number; 
  * color - color to be transparent; ignore this parameter if you want to disable transparent color for this container.
 
+=== get_key_color ===
+
 === set_alpha === 
 
 Attach to the container another container with alpha channel. Alpha channel should be of type INT8. 
@@ -494,6 +496,8 @@ Attach to the container another container with alpha channel. Alpha channel shou
 * Parameters (pixi, alpha) * 
  * pixi - container number; 
  * alpha - container with alpha channel; ignore this parameter if you want to disable alpha-channel for the pixi container.
+
+=== get_alpha ===
 
 == Transformation ==
 
