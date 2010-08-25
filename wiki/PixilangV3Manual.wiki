@@ -750,14 +750,50 @@ fclose( f )
 
 === remove_file ===
 
+*Parameters ( filename )*
+
 === rename_file ===
+
+*Parameters ( old_filename, new_filename )*
 
 === system ===
 
+Issue a OS command.
+
+*Parameters ( command )*
+
+*Return value*
+
+system() shall return the termination status of the command.
+
+*Examples*
+{{{
+//Remove some file:
+system( "rm /tmp/data.txt" )
+}}}
+
 === argc ===
 
+Returns the number of arguments.
+
 === argv ===
+
+Returns the container with selected argument.
+
+*Examples*
+{{{
+if argc >= 4 
+{
+  a = argv( 3 )
+  remove( a )
+}
+}}}
 
 === exit ===
 
 Quit from Pixilang.
+
+*Examples*
+{{{
+exit( 4 ) //Exit with code 4
+}}}
