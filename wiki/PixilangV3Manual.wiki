@@ -669,17 +669,84 @@ fclose( f ) //Close the stream.
 
 === fgetc ===
 
+Get a byte from a stream.
+
+*Parameters ( stream )*
+
+*Return value*
+
+Upon successful completion, fgetc() shall return the next byte from the input stream pointed to by _stream_.
+
 === fgets ===
+
+Get a string from a stream.
+
+*Parameters ( s, n, stream )*
+
+*Examples*
+{{{
+string = new( 256, 1, INT8 )
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
+fgets( string, 256, f ) //Get a string from this file.
+fclose( f ) //Close the stream.
+}}}
 
 === fread ===
 
+The fread() function shall read into the container pointed to by _data_ up to _size_ bytes, from the stream pointed to by _stream_.
+
+*Parameters ( data, size, stream )*
+
+*Return value*
+
+Upon successful completion, fread() shall return the number of bytes successfully read which is less than _size_ only if a read error or end-of-file is encountered.
+
 === feof ===
+
+Test end-of-file indicator on a stream.
+
+*Parameters ( stream )*
+
+*Return value*
+
+The feof() function shall return non-zero if and only if the end-of-file indicator is set for _stream_.
 
 === fflush ===
 
+Flush a stream.
+
+*Parameters ( stream )*
+
 === fseek ===
 
+Reposition a file-position indicator in a stream.
+
+*Parameters ( stream, offset, origin )*
+ * stream;
+ * offset;
+ * origin:
+   * SEEK_SET - beginning of file;
+   * SEEK_CUR - current position of the file pointer;
+   * SEEK_END - end of file.
+
 === ftell ===
+
+Return a file offset in a stream.
+
+*Parameters ( stream )*
+
+*Return value*
+
+Upon successful completion, ftell() shall return the current value of the file-position indicator for the stream measured in bytes from the beginning of the file.
+
+*Examples*
+{{{
+//One of the ways to get the file size:
+f = fopen( "/tmp/data.txt", "rb" )
+fseek( f, 0, SEEK_END )
+size_of_file = ftell( f )
+fclose( f )
+}}}
 
 === remove_file ===
 
