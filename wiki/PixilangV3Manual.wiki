@@ -336,6 +336,10 @@ type = get_type( p ) //Save its element's type to the "type" variable
 remove( p )
 }}}
 
+== File formats ==
+
+=== load ===
+
 == Graphics ==
 
 === frame ===
