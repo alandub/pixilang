@@ -478,10 +478,11 @@ Color.
 
 Display the container with the picture. 
 
-* Parameters (pixi, x, y) * 
+* Parameters (pixi, x, y, color) * 
  * pixi - container number; 
  * x; 
- * y. 
+ * y;
+ * color - color of the filter; optional; default value is WHITE.
 
 === set_key_color === 
 
