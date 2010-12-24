@@ -495,7 +495,7 @@ Set / reset the color of transparency in the container.
 
 === set_alpha === 
 
-Attach to the container another container with alpha channel. Alpha channel should be of type INT8. 
+Attach a container with alpha channel to another container. Alpha channel should be of type INT8. 
 
 * Parameters (pixi, alpha) * 
  * pixi - container number; 
