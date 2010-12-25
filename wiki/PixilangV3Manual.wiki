@@ -353,6 +353,41 @@ type = get_type( p ) //Save its element's type to the "type" variable
 remove( p )
 }}}
 
+== Strings ==
+
+=== num_to_str ===
+
+Convert number to string.
+
+*Parameters ( str, num )*
+ * str - container for the string;
+ * num - numeric value.
+
+*Examples*
+{{{
+v = 45.64
+s = ""
+num_to_str( s, v )
+fputs( s ) fputs( "\n" )
+}}}
+
+=== str_to_num ===
+
+Convert string to number.
+
+*Parameters ( str )*
+ * str - container with the string.
+
+*Return value*
+
+Numeric value.
+
+*Examples*
+{{{
+a = str_to_num( "-55.44" )
+b = a + 4
+}}}
+
 == File formats ==
 
 === load ===
@@ -370,7 +405,7 @@ Draw current screen on display and delay for selected number of milliseconds.
 
 Set current screen.
 
-*Параметры ( pixi )*
+*Parameters ( pixi )*
  * pixi - container with image, which will be the screen.
 
 === get_screen ===
