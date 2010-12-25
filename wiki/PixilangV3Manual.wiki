@@ -478,11 +478,13 @@ Color.
 
 Display the container with the picture. 
 
-* Parameters (pixi, x, y, color) * 
+* Parameters ( pixi, x, y, color, xscale, yscale ) * 
  * pixi - container number; 
  * x; 
  * y;
- * color - color of the filter; optional; default value is WHITE.
+ * color - color of the filter; optional; default value is WHITE;
+ * xscale - scaling factor (x axis); optional; default value is 1;
+ * yscale - scaling factor (y axis); optional; default value is 1.
 
 === set_key_color === 
 
