@@ -241,6 +241,10 @@ Resize a container.
    * DYNAMIC - dynamic type;
    * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
 
+*Return value*
+
+0 - successful; 1 - error.
+
 *Examples*
 {{{
 p = new( 4, 4 ) //Create new container
