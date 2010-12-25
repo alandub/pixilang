@@ -780,6 +780,43 @@ fclose( f )
 
 *Parameters ( old_filename, new_filename )*
 
+=== strcat ===
+
+Appends a copy of the source string to the destination string. Both strings can be with terminating null character or without it (if the size of the container = number of characters in the string). Size of the source string can be changed after this function executes.
+
+*Parameters ( destination, source )*
+
+=== strcmp ===
+
+Compares the string str1 to the string str2. Both strings can be with terminating null character or without it (if the size of the container = number of characters in the string).
+
+*Parameters ( str1, str2 )*
+
+*Return value*
+
+A zero value indicates that both strings are equal. 
+A value greater than zero indicates that the first character that does not match has a greater value in str1 than in str2; And a value less than zero indicates the opposite.
+
+=== strlen ===
+
+Returns the length of string str. String can be with terminating null character or without it (if the size of the container = number of characters in the string).
+
+*Parameters ( str )*
+
+*Return value*
+
+Length of string str.
+
+=== strstr ===
+
+Returns the offset of the first occurrence of str2 in str1, or a -1 if str2 is not part of str1.
+
+*Parameters ( str1, str2 )*
+
+*Return value*
+
+Offset of the first occurrence of str2 in str1, or a -1 if str2 is not part of str1.
+
 === system ===
 
 Issue a OS command.
