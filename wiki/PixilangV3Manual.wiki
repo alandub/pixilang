@@ -264,6 +264,17 @@ clean( p ) //Clean
 remove( p ) //Remove
 }}}
 
+=== clone ===
+
+Make a duplicate of the container.
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
+*Return value*
+
+Number of the new container, or -1 (error).
+
 === get_size ===
 
 Get size of a container (number of elements).
