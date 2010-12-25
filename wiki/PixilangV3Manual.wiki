@@ -183,6 +183,8 @@ Constants for the set_quit_action() function:
 
 Create new data container.
 
+Note: immediately after its creation, the container may contain some random values. You should clean it up or fill it with useful data.
+
 *Parameters ( xsize, ysize, type )*
  * xsize - width.
  * ysize - height.
