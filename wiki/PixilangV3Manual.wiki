@@ -582,6 +582,10 @@ print( "line1\nline2", 50, 50, RED ) //centered;
 print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 }}}
 
+=== set_font ===
+
+*Parameters ( first_char, pixi, xchars, ychars )*
+
 == Transformation ==
 
 === t_reset ===
