@@ -98,6 +98,13 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
  * GREEN.
  * BLUE.
 
+== Alignment ==
+
+ * TOP.
+ * BOTTOM.
+ * LEFT.
+ * RIGHT.
+
 == Container types ==
 
  * INT - signed integer (size depends on the version of Pixilang).
@@ -557,6 +564,8 @@ Attach a container with alpha channel to another container. Alpha channel should
  * alpha - container with alpha channel; ignore this parameter if you want to disable alpha-channel for the pixi container.
 
 === get_alpha ===
+
+=== print ===
 
 == Transformation ==
 
