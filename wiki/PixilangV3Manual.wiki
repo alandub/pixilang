@@ -162,6 +162,17 @@ Constants for the set_quit_action() function:
  * M_SQRT2 - sqrt( 2 ).
  * M_SQRT1_2 - 1 / sqrt( 2 ).
 
+== Data processing operations ==
+
+ * OP_ADD.
+ * OP_MUL.
+ * OP_DIV.
+ * OP_AND.
+ * OP_OR.
+ * OP_XOR.
+ * OP_LSHIFT.
+ * OP_RSHIFT.
+
 == Constants for POSIX compatibility ==
 
  * FOPEN_MAX.
@@ -665,6 +676,31 @@ Possible values for the action parameter:
 === tanh ===
 === rand ===
 === rand_seed ===
+
+== Data processing ==
+
+=== op_cn ===
+
+Execute data processing operation.
+Operands: 1) container (c); 2) numerical value (n).
+
+*Parameters ( opcode, pixi, num, x, y, xsize, ysize )*
+ * opcode - operation;
+ * pixi - container (c);
+ * num - numerical value (n);
+ * x,y,xsize,ysize - region.
+
+*Examples*
+{{{
+//Add 32 to the whole container img:
+op_cn( OP_ADD, img, 32 )
+
+//Add 32 to 128..256th elements of the container img:
+op_cn( OP_ADD, img, 32, 128, 128 ) 
+
+//Add 32 to two-dimensional region (8,8,32,32) of elements:
+op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
+}}}
 
 == System functions (compatibility with POSIX) ==
 
