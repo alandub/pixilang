@@ -273,6 +273,12 @@ resize( p, -1, 64 ) //Resize it from 32x32 to 32x64
 remove( p ) //Remove
 }}}
 
+=== convert_type ===
+
+Convert the type of a container.
+
+*Parameters ( pixi, new_type )*
+
 === clean ===
 
 Clean a container (fill with zeroes or with selected values).
