@@ -305,6 +305,10 @@ Make a duplicate of the container.
 
 Number of the new container, or -1 (error).
 
+=== copy ===
+
+*Parameters ( dest_pixi, src_pixi )*
+
 === get_size ===
 
 Get size of a container (number of elements).
@@ -707,6 +711,12 @@ op_cn( OP_ADD, img, 32, 128, 128 )
 //Add 32 to two-dimensional region (8,8,32,32) of elements:
 op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 }}}
+
+=== fft ===
+
+Perform a fast fourier transform.
+
+*Parameters ( inverse, im, re, size )*
 
 == System functions (compatibility with POSIX) ==
 
