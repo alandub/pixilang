@@ -178,13 +178,14 @@ Constants for the set_quit_action() function:
 
 == Data processing operations ==
 
- * OP_ADD.
- * OP_MUL.
- * OP_DIV.
- * OP_AND.
- * OP_OR.
- * OP_XOR.
- * OP_LSHIFT.
+For op_cn() function:
+ * OP_ADD;
+ * OP_MUL;
+ * OP_DIV;
+ * OP_AND;
+ * OP_OR;
+ * OP_XOR;
+ * OP_LSHIFT;
  * OP_RSHIFT.
 
 == Constants for POSIX compatibility ==
