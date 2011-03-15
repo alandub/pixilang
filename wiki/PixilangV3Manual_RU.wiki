@@ -197,13 +197,14 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 == Операции обработки данных ==
 
- * OP_ADD.
- * OP_MUL.
- * OP_DIV.
- * OP_AND.
- * OP_OR.
- * OP_XOR.
- * OP_LSHIFT.
+Операции для функции op_cn():
+ * OP_ADD;
+ * OP_MUL;
+ * OP_DIV;
+ * OP_AND;
+ * OP_OR;
+ * OP_XOR;
+ * OP_LSHIFT;
  * OP_RSHIFT.
 
 == Константы для совместимости с POSIX ==
