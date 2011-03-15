@@ -24,6 +24,20 @@ str = "Hello" //"Hello" is the container with five characters.
 //You don't need to delete them manually.
 str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
 }}}
+{{{
+a = 4 //Global variable
+fn function()
+{
+  $k = 2 //Local variable
+  function2 = {
+    //Body of another function
+    $x = 899.334 //Local variable
+    //$k is not accessible here
+  }
+  //$x is not accessible here
+}
+//$k and $x are not accessible here
+}}}
 
 = Built-in operators =
 
