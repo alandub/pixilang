@@ -206,6 +206,7 @@ Constants for the set_quit_action() function:
 
  * WINDOW_XSIZE - user's window width (in pixels).
  * WINDOW_YSIZE - user's window height (in pixels).
+ * FPS - frames per second.
 
 = Built-in functions =
 
