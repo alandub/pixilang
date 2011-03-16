@@ -179,14 +179,18 @@ Constants for the set_quit_action() function:
 == Data processing operations ==
 
 For op_cn() function:
- * OP_ADD;
- * OP_MUL;
- * OP_DIV;
- * OP_AND;
- * OP_OR;
- * OP_XOR;
- * OP_LSHIFT;
- * OP_RSHIFT.
+ * OP_ADD - addition;
+ * OP_MUL - multiplication;
+ * OP_DIV - division;
+ * OP_AND - bitwise AND;
+ * OP_OR - bitwise OR;
+ * OP_XOR - bitwise XOR;
+ * OP_LSHIFT - bitwise left shift;
+ * OP_RSHIFT - bitwise right shift.
+
+For generator() function:
+ * OP_SIN - sinus;
+ * OP_SIN8 - fast, but rough sinus (8bit table).
 
 == Constants for POSIX compatibility ==
 
@@ -732,11 +736,55 @@ op_cn( OP_ADD, img, 32, 128, 128 )
 op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 }}}
 
+=== generator ===
+
+Generate a signal.
+
+*Parameters ( opcode, pixi, phase, amplitude, delta_x, delta_y, x, y, xsize, ysize )*
+ * opcode - operation;
+ * pixi - container;
+ * phase;
+ * amplitude;
+ * delta_x;
+ * delta_y;
+ * x,y,xsize,ysize - region.
+
+*Examples*
+{{{
+//Generate a sine wave to the whole container img:
+generator( OP_SIN, img, 0, 1, 0.1, 0.1 )
+
+//Generate a rough sine wave to the whole container img:
+generator( OP_SIN8, img, 0, 1, 0.1, 0.1 )
+
+//Generate a sine wave to 8...128 elements of the container img:
+generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 128 )
+
+//Generate a sine wave to region (8,8,32,32) of the container img:
+generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 8, 32, 32 )
+}}}
+
 === fft ===
 
 Perform a fast fourier transform.
 
 *Parameters ( inverse, im, re, size )*
+
+=== replace_values ===
+
+For each element of dest container: {{{dest[ i ] = values[ (unsigned)src[ i ] ]}}}. 
+The dest container must have the same type as the values.
+
+*Parameters ( dest, src, values )*
+ * dest - destination;
+ * src - source;
+ * values - substitution values.
+
+*Examples*
+{{{
+//Convert 8-bit image with palette to the screen pixel format:
+replace_values( scr, img8, palette )
+}}}
 
 == System functions (compatibility with POSIX) ==
 
