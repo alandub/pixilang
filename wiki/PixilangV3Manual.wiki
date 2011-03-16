@@ -189,7 +189,7 @@ For op_cn() function:
  * OP_RSHIFT - bitwise right shift.
 
 For op_ccn() function:
- * OP_MUL_DIV - c * c / n.
+ * OP_MUL_DIV - {{{c * c / n}}}.
 
 For generator() function:
  * OP_SIN - sinus;
