@@ -188,6 +188,9 @@ For op_cn() function:
  * OP_LSHIFT - bitwise left shift;
  * OP_RSHIFT - bitwise right shift.
 
+For op_ccn() function:
+ * OP_MUL_DIV - c * c / n.
+
 For generator() function:
  * OP_SIN - sinus;
  * OP_SIN8 - fast, but rough sinus (8bit table).
@@ -713,6 +716,8 @@ Possible values for the action parameter:
 
 == Data processing ==
 
+Note: data processing functions can't work with dynamic containers.
+
 === op_cn ===
 
 Execute data processing operation.
@@ -735,6 +740,15 @@ op_cn( OP_ADD, img, 32, 128, 128 )
 //Add 32 to two-dimensional region (8,8,32,32) of elements:
 op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 }}}
+
+=== op_ccn ===
+
+Execute data processing operation.
+Operands: 1) container (c); 2) container (c) 3) numerical value (n). 
+
+Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] * pixi2[ i ] / num}}}
+
+*Parameters ( opcode, pixi1, pixi2, num, x, y, xsize, ysize )*
 
 === generator ===
 
