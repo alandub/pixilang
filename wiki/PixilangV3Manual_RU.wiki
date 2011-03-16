@@ -350,9 +350,15 @@ remove( p ) //И удаляем
 
 === copy ===
 
-Скопировать данные из контейнера src_pixi в контейнер dest_pixi.
+Скопировать данные из контейнера src в контейнер dest.
 
-*Parameters ( dest_pixi, src_pixi )*
+*Parameters ( dest, src, offset, size )*
+
+*Examples*
+{{{
+copy( img2, img1 ) //Скопировать все элементы из контейнера img1 в img2
+copy( img2, img1, 8, 200 ) //Скопировать элементы 8...200 из контейнера img1 в img2
+}}}
 
 === get_size ===
 
