@@ -330,7 +330,15 @@ Number of the new container, or -1 (error).
 
 === copy ===
 
-*Parameters ( dest_pixi, src_pixi )*
+Copy container elements from src to dest.
+
+*Parameters ( dest, src, offset, size )*
+
+*Examples*
+{{{
+copy( img2, img1 ) //Copy all elements from img1 to img2
+copy( img2, img1, 8, 200 ) //Copy elements 8...200 from img1 to img2
+}}}
 
 === get_size ===
 
