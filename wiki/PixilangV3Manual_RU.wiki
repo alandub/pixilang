@@ -700,6 +700,12 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //выравнивание - �
 
 === t_point ===
 
+== Звук ==
+
+=== set_audio_callback ===
+
+*Параметры ( callback, userdata, freq, format, channels )*
+
 == Время ==
 
 === start_timer ===
