@@ -660,6 +660,12 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 
 === t_point ===
 
+== Audio ==
+
+=== set_audio_callback ===
+
+*Parameters ( callback, userdata, freq, format, channels )*
+
 == Time ==
 
 === start_timer ===
