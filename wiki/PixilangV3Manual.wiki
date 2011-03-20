@@ -666,6 +666,17 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 
 *Parameters ( callback, userdata, freq, format, channels )*
 
+*Examples*
+{{{
+fn audio_callback( $stream, $userdata, $channels, $frames, $time )
+{
+  generator( OP_SIN, $channels[ 0 ], 0, 32767 / 2, 0.1, 0 ) //Left channel
+  generator( OP_SIN, $channels[ 1 ], 0, 32767 / 2, 0.1, 0 ) //Right channel
+  ret(1)
+}
+set_audio_callback( audio_callback, 0, 22050, INT16, 2 )
+}}}
+
 == Time ==
 
 === start_timer ===
