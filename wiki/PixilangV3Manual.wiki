@@ -193,7 +193,8 @@ For op_ccn() function:
 
 For generator() function:
  * OP_SIN - sinus;
- * OP_SIN8 - fast, but rough sinus (8bit table).
+ * OP_SIN8 - fast, but rough sinus (8bit table);
+ * OP_RAND - pseudo random (from -amp to +amp).
 
 == Constants for POSIX compatibility ==
 
