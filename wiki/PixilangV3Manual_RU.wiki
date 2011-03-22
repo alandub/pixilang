@@ -854,6 +854,16 @@ generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 128 )
 generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 8, 32, 32 )
 }}}
 
+=== sampler ===
+
+*Параметры ( dest, src, src_offset_h, src_offset_l, amplitude, delta_h, delta_l, flags, dest_offset, dest_size )*
+
+*Примеры*
+{{{
+sampler( buf, sample, 0, 0, 256, 1, 0, 0 )
+sampler( buf, sample, 0, 0, 256, 1, 0, 0, 100, 100 )
+}}}
+
 === fft ===
 
 Выполнить быстрое преобразование Фурье.
