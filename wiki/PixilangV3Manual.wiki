@@ -145,8 +145,8 @@ EVT field numbers:
  * EVT_TYPE - event type;
  * EVT_FLAGS - event flags;
  * EVT_TIME - event time;
- * EVT_X;
- * EVT_Y;
+ * EVT_X (0 - center of the screen);
+ * EVT_Y (0 - center of the screen);
  * EVT_KEY;
  * EVT_SCANCODE;
  * EVT_UNICODE.
