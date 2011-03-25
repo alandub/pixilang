@@ -857,10 +857,24 @@ generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 8, 32, 32 )
 
 === sampler ===
 
-*Параметры ()*
+*Параметры ( sample_info )*
 
 *Примеры*
 {{{
+sample_data = new( 256, 1, INT16 ) //создаем 16-битный сэмпл
+sample_info = new( SMP_INFO_SIZE, 1, INT32 ) //создаем контейнер для сэмплера
+clean( sample_info )
+sample_info[ SMP_DEST ] = buffer //Контейнер, в который будем записывать
+sample_info[ SMP_DEST_OFF ] = 0 //Смещение в контейнере
+sample_info[ SMP_DEST_LEN ] = 256 //Размер области, которую будем заполнять
+sample_info[ SMP_SRC ] = sample_data
+sample_info[ SMP_SRC_OFF_H ] = 0 //Смещение сэмпла (левая часть числа с фиксированной точкой)
+sample_info[ SMP_SRC_OFF_L ] = 0 //Смещение сэмпла (правая часть числа с фиксированной точкой, от 0 до 65535)
+sample_info[ SMP_LOOP ] = 0 //Начало лупа (повторяемого участка сэмпла)
+sample_info[ SMP_LOOP_LEN ] = 128 //Длина лупа (или 0, если луп отключен)
+sample_info[ SMP_VOL ] = 32768 //Громкость (32768 = 1.0)
+sample_info[ SMP_DELTA ] = ( 1 << 16 ) //Дельта (скорость проигрывания); fixed point (real_value * 65536)
+sampler( sample_info ) //Записываем сэмпл с выбранными параметрами в контейнер buffer
 }}}
 
 === fft ===
