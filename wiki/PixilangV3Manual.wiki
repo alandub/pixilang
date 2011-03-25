@@ -196,6 +196,23 @@ For generator() function:
  * OP_SIN8 - fast, but rough sinus (8bit table);
  * OP_RAND - pseudo random (from -amp to +amp).
 
+== Sampler ==
+
+Sample info field numbers:
+ * SMP_DEST - destination container;
+ * SMP_DEST_OFF - destination offset;
+ * SMP_DEST_LEN - destination length;
+ * SMP_SRC - container with sample;
+ * SMP_SRC_OFF_H - sample offset (left part of fixed point value);
+ * SMP_SRC_OFF_L - sample offset (right part of fixed point value from 0 to 65535);
+ * SMP_LOOP - loop start;
+ * SMP_LOOP_LEN - loop length (or 0, if no loop);
+ * SMP_VOL1 - start volume (32768 = 1.0);
+ * SMP_VOL2 - end volume (32768 = 1.0);
+ * SMP_DELTA - delta (playing speed); fixed point {{{(real_value * 65536)}}};
+ * SMP_FLAGS - flags;
+ * SMP_INFO_SIZE - size of the container with sample info.
+
 == Constants for POSIX compatibility ==
 
  * FOPEN_MAX.
