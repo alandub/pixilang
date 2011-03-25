@@ -830,7 +830,8 @@ sample_info[ SMP_SRC_OFF_H ] = 0 //Sample offset (left part of fixed point value
 sample_info[ SMP_SRC_OFF_L ] = 0 //Sample offset (right part of fixed point value from 0 to 65535)
 sample_info[ SMP_LOOP ] = 0 //Loop start
 sample_info[ SMP_LOOP_LEN ] = 128 //Loop length (or 0, if no loop)
-sample_info[ SMP_VOL ] = 32768 //Volume (32768 = 1.0)
+sample_info[ SMP_VOL1 ] = 0 //Start volume
+sample_info[ SMP_VOL2 ] = 32768 //End volume (32768 = 1.0)
 sample_info[ SMP_DELTA ] = ( 1 << 16 ) //Delta; fixed point (real_value * 65536)
 sampler( sample_info ) //Go!
 }}}
