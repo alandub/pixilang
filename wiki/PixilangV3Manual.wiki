@@ -178,7 +178,7 @@ Constants for the set_quit_action() function:
 
 == Data processing operations ==
 
-For op_cn() function:
+For op_cn(), op_cc() function:
  * OP_ADD - addition;
  * OP_MUL - multiplication;
  * OP_DIV - division;
@@ -793,12 +793,21 @@ op_cn( OP_ADD, img, 32, 128, 128 )
 op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 }}}
 
+=== op_cc ===
+
+Execute data processing operation.
+Operands: 1) container (c); 2) container (c). 
+
+Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ]}}}
+
+*Parameters ( opcode, pixi1, pixi2, x, y, xsize, ysize )*
+
 === op_ccn ===
 
 Execute data processing operation.
 Operands: 1) container (c); 2) container (c) 3) numerical value (n). 
 
-Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] * pixi2[ i ] / num}}}
+Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ] / num}}}
 
 *Parameters ( opcode, pixi1, pixi2, num, x, y, xsize, ysize )*
 
