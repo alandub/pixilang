@@ -462,8 +462,9 @@ b = a + 4
 
 Draw current screen on display and delay for selected number of milliseconds.
 
-*Parameters ( delay )*
- * delay - pause length in milliseconds.
+*Parameters ( delay, x, y, xsize, ysize )*
+ * delay - pause length in milliseconds;
+ * x, y, xsize, ysize - region of the screen; optional parameters.
 
 === set_screen ===
 
