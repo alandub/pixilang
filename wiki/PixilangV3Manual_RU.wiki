@@ -842,7 +842,11 @@ op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 
 Как работает: {{{для каждого элемента из контейнера pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ]}}}
 
-*Параметры ( opcode, pixi1, pixi2, x, y, xsize, ysize )*
+*Параметры ( opcode, pixi1, pixi2 ) - для всей области контейнера pixi1*
+
+*Параметры ( opcode, pixi1, pixi2, src_x, dest_x, xsize ) - область задана в 1D координатах*
+
+*Параметры ( opcode, pixi1, pixi2, src_x, src_y, dest_x, dest_y, xsize, ysize ) - область задана в 2D координатах*
 
 === op_ccn ===
 
@@ -851,7 +855,11 @@ op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 
 Как работает: {{{для каждого элемента из контейнера pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ] / num}}}
 
-*Параметры ( opcode, pixi1, pixi2, num, x, y, xsize, ysize )*
+*Параметры ( opcode, pixi1, pixi2, num ) - для всей области контейнера pixi1*
+
+*Параметры ( opcode, pixi1, pixi2, num, src_x, dest_x, xsize ) - область задана в 1D координатах*
+
+*Параметры ( opcode, pixi1, pixi2, num, src_x, src_y, dest_x, dest_y, xsize, ysize ) - область задана в 2D координатах*
 
 === generator ===
 
