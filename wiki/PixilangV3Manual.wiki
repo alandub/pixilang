@@ -800,7 +800,13 @@ Operands: 1) container (c); 2) container (c).
 
 Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ]}}}
 
-*Parameters ( opcode, pixi1, pixi2, x, y, xsize, ysize )*
+*Parameters ( opcode, pixi1, pixi2 ) - for whole container pixi1*
+ * pixi1 - destination;
+ * pixi2 - source.
+
+*Parameters ( opcode, pixi1, pixi2, src_x, dest_x, xsize ) - for 1D region*
+
+*Parameters ( opcode, pixi1, pixi2, src_x, src_y, dest_x, dest_y, xsize, ysize ) - for 2D region*
 
 === op_ccn ===
 
@@ -809,7 +815,14 @@ Operands: 1) container (c); 2) container (c) 3) numerical value (n).
 
 Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ] / num}}}
 
-*Parameters ( opcode, pixi1, pixi2, num, x, y, xsize, ysize )*
+*Parameters ( opcode, pixi1, pixi2, num ) - for whole container pixi1*
+ * pixi1 - destination;
+ * pixi2 - source;
+ * num - numerical value (operation parameter).
+
+*Parameters ( opcode, pixi1, pixi2, num, src_x, dest_x, xsize ) - for 1D region*
+
+*Parameters ( opcode, pixi1, pixi2, src_x, src_y, num, dest_x, dest_y, xsize, ysize ) - for 2D region*
 
 === generator ===
 
