@@ -199,6 +199,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 Для функций op_cn(), op_cc():
  * OP_ADD;
+ * OP_SADD;
  * OP_MUL;
  * OP_DIV;
  * OP_AND;
