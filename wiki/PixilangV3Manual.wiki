@@ -898,6 +898,21 @@ The dest container must have the same type as the values.
 replace_values( scr, img8, palette )
 }}}
 
+== Dialogs ==
+
+=== file_dialog ===
+
+Open file dialog.
+
+*Parameters ( dialog_name, mask, id )*
+ * dialog_name;
+ * mask - file type mask (example: "gif/jpg");
+ * id - name of the file for saving the current dialog state.
+
+*Return value*
+
+Container number with selected file name. Or -1 if file not selected.
+
 == System functions (compatibility with POSIX) ==
 
 === fopen ===
