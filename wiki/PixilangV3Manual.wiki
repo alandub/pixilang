@@ -711,6 +711,12 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2 )
 
 === get_timer ===
 
+=== get_year ===
+
+=== get_month ===
+
+=== get_day ===
+
 === get_hours ===
 
 === get_minutes ===
@@ -911,7 +917,7 @@ Open file dialog.
 
 *Return value*
 
-Container number with selected file name. Or -1 if file not selected.
+Container number with selected file name. Or -1 if file not selected. Container must be deleted manually.
 
 == System functions (compatibility with POSIX) ==
 
