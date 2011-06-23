@@ -229,6 +229,12 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * SMP_FLAGS - флаги;
  * SMP_INFO_SIZE - размер контейнера с информацией о сэмпле.
 
+Флаги:
+ * SMP_FLAG_INTERP2 - линейная интерполяция (по двум точкам);
+ * SMP_FLAG_INTERP4 - кубическая сплайновая интерполяция (по четырем точкам);
+ * SMP_FLAG_PINGPONG - режим ping-pong для лупа;
+ * SMP_FLAG_REVERSE - обратное направление проигрывания.
+
 == Константы для совместимости с POSIX ==
 
  * FOPEN_MAX.
@@ -912,6 +918,7 @@ sample_info[ SMP_LOOP_LEN ] = 128 //Длина лупа (или 0, если лу
 sample_info[ SMP_VOL1 ] = 0 //Начальная громкость
 sample_info[ SMP_VOL2 ] = 32768 //Конечная громкость (32768 = 1.0)
 sample_info[ SMP_DELTA ] = ( 1 << 16 ) //Дельта (скорость проигрывания); fixed point (real_value * 65536)
+sample_info[ SMP_FLAGS ] = SMP_FLAG_INTERP4 | SMP_FLAG_PINGPONG //Кубическая сплайновая интерполяция и луп в режиме ping-pong
 sampler( sample_info ) //Записываем сэмпл с выбранными параметрами в контейнер buffer
 }}}
 
