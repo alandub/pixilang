@@ -214,6 +214,12 @@ Sample info field numbers:
  * SMP_FLAGS - flags;
  * SMP_INFO_SIZE - size of the container with sample info.
 
+Sample info flags:
+ * SMP_FLAG_INTERP2 - linear interpolation (2 points);
+ * SMP_FLAG_INTERP4 - cubic spline interpolation (4 points);
+ * SMP_FLAG_PINGPONG - ping-pong loop;
+ * SMP_FLAG_REVERSE - reverse direction.
+
 == Constants for POSIX compatibility ==
 
  * FOPEN_MAX.
@@ -879,6 +885,7 @@ sample_info[ SMP_LOOP_LEN ] = 128 //Loop length (or 0, if no loop)
 sample_info[ SMP_VOL1 ] = 0 //Start volume
 sample_info[ SMP_VOL2 ] = 32768 //End volume (32768 = 1.0)
 sample_info[ SMP_DELTA ] = ( 1 << 16 ) //Delta; fixed point (real_value * 65536)
+sample_info[ SMP_FLAGS ] = SMP_FLAG_INTERP4 | SMP_FLAG_PINGPONG //Cubic spline interpolation and ping-pong loop
 sampler( sample_info ) //Go!
 }}}
 
