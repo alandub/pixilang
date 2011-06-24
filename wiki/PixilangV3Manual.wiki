@@ -138,6 +138,11 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
  * FLOAT_SIZE - max size (in bytes) of the floating point number.
  * COLORBITS - number of bits per pixel.
 
+== Audio ==
+
+Flags for set_audio_callback() function:
+ * AUDIO_FLAG_INTERP2 - linear interpolation (2 points).
+
 == Events ==
 
  * EVT - number of container with event, which used by get_event() function.
@@ -698,7 +703,7 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 
 === set_audio_callback ===
 
-*Parameters ( callback, userdata, freq, format, channels )*
+*Parameters ( callback, userdata, freq, format, channels, flags )*
 
 *Examples*
 {{{
@@ -708,7 +713,7 @@ fn audio_callback( $stream, $userdata, $channels, $frames, $time )
   generator( OP_SIN, $channels[ 1 ], 0, 32767 / 2, 0.1, 0 ) //Right channel
   ret(1)
 }
-set_audio_callback( audio_callback, 0, 22050, INT16, 2 )
+set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 }}}
 
 == Time ==
