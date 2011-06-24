@@ -720,7 +720,19 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 
 === start_timer ===
 
+Start selected timer.
+
+*Parameters ( timer_num )*
+
 === get_timer ===
+
+Get value (in milliseconds) of selected timer. 
+
+*Parameters ( timer_num )*
+
+*Return value*
+
+32bit value (in milliseconds) of selected timer.
 
 === get_year ===
 
@@ -736,7 +748,7 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 
 === get_ticks ===
 
-Get current system tick counter.
+Get current system tick counter (32bit).
 
 === get_tps ===
 
