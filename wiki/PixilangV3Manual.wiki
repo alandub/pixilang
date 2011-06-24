@@ -734,6 +734,14 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 
 === get_seconds ===
 
+=== get_ticks ===
+
+Get current system tick counter.
+
+=== get_tps ===
+
+Get number of system ticks per second.
+
 == Events ==
 
 === get_event ===
