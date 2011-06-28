@@ -580,6 +580,8 @@ Set transparency.
 *Parameters ( t )*
  * t - transparency from 0 to 255.
 
+=== get_transp ===
+
 === clear ===
 
 Clear current screen.
