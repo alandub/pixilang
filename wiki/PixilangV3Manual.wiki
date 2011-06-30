@@ -194,6 +194,9 @@ For op_cn(), op_cc() function:
  * OP_LSHIFT - bitwise left shift;
  * OP_RSHIFT - bitwise right shift.
 
+For op_cc() function:
+ * OP_COPY - copy.
+
 For op_ccn() function:
  * OP_MUL_DIV - {{{c * c / n}}}.
 
