@@ -180,6 +180,46 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * EVT_BUTTONDOWN;
  * EVT_BUTTONUP;
  * EVT_QUIT.
+Флаги события (для поля EVT_FLAGS):
+ * EVT_FLAG_SHIFT;
+ * EVT_FLAG_CTRL;
+ * EVT_FLAG_ALT;
+ * EVT_FLAG_MODE;
+ * EVT_FLAG_MODS (маска модификаторов со всеми флагами типа Shift, Ctrl и т.д.);
+ * EVT_FLAG_DOUBLECLICK.
+Коды клавиш (для поля EVT_KEY):
+ * KEY_MOUSE_LEFT;
+ * KEY_MOUSE_MIDDLE;
+ * KEY_MOUSE_RIGHT;
+ * KEY_MOUSE_SCROLLUP;
+ * KEY_MOUSE_SCROLLDOWN;
+ * KEY_F1;
+ * KEY_F2;
+ * KEY_F3;
+ * KEY_F4;
+ * KEY_F5;
+ * KEY_F6;
+ * KEY_F7;
+ * KEY_F8;
+ * KEY_F9;
+ * KEY_F10;
+ * KEY_F11;
+ * KEY_F12;
+ * KEY_UP;
+ * KEY_DOWN;
+ * KEY_LEFT;
+ * KEY_RIGHT;
+ * KEY_INSERT;
+ * KEY_DELETE;
+ * KEY_HOME;
+ * KEY_END;
+ * KEY_PAGEUP;
+ * KEY_PAGEDOWN;
+ * KEY_CAPS;
+ * KEY_SHIFT;
+ * KEY_CTRL;
+ * KEY_ALT;
+ * KEY_UNKNOWN (system virtual key code = code - KEY_UNKNOWN).
 Константы для функции set_quit_action():
  * QA_NONE;
  * QA_CLOSE_VM.
