@@ -756,6 +756,11 @@ Get current system tick counter (32bit).
 
 Get number of system ticks per second.
 
+=== sleep ===
+
+*Parameters ( delay )*
+ * delay - delay in milliseconds.
+
 == Events ==
 
 === get_event ===
