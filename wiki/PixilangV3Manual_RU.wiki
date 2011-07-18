@@ -421,12 +421,16 @@ remove( p ) //И удаляем
 
 Скопировать данные из контейнера src в контейнер dest.
 
-*Parameters ( dest, src, dest_offset, src_offset, size )*
+*Parameters ( dest, src, dest_offset, src_offset, size, step )*
 
 *Examples*
 {{{
-copy( img2, img1 ) //Скопировать все элементы из контейнера img1 в img2
-copy( img2, img1, 8, 8, 200 ) //Скопировать элементы 8...200 из контейнера img1 в img2
+//Скопировать все элементы из контейнера img1 в img2:
+copy( img2, img1 )
+//Скопировать элементы 8...200 из контейнера img1 в img2:
+copy( img2, img1, 8, 8, 200 )
+//Скопировать элементы 8...200 из контейнера img1 в img2 с шагом 2:
+copy( img2, img1, 8, 8, 200, 2 )
 }}}
 
 === get_size ===
