@@ -829,6 +829,34 @@ Possible values for the action parameter:
  * QA_NONE - do nothing;
  * QA_CLOSE_VM (default) - close the current virtual machine, but don't quit from Pixilang.
 
+== Threads ==
+
+=== thread_create ===
+
+*Parameters ( thread_function, user_data )*
+
+*Return value*
+
+Thread number or -1 if error occurred.
+
+=== thread_destroy ===
+
+*Parameters ( thread_num, timeout_ms )*
+
+*Return value*
+
+0 if the thread closed successfully.
+
+=== mutex_create ===
+
+=== mutex_destroy ===
+
+=== mutex_lock ===
+
+=== mutex_trylock ===
+
+=== mutex_unlock ===
+
 == Mathematical ==
 
 === acos ===
