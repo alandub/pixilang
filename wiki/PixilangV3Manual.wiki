@@ -405,12 +405,16 @@ Number of the new container, or -1 (error).
 
 Copy container elements from src to dest.
 
-*Parameters ( dest, src, dest_offset, src_offset, size )*
+*Parameters ( dest, src, dest_offset, src_offset, size, step )*
 
 *Examples*
 {{{
-copy( img2, img1 ) //Copy all elements from img1 to img2
-copy( img2, img1, 8, 8, 200 ) //Copy elements 8...200 from img1 to img2
+//Copy all elements from img1 to img2:
+copy( img2, img1 )
+//Copy elements 8...200 from img1 to img2:
+copy( img2, img1, 8, 8, 200 )
+//Copy elements 8...200 from img1 to img2 with step 2:
+copy( img2, img1, 8, 8, 200, 2 )
 }}}
 
 === get_size ===
