@@ -873,6 +873,38 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
  * QA_NONE - ничего не делать;
  * QA_CLOSE_VM (по умолчанию) - закрыть текущую виртуальную машину, но не выходить из Pixilang.
 
+== Многопоточность ==
+
+=== thread_create ===
+
+Создать новый поток выполнения, в котором сразу после создания будет запущена функция thread_function( $user_data )
+
+*Параметры ( thread_function, user_data )*
+
+*Возвращаемое значение*
+
+Номер потока или -1 в случае ошибки.
+
+=== thread_destroy ===
+
+Закрыть поток выполнения.
+
+*Параметры ( thread_num, timeout_ms )*
+
+*Возвращаемое значение*
+
+В случае успешного закрытия потока возвращается 0.
+
+=== mutex_create ===
+
+=== mutex_destroy ===
+
+=== mutex_lock ===
+
+=== mutex_trylock ===
+
+=== mutex_unlock ===
+
 == Математика ==
 
 === acos ===
