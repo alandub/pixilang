@@ -897,13 +897,23 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 
 === mutex_create ===
 
+Еще не реализована.
+
 === mutex_destroy ===
+
+Еще не реализована.
 
 === mutex_lock ===
 
+Еще не реализована.
+
 === mutex_trylock ===
 
+Еще не реализована.
+
 === mutex_unlock ===
+
+Еще не реализована.
 
 == Математика ==
 
