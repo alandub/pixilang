@@ -849,13 +849,23 @@ Thread number or -1 if error occurred.
 
 === mutex_create ===
 
+Not implemented.
+
 === mutex_destroy ===
+
+Not implemented.
 
 === mutex_lock ===
 
+Not implemented.
+
 === mutex_trylock ===
 
+Not implemented.
+
 === mutex_unlock ===
+
+Not implemented.
 
 == Mathematical ==
 
