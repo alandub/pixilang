@@ -426,7 +426,7 @@ Get size of a container (number of elements).
 
 *Examples*
 {{{
-p = new( 8, 8 ) //Create new container 8x8
+p = new( 8, 8 ) //Create a new container 8x8
 size = get_size( p ) //Save its size to the "size" variable
 remove( p )
 }}}
@@ -440,7 +440,7 @@ Get width of a container.
 
 *Examples*
 {{{
-p = new( 8, 8 ) //Create new container 8x8
+p = new( 8, 8 ) //Create a new container 8x8
 xsize = get_xsize( p ) //Save its width to the "xsize" variable
 remove( p )
 }}}
@@ -454,7 +454,7 @@ Get height of a container.
 
 *Examples*
 {{{
-p = new( 8, 8 ) //Create new container 8x8
+p = new( 8, 8 ) //Create a new container 8x8
 ysize = get_xsize( p ) //Save its height to the "ysize" variable
 remove( p )
 }}}
@@ -468,7 +468,7 @@ Get the size of the element of a container (in bytes).
 
 *Examples*
 {{{
-p = new( 8, 8, INT32 ) //Create new container 8x8; element type = INT32
+p = new( 8, 8, INT32 ) //Create a new container 8x8; element type = INT32
 esize = get_esize( p ) //Save its element's size to the "esize" variable
 //Now esize = 4.
 remove( p )
@@ -483,10 +483,38 @@ Get the type of the element of a container
 
 *Examples*
 {{{
-p = new( 8, 8, FLOAT32 ) //Create new container 8x8; element type = FLOAT32
+p = new( 8, 8, FLOAT32 ) //Create a new container 8x8; element type = FLOAT32
 type = get_type( p ) //Save its element's type to the "type" variable
 //Now type = FLOAT32.
 remove( p )
+}}}
+
+=== get_prop ===
+
+Get property value of the container. Each container can have unlimited number of properties.
+
+*Parameters ( pixi, prop_name )*
+ * pixi - number of a container;
+ * prop_name - property name.
+
+*Return value*
+
+Value of selected property.
+
+=== set_prop ===
+
+Set property value of the container
+
+*Parameters ( pixi, prop_name, value )*
+ * pixi - number of a container;
+ * prop_name - property name;
+ * value.
+
+*Examples*
+{{{
+p = new( 8, 8, INT32 ) //Create a new container
+set_prop( p, "speed", 777 ) //Add "speed" property to this container
+v = get_prop( p, "speed" ) //Read the value of "speed" property
 }}}
 
 == Strings ==
