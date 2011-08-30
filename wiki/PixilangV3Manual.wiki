@@ -578,6 +578,8 @@ c = load( "smile.jpg" )
 {{{
 c = load( "smile.jpg" )
 save( c, "smile.png", FORMAT_PNG )
+save( c, "smile2.jpg", FORMAT_JPEG ) //Quality = 85 (default)
+save( c, "smile3.jpg", FORMAT_JPEG, 100 ) //Quality = 100
 }}}
 
 == Graphics ==
