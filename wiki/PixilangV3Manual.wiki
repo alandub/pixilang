@@ -798,6 +798,12 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 
 *Parameters ( first_char, pixi, xchars, ychars )*
 
+=== effector ===
+
+Apply an effect to selected screen area. Coordinates of this function can't be changed by t_xxx transformation functions.
+
+*Parameters ( type, power, color, x, y, xsize, ysize, x_step, y_step )*
+
 == Transformation ==
 
 === t_reset ===
