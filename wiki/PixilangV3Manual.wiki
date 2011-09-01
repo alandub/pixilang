@@ -296,6 +296,9 @@ Sample info flags:
 == Various ==
 
  * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100).
+ * CURRENT_PATH.
+ * USER_PATH.
+ * TEMP_PATH.
 
 = Built-in global variables =
 
