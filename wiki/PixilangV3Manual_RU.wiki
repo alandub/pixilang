@@ -311,6 +311,9 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 == Разное ==
 
  * PIXILANG_VERSION - версия Pixilang (major*100000 + minor*100).
+ * CURRENT_PATH.
+ * USER_PATH.
+ * TEMP_PATH.
 
 = Встроенные глобальные переменные =
 
