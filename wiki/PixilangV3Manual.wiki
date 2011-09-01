@@ -102,23 +102,6 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
 
 = Built-in constants =
 
-== Colors ==
-
- * ORANGE.
- * BLACK.
- * WHITE.
- * YELLOW.
- * RED.
- * GREEN.
- * BLUE.
-
-== Alignment ==
-
- * TOP.
- * BOTTOM.
- * LEFT.
- * RIGHT.
-
 == Container types ==
 
  * INT - signed integer (size depends on the version of Pixilang).
@@ -144,6 +127,30 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
  * FORMAT_JPEG.
  * FORMAT_PNG.
  * FORMAT_WAVE.
+
+== Colors ==
+
+ * ORANGE.
+ * BLACK.
+ * WHITE.
+ * YELLOW.
+ * RED.
+ * GREEN.
+ * BLUE.
+
+== Alignment ==
+
+ * TOP.
+ * BOTTOM.
+ * LEFT.
+ * RIGHT.
+
+== Effects ==
+
+Effect types for effector() function:
+ * EFF_NOISE - noise;
+ * EFF_HBLUR - horizontal blur;
+ * EFF_VBLUR - vertical blur.
 
 == Audio ==
 
