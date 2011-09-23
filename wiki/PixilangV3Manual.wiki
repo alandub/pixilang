@@ -39,6 +39,26 @@ fn function()
 //$k and $x are not accessible here
 }}}
 
+= Paths and file names =
+
+In examples
+{{{
+//File is located in several directories relative to the current location of the pixi-program:
+"folder1/folder2/folder3/prog.pixi"
+
+//File is in the current working directory
+//  for Linux/Windows/OSX: in the same folder with Pixilang; 
+//  for iOS: documents; 
+//  for WinCE: root of local filesystem (/);
+"1:/prog.pixi"
+
+//File is in the user's directory (for example /home/alex in Linux):
+"2:/prog.pixi"
+
+//File is in the temporary directory:
+"3:/prog.pixi"
+}}}
+
 = Built-in operators =
 
 {{{
