@@ -906,21 +906,48 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //выравнивание - �
 
 == Трансформация ==
 
+Трансформация системы координат.
+
 === t_reset ===
+
+Сброс (очистка текущей матрицы трансформации).
 
 === t_rotate ===
 
+*Parameters ( angle, x, y, z )*
+
 === t_translate ===
+
+*Parameters ( x, y, z )*
 
 === t_scale ===
 
+*Parameters ( x, y, z )*
+
 === t_get_matrix ===
+
+Получить текущую матрицу трансформации (4x4 FLOAT).
+
+*Parameters ( matrix_container )*
 
 === t_set_matrix ===
 
+Установить текущую матрицу трансформации (4x4 FLOAT).
+
+*Parameters ( matrix_container )*
+
 === t_mul_matrix ===
 
+Current matrix = current matrix * matrix_container.
+
+*Parameters ( matrix_container )*
+
 === t_point ===
+
+Пересчитать координаты точки с учетом текущей матрицы трансформации.
+
+*Parameters ( point_coordinates )*
+ * point_coordinates - контейнер с тремя элементами типа FLOAT.
 
 == Звук ==
 
