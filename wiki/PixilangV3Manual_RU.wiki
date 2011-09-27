@@ -938,7 +938,7 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //выравнивание - �
 
 === t_mul_matrix ===
 
-Current matrix = current matrix * matrix_container.
+{{{Current matrix = current matrix * matrix_container}}}
 
 *Parameters ( matrix_container )*
 
