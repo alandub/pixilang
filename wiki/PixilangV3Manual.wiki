@@ -674,7 +674,6 @@ Color.
 Get red component intensity in a selected color.
 
 *Parameters ( color )*
- * color.
 
 *Return value*
 
@@ -685,7 +684,6 @@ Red component intensity. From 0 to 255.
 Get green component intensity in a selected color.
 
 *Parameters ( color )*
- * color.
 
 *Return value*
 
@@ -696,7 +694,6 @@ Green component intensity. From 0 to 255.
 Get blue component intensity in a selected color.
 
 *Parameters ( color )*
- * color.
 
 *Return value*
 
@@ -729,7 +726,6 @@ Set transparency.
 Clear current screen.
 
 *Parameters ( color )*
- * color.
 
 === dot ===
 
@@ -856,21 +852,48 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 == Transformation ==
 
+Coordinate system transformation.
+
 === t_reset ===
+
+Reset transformation.
 
 === t_rotate ===
 
+*Parameters ( angle, x, y, z )*
+
 === t_translate ===
+
+*Parameters ( x, y, z )*
 
 === t_scale ===
 
+*Parameters ( x, y, z )*
+
 === t_get_matrix ===
+
+Get transformation matrix (4x4 FLOAT).
+
+*Parameters ( matrix_container )*
 
 === t_set_matrix ===
 
+Set transformation matrix (4x4 FLOAT).
+
+*Parameters ( matrix_container )*
+
 === t_mul_matrix ===
 
+Multiply transformation matrix (4x4 FLOAT). 
+Current matrix = current matrix * matrix_container.
+
+*Parameters ( matrix_container )*
+
 === t_point ===
+
+Transform point (container with 3 elements of type FLOAT).
+
+*Parameters ( point_coordinates )*
 
 == Audio ==
 
