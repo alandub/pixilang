@@ -885,7 +885,7 @@ Set transformation matrix (4x4 FLOAT).
 === t_mul_matrix ===
 
 Multiply transformation matrix (4x4 FLOAT). 
-Current matrix = current matrix * matrix_container.
+{{{Current matrix = current matrix * matrix_container}}}
 
 *Parameters ( matrix_container )*
 
