@@ -787,13 +787,17 @@ Draw a filled rectangle.
 
 Display the container with the picture. 
 
-* Parameters ( pixi, x, y, color, xscale, yscale ) * 
- * pixi - container number; 
+* Parameters ( pixi_cont, x, y, color, xscale, yscale, src_x, src_y, src_xsize, src_ysize ) * 
+ * pixi_cont - container number; 
  * x; 
  * y;
  * color - color of the filter; optional; default value is WHITE;
  * xscale - scaling factor (x axis); optional; default value is 1;
- * yscale - scaling factor (y axis); optional; default value is 1.
+ * yscale - scaling factor (y axis); optional; default value is 1;
+ * src_x - x offset in pixi_cont;
+ * src_y - y offset in pixi_cont;
+ * src_xsize;
+ * src_ysize.
 
 *Examples*
 {{{
