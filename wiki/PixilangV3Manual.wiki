@@ -844,6 +844,22 @@ print( "line1\nline2", 50, 50, RED ) //centered;
 print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 }}}
 
+=== get_text_xsize ===
+
+*Parameters ( text, align )*
+
+*Return value*
+
+Text width in pixels.
+
+=== get_text_ysize ===
+
+*Parameters ( text, align )*
+
+*Return value*
+
+Text height in pixels.
+
 === set_font ===
 
 *Parameters ( first_char_utf32, font_image, xchars, ychars )*
