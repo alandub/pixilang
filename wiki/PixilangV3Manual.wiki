@@ -846,7 +846,15 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 
 === set_font ===
 
-*Parameters ( first_char, pixi, xchars, ychars )*
+*Parameters ( first_char_utf32, font_image, xchars, ychars )*
+
+=== get_font ===
+
+*Parameters ( char_utf32 )*
+
+*Return value*
+
+Container ID with font for selected character.
 
 === effector ===
 
