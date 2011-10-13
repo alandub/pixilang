@@ -993,7 +993,12 @@ fn audio_callback( $stream, $userdata, $channels, $frames, $time )
   generator( OP_SIN, $channels[ 1 ], 0, 32767 / 2, 0.1, 0 ) //Правый канал
   ret(1)
 }
+//Запустить звук:
 set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
+}}}
+{{{
+//Остановить звук:
+set_audio_callback( -1 )
 }}}
 
 == Время ==
