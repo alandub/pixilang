@@ -1030,23 +1030,21 @@ Thread number or -1 if error occurred.
 
 === mutex_create ===
 
-Not implemented.
+*Examples*
+{{{
+new_mutex = mutex_create()
+mutex_lock( new_mutex )
+mutex_unlock( new_mutex )
+mutex_destroy( new_mutex )
+}}}
 
 === mutex_destroy ===
 
-Not implemented.
-
 === mutex_lock ===
-
-Not implemented.
 
 === mutex_trylock ===
 
-Not implemented.
-
 === mutex_unlock ===
-
-Not implemented.
 
 == Mathematical ==
 
