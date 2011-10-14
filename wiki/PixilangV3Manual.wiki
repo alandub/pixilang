@@ -419,9 +419,9 @@ Clean a container (fill with zeroes or with selected values).
 
 *Parameters ( dest_cont, v, offset, count )*
  * dest_cont - container number;
- * v - value (optional; zero by default);
- * offset - offset in dest_cont (optional);
- * count - number of elements to fill (optional).
+ * v - value (optional; default - 0);
+ * offset - offset in dest_cont (optional; default - 0);
+ * count - number of elements to fill (optional; default - whole container).
 
 *Examples*
 {{{
