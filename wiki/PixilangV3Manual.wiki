@@ -946,6 +946,16 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 set_audio_callback( -1 )
 }}}
 
+=== get_note_freq ===
+
+*Parameters ( note, finetune )*
+ * note - note number; 0 - C-0; 1 - C#1; 2 - D-0 ...
+ * finetune - from -64 to 64.
+
+*Return value*
+
+Note frequency in Hz.
+
 == Time ==
 
 === start_timer ===
