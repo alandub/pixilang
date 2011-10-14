@@ -949,8 +949,8 @@ set_audio_callback( -1 )
 === get_note_freq ===
 
 *Parameters ( note, finetune )*
- * note - note number; 0 - C-0; 1 - C#1; 2 - D-0 ...
- * finetune - from -64 to 64.
+ * note - note number; 0 = C-0; 1 = C#0; 2 = D-0 ...
+ * finetune - from -64 (previous note) to 64 (next note).
 
 *Return value*
 
