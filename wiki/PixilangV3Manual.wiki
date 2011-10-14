@@ -417,14 +417,18 @@ Convert the type of a container.
 
 Clean a container (fill with zeroes or with selected values).
 
-*Parameters ( pixi, v )*
- * pixi - number of a container;
- * v - value.
+*Parameters ( dest_cont, v, offset, count )*
+ * dest_cont - container number;
+ * v - value;
+ * offset - offset in dest_cont (optional);
+ * count - number of elements to fill (optional).
 
 *Examples*
 {{{
 p = new() //Create new container
-clean( p ) //Clean
+clean( p ) //Clean with zero
+clean( p, 3 )
+clean( p, 3, 0, 24 ) //Fill 24 elements with value 3
 remove( p ) //Remove
 }}}
 
