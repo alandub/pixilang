@@ -281,6 +281,8 @@ For generator() function:
 
 == Sampler ==
 
+ * SMP_INFO_SIZE - size of the container with sample info.
+
 Sample info field numbers:
  * SMP_DEST - destination container;
  * SMP_DEST_OFF - destination offset;
@@ -294,7 +296,6 @@ Sample info field numbers:
  * SMP_VOL2 - end volume (32768 = 1.0);
  * SMP_DELTA - delta (playing speed); fixed point {{{(real_value * 65536)}}};
  * SMP_FLAGS - flags;
- * SMP_INFO_SIZE - size of the container with sample info.
 
 Sample info flags:
  * SMP_FLAG_INTERP2 - linear interpolation (2 points);
