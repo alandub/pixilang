@@ -1094,23 +1094,21 @@ set_audio_callback( -1 )
 
 === mutex_create ===
 
-Еще не реализована.
+*Примеры*
+{{{
+new_mutex = mutex_create()
+mutex_lock( new_mutex )
+mutex_unlock( new_mutex )
+mutex_destroy( new_mutex )
+}}}
 
 === mutex_destroy ===
 
-Еще не реализована.
-
 === mutex_lock ===
-
-Еще не реализована.
 
 === mutex_trylock ===
 
-Еще не реализована.
-
 === mutex_unlock ===
-
-Еще не реализована.
 
 == Математика ==
 
