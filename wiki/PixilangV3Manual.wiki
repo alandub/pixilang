@@ -1201,7 +1201,7 @@ sampler( sample_info ) //Go!
 
 === envelope2p ===
 
-Two points envelope. Without clipping.
+Apply gain and DC-offset two-points envelope to selected container area. Without clipping.
 
 *Parameters ( data_cont, v1, v2, offset, size, dc_offset1, dc_offset2 )*
  * data_cont - container with data (audio waveform, for example);
