@@ -1199,6 +1199,19 @@ sample_info[ SMP_FLAGS ] = SMP_FLAG_INTERP4 | SMP_FLAG_PINGPONG //Cubic spline i
 sampler( sample_info ) //Go!
 }}}
 
+=== envelope2p ===
+
+Two points envelope. Without clipping.
+
+*Parameters ( data_cont, v1, v2, offset, size, dc_offset1, dc_offset2 )*
+ * data_cont - container with data (audio waveform, for example);
+ * v1 - initial gain (0 - no signal; 32768 - original unchanged amplitude);
+ * v2 - final gain (0 - no signal; 32768 - original unchanged amplitude);
+ * offset - offset in the data_cont (optional; default - 0);
+ * size - size of area for envelope (optional; default - whole container);
+ * dc_offset1 - initial DC offset (optional; default - 0);
+ * dc_offset1 - final DC offset (optional; default - 0).
+
 === fft ===
 
 Perform a fast fourier transform.
