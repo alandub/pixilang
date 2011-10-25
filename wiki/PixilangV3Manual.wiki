@@ -1240,10 +1240,11 @@ replace_values( scr, img8, palette )
 
 Open file dialog.
 
-*Parameters ( dialog_name, mask, id )*
+*Parameters ( dialog_name, mask, id, default_name )*
  * dialog_name;
- * mask - file type mask (example: "gif/jpg");
- * id - name of the file for saving the current dialog state.
+ * mask - file type mask (examples: "gif/jpg" for *.gif and *.jpg files; "" for all files);
+ * id - name of the file for saving the current dialog state;
+ * default_name - default file name (optional).
 
 *Return value*
 
