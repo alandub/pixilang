@@ -549,7 +549,7 @@ Get property value of the container. Each container can have unlimited number of
 *Parameters ( pixi, prop_name, def_value )*
  * pixi - number of a container;
  * prop_name - property name;
- * def_vaule - default value, if the property is not exists.
+ * def_vaule - default value, if the property is not exists (optional).
 
 *Return value*
 
