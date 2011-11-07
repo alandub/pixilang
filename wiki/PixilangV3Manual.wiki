@@ -198,6 +198,7 @@ Event types (for the EVT_TYPE field):
  * EVT_TOUCHMOVE;
  * EVT_BUTTONDOWN;
  * EVT_BUTTONUP;
+ * EVT_SCREENRESIZE;
  * EVT_QUIT.
 Event flags (for the EVT_FLAGS field):
  * EVT_FLAG_SHIFT;
@@ -317,6 +318,7 @@ Sample info flags:
 == Various ==
 
  * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100).
+ * OS_NAME - container with system name.
  * CURRENT_PATH.
  * USER_PATH.
  * TEMP_PATH.
