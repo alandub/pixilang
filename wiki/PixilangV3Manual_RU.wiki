@@ -213,6 +213,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * EVT_TOUCHMOVE;
  * EVT_BUTTONDOWN;
  * EVT_BUTTONUP;
+ * EVT_SCREENRESIZE;
  * EVT_QUIT.
 Флаги события (для поля EVT_FLAGS):
  * EVT_FLAG_SHIFT;
