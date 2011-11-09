@@ -291,6 +291,7 @@ Sample info field numbers:
  * SMP_SRC - container with sample;
  * SMP_SRC_OFF_H - sample offset (left part of fixed point value);
  * SMP_SRC_OFF_L - sample offset (right part of fixed point value from 0 to 65535);
+ * SMP_SRC_SIZE - sample size (or 0 for whole sample);
  * SMP_LOOP - loop start;
  * SMP_LOOP_LEN - loop length (or 0, if no loop);
  * SMP_VOL1 - start volume (32768 = 1.0);
