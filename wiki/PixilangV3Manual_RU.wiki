@@ -192,6 +192,12 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 Флаги для функции set_audio_callback():
  * AUDIO_FLAG_INTERP2 - линейная интерполяция ( по двум точкам).
 
+== MIDI ==
+
+Флаги для функций midi_get_device(), midi_open_port():
+ * MIDI_PORT_READ;
+ * MIDI_PORT_WRITE.
+
 == События ==
 
  * EVT - номер контейнера, в который помещается событие из функции get_event().
