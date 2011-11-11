@@ -177,6 +177,12 @@ Effect types for effector() function:
 Flags for set_audio_callback() function:
  * AUDIO_FLAG_INTERP2 - linear interpolation (2 points).
 
+== MIDI ==
+
+Flags for midi_get_device(), midi_open_port() functions:
+ * MIDI_PORT_READ;
+ * MIDI_PORT_WRITE.
+
 == Events ==
 
  * EVT - number of container with event, which used by get_event() function.
