@@ -1018,6 +1018,70 @@ set_audio_callback( -1 )
 
 Частота ноты в Герцах.
 
+== MIDI ==
+
+=== midi_open_client ===
+
+*Параметры ( client_name )*
+
+*Возвращаемое значение*
+
+ID клиента.
+
+=== midi_close_client ===
+
+*Параметры ( client_id )*
+
+=== midi_get_device ===
+
+*Параметры ( client_id, device_num, flags )*
+
+*Возвращаемое значение*
+
+Имя устройства под номером device_num, или -1, если нет такого устройства.
+
+=== midi_open_port ===
+
+*Параметры ( client_id, port_name, device_name, flags )*
+
+*Возвращаемое значение*
+
+Номер открытого порта (port ID).
+
+=== midi_reopen_port ===
+
+*Параметры ( client_id, port_id )*
+
+=== midi_close_port ===
+
+*Параметры ( client_id, port_id )*
+
+=== midi_get_event ===
+
+*Параметры ( client_id, port_id, data_cont )*
+
+*Возвращаемое значение*
+
+Размер (в байтах) текущего MIDI события.
+
+=== midi_get_event_time ===
+
+*Параметры ( client_id, port_id )*
+
+*Возвращаемое значение*
+
+Время (в системных тиках) текущего MIDI события
+
+=== midi_next_event ===
+
+Перейти на следующее сообщения в очереди.
+
+*Параметры ( client_id, port_id )*
+
+=== midi_send_event ===
+
+*Параметры ( client_id, port_id, data_cont, data_size, t )*
+
 == Время ==
 
 === start_timer ===
