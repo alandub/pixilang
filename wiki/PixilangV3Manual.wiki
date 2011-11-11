@@ -964,6 +964,70 @@ set_audio_callback( -1 )
 
 Note frequency in Hz.
 
+== MIDI ==
+
+=== midi_open_client ===
+
+*Parameters ( client_name )*
+
+*Return value*
+
+Client ID.
+
+=== midi_close_client ===
+
+*Parameters ( client_id )*
+
+=== midi_get_device ===
+
+*Parameters ( client_id, device_num, flags )*
+
+*Return value*
+
+Selected device name, or -1 if not exists.
+
+=== midi_open_port ===
+
+*Parameters ( client_id, port_name, device_name, flags )*
+
+*Return value*
+
+Port ID.
+
+=== midi_reopen_port ===
+
+*Parameters ( client_id, port_id )*
+
+=== midi_close_port ===
+
+*Parameters ( client_id, port_id )*
+
+=== midi_get_event ===
+
+*Parameters ( client_id, port_id, data_cont )*
+
+*Return value*
+
+Size of current MIDI event (in bytes).
+
+=== midi_get_event_time ===
+
+*Parameters ( client_id, port_id )*
+
+*Return value*
+
+Time of current event (in system ticks).
+
+=== midi_next_event ===
+
+Go to the next event.
+
+*Parameters ( client_id, port_id )*
+
+=== midi_send_event ===
+
+*Parameters ( client_id, port_id, data_cont, data_size, t )*
+
 == Time ==
 
 === start_timer ===
