@@ -960,6 +960,10 @@ set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
 set_audio_callback( -1 )
 }}}
 
+=== enable_audio_input ===
+
+*Parameters ( disable_enable )*
+
 === get_note_freq ===
 
 *Parameters ( note, finetune )*
