@@ -264,6 +264,11 @@ Constants for the set_quit_action() function:
 
 == Data processing operations ==
 
+For op_cn() function:
+ * OP_MIN;
+ * OP_MAX;
+ * OP_MAXMOD.
+
 For op_cn(), op_cc() function:
  * OP_ADD - addition;
  * OP_SADD - addition with saturation;
