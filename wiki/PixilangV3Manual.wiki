@@ -273,6 +273,7 @@ For op_cn(), op_cc() function:
  * OP_ADD - addition;
  * OP_SADD - addition with saturation;
  * OP_MUL - multiplication;
+ * OP_MUL_RSHIFT15 - {{{( c * n ) >> 15}}};
  * OP_DIV - division;
  * OP_AND - bitwise AND;
  * OP_OR - bitwise OR;
