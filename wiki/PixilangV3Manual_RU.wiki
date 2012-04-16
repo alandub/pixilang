@@ -157,6 +157,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * FORMAT_RAW.
  * FORMAT_JPEG.
  * FORMAT_PNG.
+ * FORMAT_GIF.
  * FORMAT_WAVE.
 
 == Цвета ==
