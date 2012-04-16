@@ -146,6 +146,7 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
  * FORMAT_RAW.
  * FORMAT_JPEG.
  * FORMAT_PNG.
+ * FORMAT_GIF.
  * FORMAT_WAVE.
 
 == Colors ==
