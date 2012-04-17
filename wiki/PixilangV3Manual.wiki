@@ -344,6 +344,13 @@ Sample info flags:
  * FPS - frames per second.
  * PPI - pixels per inch.
 
+= Reserved container properties =
+
+These properties can be created after the load() function:
+ * sample_rate.
+ * channels.
+ * file_format.
+
 = Built-in functions =
 
 == Work with containers (memory allocation) ==
