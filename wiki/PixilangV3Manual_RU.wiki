@@ -362,9 +362,12 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 = Зарезервированные свойства контейнера =
 
 Эти свойства могут быть созданы для контейнера после его загрузки командой load():
- * sample_rate.
- * channels.
- * file_format.
+ * sample_rate;
+ * channels;
+ * file_format;
+ * fps;
+ * frame_count;
+ * current_frame.
 
 = Встроенные функции =
 
