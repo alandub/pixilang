@@ -581,7 +581,7 @@ Value of selected property.
 
 === set_prop ===
 
-Set property value of the container
+Set property value of the container.
 
 *Parameters ( pixi, prop_name, value )*
  * pixi - number of a container;
@@ -597,7 +597,7 @@ v = get_prop( p, "speed" ) //Read the value of "speed" property
 
 === remove_props ===
 
-Remove all properties of selected container
+Remove all properties of the selected container.
 
 *Parameters ( pixi )*
 
