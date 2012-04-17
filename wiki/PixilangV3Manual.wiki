@@ -347,9 +347,12 @@ Sample info flags:
 = Reserved container properties =
 
 These properties can be created after the load() function:
- * sample_rate.
- * channels.
- * file_format.
+ * sample_rate;
+ * channels;
+ * file_format;
+ * fps;
+ * frame_count;
+ * current_frame.
 
 = Built-in functions =
 
