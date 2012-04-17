@@ -917,6 +917,14 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 *Parameters ( type, power, color, x, y, xsize, ysize, x_step, y_step )*
 
+== Animation ==
+
+=== pixi_unpack_frame ===
+
+=== pixi_play ===
+
+=== pixi_stop ===
+
 == Transformation ==
 
 Coordinate system transformation.
