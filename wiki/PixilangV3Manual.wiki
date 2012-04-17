@@ -595,6 +595,12 @@ set_prop( p, "speed", 777 ) //Add "speed" property to this container
 v = get_prop( p, "speed" ) //Read the value of "speed" property
 }}}
 
+=== remove_props ===
+
+Remove all properties of selected container
+
+*Parameters ( pixi )*
+
 == Strings ==
 
 === num_to_str ===
