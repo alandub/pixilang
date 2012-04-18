@@ -350,9 +350,13 @@ These properties can be created after the load() function:
  * sample_rate;
  * channels;
  * file_format;
- * frame_count;
- * fps;
- * frame.
+ * frames - number of frames;
+ * frame - current frame number;
+ * fps - frames per second;
+ * play - auto-play status (0/1);
+ * repeat - repeat counter;
+ * start_time;
+ * start_frame.
 
 = Built-in functions =
 
