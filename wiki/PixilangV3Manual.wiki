@@ -354,7 +354,7 @@ These properties can be created after the load() function:
  * frame - current frame number;
  * fps - frames per second;
  * play - auto-play status (0/1);
- * repeat - repeat counter;
+ * repeat - repeat count (-1 - infinitely);
  * start_time;
  * start_frame.
 
@@ -923,11 +923,21 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 == Animation ==
 
-=== pixi_unpack_frame ===
+=== pack_frame ===
 
-=== pixi_play ===
+=== unpack_frame ===
 
-=== pixi_stop ===
+=== create_anim ===
+
+=== remove_anim ===
+
+=== clone_frame ===
+
+=== remove_frame ===
+
+=== play ===
+
+=== stop ===
 
 == Transformation ==
 
