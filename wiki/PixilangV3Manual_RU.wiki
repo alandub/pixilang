@@ -697,6 +697,12 @@ c = load( "smile.jpg" )
 
 Сохранить контейнер в указанном формате.
 
+*Параметры ( pixi, filename, format, quality )*
+ * pixi;
+ * filename;
+ * format;
+ * quality (от 0 до 100; 100 - наилучшее).
+
 *Примеры*
 {{{
 c = load( "smile.jpg" )
