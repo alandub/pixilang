@@ -658,6 +658,12 @@ c = load( "smile.jpg" )
 
 === save ===
 
+*Parameters ( pixi, filename, format, quality )*
+ * pixi;
+ * filename;
+ * format;
+ * quality (0 - worst; 100 - best).
+
 *Examples*
 {{{
 c = load( "smile.jpg" )
