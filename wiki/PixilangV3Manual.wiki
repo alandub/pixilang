@@ -949,7 +949,7 @@ Create the hidden storage with frames (animation) in the selected container.
 
 === remove_anim ===
 
-Remove the hidden storage with frames (animation) in the selected container.
+Remove the hidden storage with frames (animation) from the selected container.
 
 *Parameters ( pixi )*
 
