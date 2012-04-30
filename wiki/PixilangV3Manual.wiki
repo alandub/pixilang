@@ -931,19 +931,51 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 === pack_frame ===
 
+Pack current frame (from container data to hidden storage with frames). Frame number must be stored in the "frame" container property.
+
+*Parameters ( pixi )*
+
 === unpack_frame ===
+
+Unpack current frame (from hidden storage with frames to container data). Frame number must be stored in the "frame" container property.
+
+*Parameters ( pixi )*
 
 === create_anim ===
 
+Create the hidden storage with frames (animation) in the selected container.
+
+*Parameters ( pixi )*
+
 === remove_anim ===
+
+Remove the hidden storage with frames (animation) in the selected container.
+
+*Parameters ( pixi )*
 
 === clone_frame ===
 
+Clone current frame. Frame number must be stored in the "frame" container property.
+
+*Parameters ( pixi )*
+
 === remove_frame ===
+
+Remove current frame. Frame number must be stored in the "frame" container property.
+
+*Parameters ( pixi )*
 
 === play ===
 
+Enable auto-play mode. Frame will be changed automatically during the pixi() function call.
+
+*Parameters ( pixi )*
+
 === stop ===
+
+Disable auto-play mode.
+
+*Parameters ( pixi )*
 
 == Transformation ==
 
