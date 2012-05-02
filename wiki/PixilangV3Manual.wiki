@@ -1589,6 +1589,10 @@ fclose( f )
 
 *Parameters ( old_filename, new_filename )*
 
+=== copy_file ===
+
+*Parameters ( source_filename, destination_filename )*
+
 === strcat ===
 
 Appends a copy of the source string to the destination string. Both strings can be with terminating null character or without it (if the size of the container = number of characters in the string). Size of the source string can be changed after this function executes.
