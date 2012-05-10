@@ -332,7 +332,8 @@ Sample info flags:
 == Various ==
 
  * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100).
- * OS_NAME - container with system name.
+ * OS_NAME - container with system name (examples: "ios"; "win32", "linux").
+ * ARCH_NAME - container with architecture name (examples: "x86", "x86_64", "arm", "mips").
  * CURRENT_PATH.
  * USER_PATH.
  * TEMP_PATH.
