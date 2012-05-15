@@ -318,7 +318,7 @@ Sample info flags:
  * SMP_FLAG_PINGPONG - ping-pong loop;
  * SMP_FLAG_REVERSE - reverse direction.
 
-== Native code ==
+== Native code constants ==
 
  * CCONV_DEFAULT;
  * CCONV_CDECL;
