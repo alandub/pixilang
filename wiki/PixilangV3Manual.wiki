@@ -1425,13 +1425,53 @@ Container number with selected file name. Or -1 if file not selected. Container 
 
 === dlopen ===
 
-=== dlcose ===
+Open dynamic library (for example - .DLL file in Windows, or .SO file in Linux).
+
+*Parameters ( lib_file_name )*
+
+*Return value*
+
+Library ID or -1 if error occured.
+
+=== dlclose ===
+
+Close dynamic library.
+
+*Parameters ( lib_id )*
 
 === dlsym ===
 
+Get symbol (function or variable) from dynamic library.
+
+*Parameters ( lib_id, symbol_name, format, calling_convention )*
+ * lib_id;
+ * symbol_name - function/variable name;
+ * format - (optional) function format; text string with the following structure: "R(P)", where the R - return value type (one character), P - parameters types (multiple characters or empty); type characters:
+   * v - void;
+   * c - signed int8;
+   * C - unsigned int8
+   * s - signed int16;
+   * S - unsigned int16;
+   * i - signed int32;
+   * I - unsigned int32;
+   * l - signed int64;
+   * L - unsigned int64;
+   * f - float32;
+   * d - double64;
+   * p - pointer;
+ * calling_convention - (optional) one of the CCONV_xxx constants.
+
+*Return value*
+
+Symbol ID or -1 if error occured.
+
 === dlcall ===
 
+Call the function from dynamic library.
+
 == System functions (compatibility with POSIX) ==
+
+*Parameters ( lib_id, symbol_id, optional_function_parameters )*
 
 === fopen ===
 
