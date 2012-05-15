@@ -318,6 +318,14 @@ Sample info flags:
  * SMP_FLAG_PINGPONG - ping-pong loop;
  * SMP_FLAG_REVERSE - reverse direction.
 
+== Native code ==
+
+ * CCONV_DEFAULT;
+ * CCONV_CDECL;
+ * CCONV_STDCALL;
+ * CCONV_UNIX_AMD64;
+ * CCONV_WIN64.
+
 == Constants for POSIX compatibility ==
 
  * FOPEN_MAX.
@@ -1412,6 +1420,16 @@ Open file dialog.
 *Return value*
 
 Container number with selected file name. Or -1 if file not selected. Container must be deleted manually.
+
+== Native code ==
+
+=== dlopen ===
+
+=== dlcose ===
+
+=== dlsym ===
+
+=== dlcall ===
 
 == System functions (compatibility with POSIX) ==
 
