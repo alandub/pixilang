@@ -1446,7 +1446,7 @@ Get symbol (function or variable) from dynamic library.
 *Parameters ( lib_id, symbol_name, format, calling_convention )*
  * lib_id;
  * symbol_name - function/variable name;
- * format - (optional) function format; text string with the following structure: "R(P)", where the R - return value type (one character), P - parameters types (multiple characters or empty); type characters:
+ * format - function format; optional; text string with the following structure: "R(P)", where the R - return value type (one ascii character), P - parameter types (multiple ascii characters or empty); below is a list of characters that are used for the construction of this string:
    * v - void;
    * c - signed int8;
    * C - unsigned int8
@@ -1459,7 +1459,7 @@ Get symbol (function or variable) from dynamic library.
    * f - float32;
    * d - double64;
    * p - pointer;
- * calling_convention - (optional) one of the CCONV_xxx constants.
+ * calling_convention - one of the CCONV_xxx constants (optional; default - CCONV_DEFAULT).
 
 *Return value*
 
@@ -1469,9 +1469,9 @@ Symbol ID or -1 if error occured.
 
 Call the function from dynamic library.
 
-== System functions (compatibility with POSIX) ==
-
 *Parameters ( lib_id, symbol_id, optional_function_parameters )*
+
+== System functions (compatibility with POSIX) ==
 
 === fopen ===
 
