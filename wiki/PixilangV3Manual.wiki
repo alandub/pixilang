@@ -510,6 +510,18 @@ copy( img2, img1, 8, 8, 200, 2, 2 )
 
 Number of copied elements.
 
+=== insert_element ===
+
+Insert element at specific index of container, with shift of the subsequent elements.
+
+*Parameters ( pixi, element_index, element_value )*
+
+=== remove_element ===
+
+Remove element at specific index of container, with shift of the subsequent elements.
+
+*Parameters ( pixi, element_index )*
+
 === get_size ===
 
 Get size of a container (number of elements).
