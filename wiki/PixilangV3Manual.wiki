@@ -220,6 +220,11 @@ Event key codes (for the EVT_KEY field):
  * KEY_MOUSE_RIGHT;
  * KEY_MOUSE_SCROLLUP;
  * KEY_MOUSE_SCROLLDOWN;
+ * KEY_BACKSPACE;
+ * KEY_TAB;
+ * KEY_ENTER;
+ * KEY_ESCAPE;
+ * KEY_SPACE;
  * KEY_F1;
  * KEY_F2;
  * KEY_F3;
