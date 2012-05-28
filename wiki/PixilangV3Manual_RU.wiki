@@ -926,6 +926,10 @@ pixi( image, 30, 40, GREEN )
 pixi( image, 90, 20, GREEN, 0.5, 0.5 )
 }}}
 
+=== triangles3d ===
+
+=== sort_triangles3d ===
+
 === set_key_color ===
 
 Установить/сбросить цвет прозрачности у контейнера.
