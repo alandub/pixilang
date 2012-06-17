@@ -10,7 +10,15 @@ The basis of the Pixilang - are containers and variables.
 
 Container is a two-dimensional array of elements. Each element is the number in a specific format. Each container has one format for all its elements. Each container has its own unique ID number.
 
-Variable can contain 32-bit signed integer (for example 25) or 32-bit floating point number (for example 33.44).
+Container structure:
+ * two-dimensional table of container elements - this may be some image, text string, piece of audio, or other data;
+ * key color;
+ * reference to a container with alpha-channel;
+ * additional data:
+   * properties (use get_prop(), set_prop(), remove_props() to access them);
+   * animation (use Animation functions to access it).
+
+Variable can contain 32-bit signed integer or 32-bit floating point number.
 
 *The simplest example of the use of containers and variables*
 {{{
