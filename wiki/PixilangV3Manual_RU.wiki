@@ -1513,6 +1513,24 @@ replace_values( scr, img8, palette )
 
 ID открытой библиотеки, или -1 в случае ошибки.
 
+*Примеры*
+{{{
+//Например, мы имеем какую-то C функцию int show_info( int x, int y, void* data )
+//в библиотеке mylib.dll.
+//Вызовем ее из Pixilang:
+dl = dlopen( "mylib.dll" ) //Открываем библиотеку
+if dl >= 0 
+{
+  f = dlsym( dl, "show_info", "iip" ) //Получаем ID функции show_info()
+  // "iip" - int int pointer
+  if f >= 0
+  {
+    retval = dlcall( dl, f, 1, 2, "blahblah" ) //вызываем функцию show_info() с параметрами 1, 2, "blahblah"
+  }
+  dlclose( dl ) //Закрываем библиотеку
+}
+}}}
+
 === dlclose ===
 
 Закрыть динамически подключаемую библиотеку.
