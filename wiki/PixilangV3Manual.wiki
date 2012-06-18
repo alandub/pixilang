@@ -1466,7 +1466,7 @@ if dl >= 0
   // "iip" - int int pointer
   if f >= 0
   {
-    retval = dlcall( dl, f, 1, 2, "blahblah" ) //Call the function show_info() with parameters (int) 1, (int) 2, (pointer) "blahblah"
+    retval = dlcall( dl, f, 1, 2, "blahblah" ) //Call the function show_info() with parameters 1, 2, "blahblah"
   }
   dlclose( dl ) //Close the library
 }
