@@ -1454,6 +1454,24 @@ Open dynamic library (for example - .DLL file in Windows, or .SO file in Linux).
 
 Library ID or -1 if error occured.
 
+*Examples*
+{{{
+//For example we have some C function int show_info( int x, int y, void* data )
+//in mylib.dll library.
+//Let's call it from Pixilang:
+dl = dlopen( "mylib.dll" ) //Open the library
+if dl >= 0 
+{
+  f = dlsym( dl, "show_info", "iip" ) //Get the function show_info() from dynamic library
+  // "iip" - int int pointer
+  if f >= 0
+  {
+    retval = dlcall( dl, f, 1, 2, "blahblah" ) //Call the function show_info() with parameters (int) 1, (int) 2, (pointer) "blahblah"
+  }
+  dlclose( dl ) //Close the library
+}
+}}}
+
 === dlclose ===
 
 Close dynamic library.
