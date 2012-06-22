@@ -18,6 +18,11 @@ Container structure:
    * properties (use get_prop(), set_prop(), remove_props() to access them);
    * animation (use Animation functions to access it).
 
+The new container can be created with the new() function or returned by some other function. There are two ways to remove the container:
+ * by user through the remove() function;
+ * automatically after the end of the program.
+There is no automatic garbage collector.
+
 Variable can contain 32-bit signed integer or 32-bit floating point number.
 
 *The simplest example of the use of containers and variables*
