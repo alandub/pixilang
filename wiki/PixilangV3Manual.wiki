@@ -1208,7 +1208,7 @@ Get a new event from the system.
 
 *Return value*
 
-0 - no events. 1 - event is received and placed into a container EVT.
+0 - no events. 1 - event is received and placed into the container EVT.
 
 === set_quit_action ===
 
