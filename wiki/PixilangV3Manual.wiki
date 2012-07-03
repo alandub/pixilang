@@ -25,6 +25,13 @@ There is no automatic garbage collector.
 
 Variable can contain 32-bit signed integer or 32-bit floating point number.
 
+Numbers can be described in different formats. Examples:
+ * 33 - decimal;
+ * 33.55 - decimal floating point;
+ * 0xA8BC - hexadecimal;
+ * 0b100101011 - binary;
+ * #FF9080 - color, as in HTML; base format is #RRGGBB, where RR - red intensity (from 00 to FF), GG - green intensity; BB - blue intensity.
+
 *The simplest example of the use of containers and variables*
 {{{
 x = new( 4 ) //Create a new container with 4 pixels. Store its ID into the variable x.
