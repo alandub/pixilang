@@ -309,7 +309,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 Для функции op_cn():
  * OP_MIN - {{{retval = min( cont.elements + n )}}};
  * OP_MAX - {{{retval = max( cont.elements + n )}}};
- * OP_MAXMOD - {{{retval = max( | cont.elements + n | )}.
+ * OP_MAXABS - {{{retval = max( | cont.elements + n | )}.
 
 Для функций op_cn(), op_cc():
  * OP_ADD - сложение;
