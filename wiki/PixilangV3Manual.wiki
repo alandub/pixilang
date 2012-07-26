@@ -293,7 +293,7 @@ Constants for the set_quit_action() function:
 For op_cn() function:
  * OP_MIN - {{{retval = min( cont.elements + n )}}};
  * OP_MAX - {{{retval = max( cont.elements + n )}}};
- * OP_MAXMOD - {{{retval = max( | cont.elements + n | )}}}.
+ * OP_MAXABS - {{{retval = max( | cont.elements + n | )}}}.
 
 For op_cn(), op_cc() function:
  * OP_ADD - addition;
