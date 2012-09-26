@@ -202,7 +202,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 Для OpenGL:
  * GL_MIN_LINEAR;
  * GL_MAG_LINEAR;
- * GL_NICEST - use 32bit color, when possible.
+ * GL_NICEST - использовать наилучшее отображение и 32-битный цвет, когда возможно.
 
 == Размеры ==
 
