@@ -108,6 +108,8 @@ a = 0
 while( a < 100 )
 {
   if a == 10 { break } //If a = 10, break the loop
+  //Use breakX operator to break X nested loops. Example: break2
+  //Use breakall operator to break all current active loops
   a + 1
 }
 
