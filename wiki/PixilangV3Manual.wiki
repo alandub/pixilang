@@ -181,6 +181,13 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
  * DYNAMIC - dynamic type.
  * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel.
 
+== Container flags ==
+
+For OpenGL acceleration:
+ * GL_MIN_LINEAR;
+ * GL_MAG_LINEAR;
+ * GL_NICEST - use 32bit color, when possible.
+
 == Sizes ==
 
  * INT_SIZE - max size (in bytes) of the signed integer.
