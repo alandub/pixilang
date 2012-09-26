@@ -645,6 +645,23 @@ type = get_type( p ) //Save its element's type to the "type" variable
 remove( p )
 }}}
 
+=== set_flags ===
+
+Set container flags.
+
+*Parameters ( pixi, flags )*
+
+*Examples*
+{{{
+set_flags( img, GL_MIN_LINEAR | GL_MAG_LINEAR )
+}}}
+
+=== reset_flags ===
+
+Reset container flags.
+
+*Parameters ( pixi, flags )*
+
 === get_prop ===
 
 Get property value of the container. Each container can have unlimited number of properties.
@@ -776,6 +793,8 @@ Container's number.
 Set container with Z-buffer. Must be INT32.
 
 === get_zbuf ===
+
+=== clear_zbuf ===
 
 === get_color ===
 
@@ -1725,6 +1744,12 @@ size_of_file = ftell( f )
 fclose( f )
 }}}
 
+=== get_file_size ===
+
+Get the size of selected file.
+
+*Parameters ( filename )*
+
 === remove_file ===
 
 *Parameters ( filename )*
@@ -1743,11 +1768,15 @@ Appends a copy of the source string to the destination string. Both strings can 
 
 *Parameters ( destination, source )*
 
+*Parameters ( dest, dest_offset, source, source_offset )*
+
 === strcmp ===
 
 Compares the string str1 to the string str2. Both strings can be with terminating null character or without it (if the size of the container = number of characters in the string).
 
 *Parameters ( str1, str2 )*
+
+*Parameters ( str1, str1_offset, str2, str2_offset )*
 
 *Return value*
 
@@ -1760,6 +1789,8 @@ Returns the length of string str. String can be with terminating null character 
 
 *Parameters ( str )*
 
+*Parameters ( str, str_offset )*
+
 *Return value*
 
 Length of string str.
@@ -1769,6 +1800,8 @@ Length of string str.
 Returns the offset of the first occurrence of str2 in str1, or a -1 if str2 is not part of str1.
 
 *Parameters ( str1, str2 )*
+
+*Parameters ( str1, str1_offset, str2, str2_offset )*
 
 *Return value*
 
@@ -1783,6 +1816,12 @@ Writes into the container str a string consisting on a sequence of data formatte
 *Return value*
 
 On success, the total number of characters written is returned. On failure, a negative number is returned.
+
+=== printf ===
+
+Same as sprintf, but the destination - STDOUT.
+
+*Parameters ( format, ... )*
 
 === system ===
 
