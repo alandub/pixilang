@@ -39,6 +39,11 @@ x[ 2 ] = WHITE //Assign the white color to a pixel with number 2.
 remove( x ) //Remove this container
 }}}
 {{{
+c = new( 4, 4 ) //Create a new 2D 4x4 pixel container. Store its ID into the variable x.
+c[ 2, 2 ] = WHITE //Assign the white color to a pixel with coordinates x=2 y=2.
+remove( c ) //Remove this container
+}}}
+{{{
 str = "Hello" //"Hello" is the container with five characters.
 //Such containers with strings are created on the stage of compilation of your program. 
 //You don't need to delete them manually.
@@ -96,6 +101,25 @@ while( a < 3 )
 {
   //This code is executed while a less than 3
   a + 3
+}
+
+//while + break
+a = 0
+while( a < 100 )
+{
+  if a == 10 { break } //If a = 10, break the loop
+  a + 1
+}
+
+//while + continue
+a = 0
+b = 0
+while( a < 100 )
+{
+  if a == 10 { a + 1 continue } //If a = 10, go to the next loop iteration 
+                                //           (ignore the next two lines of code)
+  a + 1
+  b + 1
 }
 
 //go, goto
