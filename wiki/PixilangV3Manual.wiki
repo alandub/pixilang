@@ -1022,6 +1022,22 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 *Parameters ( type, power, color, x, y, xsize, ysize, x_step, y_step )*
 
+== OpenGL ==
+
+=== set_gl_callback ===
+
+Set OpenGL frame drawing callback.
+
+*Parameters ( gl_callback, user_data )*
+ * gl_callback - callback function with parameters ($user_data); almost all graphics functions will be redirected to OpenGL within this callback;
+ * user_data - some user-defined data that will be sent to gl_callback() during the frame redrawing.
+
+=== remove_gl_data ===
+
+Remove all GL-specific data from the container. This data will be created automatically during the gl_callback() execution.
+
+*Parameters ( container )*
+
 == Animation ==
 
 === pack_frame ===
