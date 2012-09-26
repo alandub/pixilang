@@ -191,7 +191,8 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
 Effect types for effector() function:
  * EFF_NOISE - noise;
  * EFF_HBLUR - horizontal blur;
- * EFF_VBLUR - vertical blur.
+ * EFF_VBLUR - vertical blur;
+ * EFF_COLOR - color fill.
 
 == Audio ==
 
@@ -293,7 +294,10 @@ Constants for the set_quit_action() function:
 For op_cn() function:
  * OP_MIN - {{{retval = min( cont.elements + n )}}};
  * OP_MAX - {{{retval = max( cont.elements + n )}}};
- * OP_MAXABS - {{{retval = max( | cont.elements + n | )}}}.
+ * OP_MAXABS - {{{retval = max( | cont.elements + n | )}}};
+ * OP_LIMIT_TOP - {{{if value > n { value = n } }}};
+ * OP_LIMIT_BOTTOM - {{{if value < n { value = n } }}};
+ * OP_ABS - absolute value.
 
 For op_cn(), op_cc() function:
  * OP_ADD - addition;
@@ -301,6 +305,7 @@ For op_cn(), op_cc() function:
  * OP_COLOR_ADD - color addition;
  * OP_COLOR_SUB - color subtraction;
  * OP_MUL - multiplication;
+ * OP_SMUL - multiplication with saturation;
  * OP_MUL_RSHIFT15 - {{{( c * n ) >> 15}}};
  * OP_COLOR_MUL - color multiplication;
  * OP_DIV - division;
@@ -309,7 +314,10 @@ For op_cn(), op_cc() function:
  * OP_OR - bitwise OR;
  * OP_XOR - bitwise XOR;
  * OP_LSHIFT - bitwise left shift;
- * OP_RSHIFT - bitwise right shift.
+ * OP_RSHIFT - bitwise right shift;
+ * OP_EQUAL;
+ * OP_LESS;
+ * OP_GREATER.
 
 For op_cc() function:
  * OP_COPY - copy.
