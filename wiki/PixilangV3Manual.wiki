@@ -1032,6 +1032,22 @@ Set OpenGL frame drawing callback.
  * gl_callback - callback function with parameters ($user_data); almost all graphics functions will be redirected to OpenGL within this callback;
  * user_data - some user-defined data that will be sent to gl_callback() during the frame redrawing.
 
+*Examples*
+{{{
+fn gl_callback( $user_data )
+{
+  set_screen( GL_SCREEN ) //Enable OpenGL drawing mode
+  clear( YELLOW )
+  set_screen( 0 ) //Back to the default screen
+}
+
+set_gl_callback(
+  gl_callback, //OpenGL frame drawing function
+  0 ) //Some user-defined data
+
+while( 1 ) { frame() }
+}}}
+
 === remove_gl_data ===
 
 Remove all GL-specific data from the container. This data will be created automatically during the gl_callback() execution.
