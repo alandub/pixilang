@@ -654,7 +654,8 @@ remove( p )
 
 === set_flags ===
 
-Set container flags.
+Set container flags. 
+List of supported flags is here: [PixilangV3Manual#Container_flags]
 
 *Parameters ( pixi, flags )*
 
