@@ -268,13 +268,13 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * EVT_X - координата X (0 - центр экрана);
  * EVT_Y - координата Y (0 - центр экрана);
  * EVT_KEY - номер нажатой клавиши;
- * EVT_SCANCODE - сканкод (если имеется);
+ * EVT_SCANCODE - сканкод (если имеется) или номер нажатия на экран (только для multitouch устройств; от нуля);
  * EVT_UNICODE - юникод (если имеется).
 Типы событий (для поля EVT_TYPE):
- * EVT_MOUSEBUTTONDOWN;
+ * EVT_MOUSEBUTTONDOWN - клик мышкой, первое нажатие на экран;
  * EVT_MOUSEBUTTONUP;
  * EVT_MOUSEMOVE;
- * EVT_TOUCHBEGIN;
+ * EVT_TOUCHBEGIN - второе, третье и т.д. нажатие на экран (только для multitouch устройств);
  * EVT_TOUCHEND;
  * EVT_TOUCHMOVE;
  * EVT_BUTTONDOWN;
