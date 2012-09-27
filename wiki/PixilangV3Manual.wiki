@@ -248,13 +248,13 @@ EVT field numbers:
  * EVT_X (0 - center of the screen);
  * EVT_Y (0 - center of the screen);
  * EVT_KEY;
- * EVT_SCANCODE;
+ * EVT_SCANCODE - key scancode, or touch number for multitouch devices;
  * EVT_UNICODE.
 Event types (for the EVT_TYPE field):
- * EVT_MOUSEBUTTONDOWN;
+ * EVT_MOUSEBUTTONDOWN - first touch;
  * EVT_MOUSEBUTTONUP;
  * EVT_MOUSEMOVE;
- * EVT_TOUCHBEGIN;
+ * EVT_TOUCHBEGIN - 2th, 3th etc. touch; only for multitouch devices;
  * EVT_TOUCHEND;
  * EVT_TOUCHMOVE;
  * EVT_BUTTONDOWN;
