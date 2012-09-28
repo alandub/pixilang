@@ -260,7 +260,7 @@ Event types (for the EVT_TYPE field):
  * EVT_BUTTONDOWN;
  * EVT_BUTTONUP;
  * EVT_SCREENRESIZE;
- * EVT_QUIT.
+ * EVT_QUIT - Virtual Machine will be closed; if {{{EVT[ EVT_SCANCODE ] = 0}}}, this event can't be ignored, user code must be terminated as soon as possible; if {{{EVT[ EVT_SCANCODE ] = 1}}}, this event can be ignored by user.
 Event flags (for the EVT_FLAGS field):
  * EVT_FLAG_SHIFT;
  * EVT_FLAG_CTRL;
