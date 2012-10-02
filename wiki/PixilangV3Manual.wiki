@@ -1053,7 +1053,13 @@ set_gl_callback(
   gl_callback, //OpenGL frame drawing function
   0 ) //Some user-defined data
 
-while( 1 ) { frame() }
+while( 1 ) 
+{ 
+  while( get_event() ) { if EVT[ EVT_TYPE ] == EVT_QUIT { break } }
+  frame() 
+}
+
+set_gl_callback( -1 ) //Remove OpenGL callback
 }}}
 
 === remove_gl_data ===
