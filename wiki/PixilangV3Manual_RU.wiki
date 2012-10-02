@@ -1110,7 +1110,13 @@ set_gl_callback(
   gl_callback,
   0 )
 
-while( 1 ) { frame() }
+while( 1 ) 
+{ 
+  while( get_event() ) { if EVT[ EVT_TYPE ] == EVT_QUIT { break } }
+  frame() 
+}
+
+set_gl_callback( -1 ) //Удалить gl_callback
 }}}
 
 === remove_gl_data ===
