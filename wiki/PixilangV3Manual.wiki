@@ -1055,7 +1055,7 @@ set_gl_callback(
 
 while( 1 ) 
 { 
-  while( get_event() ) { if EVT[ EVT_TYPE ] == EVT_QUIT { break } }
+  while( get_event() ) { if EVT[ EVT_TYPE ] == EVT_QUIT { break2 } }
   frame() 
 }
 
