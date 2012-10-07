@@ -2,7 +2,9 @@
 
 = What is Pixilang =
 
-Pixilang — cross-platform programming language for graphic/sound applications.
+Pixilang — cross-platform programming language for graphics/sound applications and experiments. Originally created by Alexander Zolotov (NightRadio) and Mik Razuvaev (Goglus) for non-programmers, demosceners and designers.
+
+Pixilang programs are stored in text files (UTF8) with extensions .txt or .pixi. So you can use your favorite text editor to create/edit these files. Pixilang has no built-in editor.
 
 = Basics =
 
