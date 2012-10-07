@@ -68,7 +68,6 @@ fn function()
 
 = Paths and file names =
 
-In examples
 {{{
 //File is located in several directories relative to the current location of the pixi-program:
 "folder1/folder2/folder3/prog.pixi"
