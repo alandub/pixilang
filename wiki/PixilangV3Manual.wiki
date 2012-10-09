@@ -752,6 +752,14 @@ b = a + 4
 *Examples*
 {{{
 c = load( "smile.jpg" )
+if c >= 0
+{
+  file_format = get_prop( c, "file_format" ) //FORMAT_RAW / FORMAT_JPEG / ...
+  if file_format == FORMAT_WAVE
+  {
+    printf( "This is audio file\n" )
+  }
+}
 }}}
 
 === save ===
