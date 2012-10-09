@@ -745,7 +745,7 @@ a = str_to_num( "-55.44" )
 b = a + 4
 }}}
 
-== File formats ==
+== Working with files ==
 
 === load ===
 
@@ -769,6 +769,24 @@ save( c, "smile.png", FORMAT_PNG )
 save( c, "smile2.jpg", FORMAT_JPEG ) //Quality = 85 (default)
 save( c, "smile3.jpg", FORMAT_JPEG, 100 ) //Quality = 100
 }}}
+
+=== get_file_size ===
+
+Get the size of selected file.
+
+*Parameters ( filename )*
+
+=== remove_file ===
+
+*Parameters ( filename )*
+
+=== rename_file ===
+
+*Parameters ( old_filename, new_filename )*
+
+=== copy_file ===
+
+*Parameters ( source_filename, destination_filename )*
 
 == Graphics ==
 
@@ -1790,24 +1808,6 @@ fseek( f, 0, SEEK_END )
 size_of_file = ftell( f )
 fclose( f )
 }}}
-
-=== get_file_size ===
-
-Get the size of selected file.
-
-*Parameters ( filename )*
-
-=== remove_file ===
-
-*Parameters ( filename )*
-
-=== rename_file ===
-
-*Parameters ( old_filename, new_filename )*
-
-=== copy_file ===
-
-*Parameters ( source_filename, destination_filename )*
 
 === strcat ===
 
