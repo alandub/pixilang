@@ -201,6 +201,8 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 == Флаги (опции) контейнера ==
 
+ * CFLAG_INTERP - включить программную интерполяцию.
+
 Для OpenGL:
  * GL_MIN_LINEAR;
  * GL_MAG_LINEAR;
@@ -327,6 +329,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * KEY_SHIFT;
  * KEY_CTRL;
  * KEY_ALT;
+ * KEY_MENU;
  * KEY_UNKNOWN (system virtual key code = code - KEY_UNKNOWN).
 Константы для функции set_quit_action():
  * QA_NONE;
@@ -334,15 +337,15 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 == Математические константы ==
 
- * M_E - e.
- * M_LOG2E - log,,2,,e.
- * M_LOG10E - log,,10,,e.
- * M_LN2 - log,,e,,2.
- * M_LN10 - log,,e,,10.
- * M_PI - PI.
- * M_2_SQRTPI - 2 / sqrt( PI ).
- * M_SQRT2 - sqrt( 2 ).
- * M_SQRT1_2 - 1 / sqrt( 2 ).
+ * M_E - e;
+ * M_LOG2E - log,,2,,e;
+ * M_LOG10E - log,,10,,e;
+ * M_LN2 - log,,e,,2;
+ * M_LN10 - log,,e,,10;
+ * M_PI - PI;
+ * M_2_SQRTPI - 2 / sqrt( PI );
+ * M_SQRT2 - sqrt( 2 );
+ * M_SQRT1_2 - 1 / sqrt( 2 );
 
 == Операции обработки данных ==
 
@@ -420,29 +423,30 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 == Константы для совместимости с POSIX ==
 
- * FOPEN_MAX.
- * SEEK_CUR.
- * SEEK_END.
- * SEEK_SET.
- * EOF.
- * STDIN.
- * STDOUT.
+ * FOPEN_MAX;
+ * SEEK_CUR;
+ * SEEK_END;
+ * SEEK_SET;
+ * EOF;
+ * STDIN;
+ * STDOUT;
  * STDERR.
 
 == Разное ==
 
- * PIXILANG_VERSION - версия Pixilang (major*100000 + minor*100).
- * OS_NAME - контейнер с названием операционной системы, в которой запущен Pixilang (примеры: "ios"; "win32", "linux").
- * ARCH_NAME - контейнер с названием архитектуры процессора (примеры: "x86", "x86_64", "arm", "mips").
- * CURRENT_PATH.
- * USER_PATH.
- * TEMP_PATH.
+ * PIXILANG_VERSION - версия Pixilang (major*100000 + minor*100);
+ * OS_NAME - контейнер с названием операционной системы, в которой запущен Pixilang (примеры: "ios"; "win32", "linux");
+ * ARCH_NAME - контейнер с названием архитектуры процессора (примеры: "x86", "x86_64", "arm", "mips");
+ * CURRENT_PATH;
+ * USER_PATH;
+ * TEMP_PATH;
+ * OPENGL - 1, если OpenGL доступен; 0 - в противном случае.
 
 = Встроенные глобальные переменные =
 
- * WINDOW_XSIZE - ширина пользовательского окна (в пикселях).
- * WINDOW_YSIZE - высота пользовательского окна (в пикселях).
- * FPS - последнее подсчитанное количество кадров в секунду.
+ * WINDOW_XSIZE - ширина пользовательского окна (в пикселях);
+ * WINDOW_YSIZE - высота пользовательского окна (в пикселях);
+ * FPS - последнее подсчитанное количество кадров в секунду;
  * PPI - количество пикселей на дюйм.
 
 = Зарезервированные свойства контейнера =
@@ -827,6 +831,25 @@ save( c, "smile.png", FORMAT_PNG )
 save( c, "smile2.jpg", FORMAT_JPEG ) //Quality = 85 (default)
 save( c, "smile3.jpg", FORMAT_JPEG, 100 ) //Quality = 100
 }}}
+
+=== get_real_path ===
+
+Преобразовать путь в стиле Pixilang (например, 1:/img.png) в стиль реальной файловой системы (например, C:/Documents and Settings/username/Application Data/img.png).
+
+*Параметры ( path )*
+
+*Возвращаемое значение*
+
+Текстовый контейнер с новым именем файла. Должен быть освобожден при помощи remove().
+
+*Examples*
+{{{
+filename = "1:/some_file"
+realpath = get_real_path( filename )
+printf( "File name: %s; Real path: %s\n", filename, realpath )
+remove( realpath )
+}}}
+
 
 === get_file_size ===
 
