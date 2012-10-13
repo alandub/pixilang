@@ -850,6 +850,43 @@ printf( "File name: %s; Real path: %s\n", filename, realpath )
 remove( realpath )
 }}}
 
+=== new_flist ===
+=== remove_flist ===
+=== get_flist_name ===
+=== get_flist_type ===
+=== flist_next ===
+
+Функции для получения списка файлов.
+
+*Примеры*
+{{{
+path = CURRENT_PATH //Директория, в которой мы будем сканировать файлы.
+mask = -1 //Примеры маски: "txt/doc", "avi"; или -1 для получения всех файлов.
+fl = new_flist( path, mask )
+if fl >= 0
+{
+  printf( "Some files found in %s\n", path )
+  while( 1 )
+  {
+    file_name = get_flist_name( fl )
+    file_type = get_flist_type( fl ) //0 - файл; 1 - директория;
+    if file_type == 0
+    {
+      printf( "FILE %s%s\n", path, file_name )
+    }
+    else
+    {
+      printf( "DIR  %s%s\n", path, file_name )
+    }
+    if flist_next( fl ) == 0 //Переходим к следующему файлу
+    {
+      //Файлов больше нет
+      break
+    }
+  }
+  remove_flist( fl )
+}
+}}}
 
 === get_file_size ===
 
