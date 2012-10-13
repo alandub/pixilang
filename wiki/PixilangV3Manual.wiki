@@ -800,6 +800,44 @@ printf( "File name: %s; Real path: %s\n", filename, realpath )
 remove( realpath )
 }}}
 
+=== new_flist ===
+=== remove_flist ===
+=== get_flist_name ===
+=== get_flist_type ===
+=== flist_next ===
+
+Functions for getting a list of files.
+
+*Examples*
+{{{
+path = CURRENT_PATH
+mask = -1 //Examples: "txt/doc", "avi"; or -1 for all files.
+fl = new_flist( path, mask )
+if fl >= 0
+{
+  printf( "Some files found in %s\n", path )
+  while( 1 )
+  {
+    file_name = get_flist_name( fl )
+    file_type = get_flist_type( fl ) //0 - file; 1 - directory;
+    if file_type == 0
+    {
+      printf( "FILE %s%s\n", path, file_name )
+    }
+    else
+    {
+      printf( "DIR  %s%s\n", path, file_name )
+    }
+    if flist_next( fl ) == 0 //Go to the next file
+    {
+      //No more files
+      break
+    }
+  }
+  remove_flist( fl )
+}
+}}}
+
 === get_file_size ===
 
 Get the size of selected file.
