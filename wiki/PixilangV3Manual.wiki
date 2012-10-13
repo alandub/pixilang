@@ -184,6 +184,8 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
 
 == Container flags ==
 
+ * CFLAG_INTERP - enable software interpolation.
+
 For OpenGL acceleration:
  * GL_MIN_LINEAR;
  * GL_MAG_LINEAR;
@@ -306,6 +308,7 @@ Event key codes (for the EVT_KEY field):
  * KEY_SHIFT;
  * KEY_CTRL;
  * KEY_ALT;
+ * KEY_MENU;
  * KEY_UNKNOWN (system virtual key code = code - KEY_UNKNOWN).
 Constants for the set_quit_action() function:
  * QA_NONE;
@@ -399,29 +402,30 @@ Sample info flags:
 
 == Constants for POSIX compatibility ==
 
- * FOPEN_MAX.
- * SEEK_CUR.
- * SEEK_END.
- * SEEK_SET.
- * EOF.
- * STDIN.
- * STDOUT.
+ * FOPEN_MAX;
+ * SEEK_CUR;
+ * SEEK_END;
+ * SEEK_SET;
+ * EOF;
+ * STDIN;
+ * STDOUT;
  * STDERR.
 
 == Various ==
 
- * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100).
- * OS_NAME - container with system name (examples: "ios"; "win32", "linux").
- * ARCH_NAME - container with architecture name (examples: "x86", "x86_64", "arm", "mips").
- * CURRENT_PATH.
- * USER_PATH.
- * TEMP_PATH.
+ * PIXILANG_VERSION - Pixilang version (major*100000 + minor*100);
+ * OS_NAME - container with system name (examples: "ios"; "win32", "linux");
+ * ARCH_NAME - container with architecture name (examples: "x86", "x86_64", "arm", "mips");
+ * CURRENT_PATH;
+ * USER_PATH;
+ * TEMP_PATH;
+ * OPENGL - 1 if OpenGL available; 0 - otherwise.
 
 = Built-in global variables =
 
- * WINDOW_XSIZE - user's window width (in pixels).
- * WINDOW_YSIZE - user's window height (in pixels).
- * FPS - frames per second.
+ * WINDOW_XSIZE - user's window width (in pixels);
+ * WINDOW_YSIZE - user's window height (in pixels);
+ * FPS - frames per second;
  * PPI - pixels per inch.
 
 = Reserved container properties =
@@ -776,6 +780,24 @@ c = load( "smile.jpg" )
 save( c, "smile.png", FORMAT_PNG )
 save( c, "smile2.jpg", FORMAT_JPEG ) //Quality = 85 (default)
 save( c, "smile3.jpg", FORMAT_JPEG, 100 ) //Quality = 100
+}}}
+
+=== get_real_path ===
+
+Convert Pixilang-style path (e.g. 1:/img.png) to the real filesystem path.
+
+*Parameters ( path )*
+
+*Return value*
+
+Container with real filesystem path. Must be freed with remove().
+
+*Examples*
+{{{
+filename = "1:/some_file"
+realpath = get_real_path( filename )
+printf( "File name: %s; Real path: %s\n", filename, realpath )
+remove( realpath )
 }}}
 
 === get_file_size ===
