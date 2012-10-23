@@ -314,7 +314,7 @@ Constants for the set_quit_action() function:
  * QA_NONE;
  * QA_CLOSE_VM.
 
-== Mathematical ==
+== Mathematical constants ==
 
  * M_E - e.
  * M_LOG2E - log,,2,,e.
