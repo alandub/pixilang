@@ -1020,7 +1020,7 @@ Draw a filled rectangle.
 
 === pixi === 
 
-Display the container with the picture. 
+Display the container with image. 
 
 * Parameters ( pixi_cont, x, y, color, xscale, yscale, src_x, src_y, src_xsize, src_ysize ) * 
  * pixi_cont - container number (source); 
