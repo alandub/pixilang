@@ -171,15 +171,15 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
 
 == Container types ==
 
- * INT - signed integer (size depends on the version of Pixilang).
- * INT8 - signed integer (8 bit).
- * INT16 - signed integer (16 bit).
- * INT32 - signed integer (32 bit).
- * INT64 - signed integer (64 bit).
- * FLOAT - floating point (size depends on the version of Pixilang).
- * FLOAT32 - floating point (32 bit).
- * FLOAT64 - floating point (64 bit).
- * DYNAMIC - dynamic type.
+ * INT - signed integer (size depends on the version of Pixilang);
+ * INT8 - signed integer (8 bit); range: -128 to 127;
+ * INT16 - signed integer (16 bit); range: -32768 to 32767;
+ * INT32 - signed integer (32 bit); range: -2147483648 to 2147483647;
+ * INT64 - signed integer (64 bit);
+ * FLOAT - floating point (size depends on the version of Pixilang);
+ * FLOAT32 - floating point (32 bit);
+ * FLOAT64 - floating point (64 bit);
+ * DYNAMIC - dynamic type (INT or FLOAT);
  * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel.
 
 == Container flags ==
