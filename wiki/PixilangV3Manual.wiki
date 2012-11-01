@@ -868,10 +868,10 @@ Draw current screen on display and delay for selected number of milliseconds.
 
 === set_screen ===
 
-Set current screen.
+Set current screen. Number of the default screen container is 0.
 
 *Parameters ( pixi )*
- * pixi - container with image, which will be the screen.
+ * pixi - container with image which will be the screen.
 
 === get_screen ===
 
