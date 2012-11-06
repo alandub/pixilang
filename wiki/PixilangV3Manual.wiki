@@ -193,8 +193,9 @@ For OpenGL acceleration:
 
 == Sizes ==
 
- * INT_SIZE - max size (in bytes) of the signed integer.
- * FLOAT_SIZE - max size (in bytes) of the floating point number.
+ * INT_SIZE - max size (in bytes) of the signed integer;
+ * FLOAT_SIZE - max size (in bytes) of the floating point number;
+ * INT_MAX - max positive integer;
  * COLORBITS - number of bits per pixel.
 
 == File formats ==
@@ -1437,10 +1438,14 @@ thread_destroy( $thread_id, 1000 )
 === thread_destroy ===
 
 *Parameters ( thread_id, timeout_ms )*
+ * thread_id;
+ * timeout_ms - timeout in milliseconds; negative values - don't try to kill the thread after timeout; INT_MAX - infinite.
 
 *Return value*
 
-0 if the thread closed successfully.
+ * 0 - thread closed successfully;
+ * 1 - timeoutl;
+ * 2 - some error.
 
 === mutex_create ===
 
