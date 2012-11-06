@@ -1452,32 +1452,11 @@ mutex_destroy( new_mutex )
 
 == Mathematical ==
 
-=== acos ===
-=== acosh ===
-=== asin ===
-=== asinh ===
-=== atan ===
-=== atanh ===
-=== ceil ===
-=== cos ===
-=== cosh ===
-=== exp ===
-=== exp2 ===
-=== expm1 ===
-=== abs ===
-=== floor ===
-=== mod ===
-=== log ===
-=== log2 ===
-=== log10 ===
-=== pow ===
-=== sin ===
-=== sinh ===
-=== sqrt ===
-=== tan ===
-=== tanh ===
-=== rand ===
-=== rand_seed ===
+acos( x ); acosh( x ); asin( x ); asinh( x ); atan( x ); atanh( x ); ceil( x ); cos( x ); cosh( x ); exp( x ); exp2( x ); expm1( x ); 
+abs( x ); floor( x ); mod( x, y ); log( x ); log2( x ); log10( x ); pow( base, exp ); sin( x ); sinh( x ); sqrt( x ); tan( x ); tanh( x );
+
+rand() - get random number from 0 to 32767;
+rand_seed( seed ) - set random seed.
 
 == Data processing ==
 
