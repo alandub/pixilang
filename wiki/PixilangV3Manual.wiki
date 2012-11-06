@@ -1439,12 +1439,12 @@ thread_destroy( $thread_id, 1000 )
 
 *Parameters ( thread_id, timeout_ms )*
  * thread_id;
- * timeout_ms - timeout in milliseconds; negative values - don't try to kill the thread after timeout; INT_MAX - infinite.
+ * timeout_ms - time-out in milliseconds; negative values - don't try to kill the thread after timeout; INT_MAX - infinite.
 
 *Return value*
 
  * 0 - thread closed successfully;
- * 1 - timeoutl;
+ * 1 - time-out;
  * 2 - some error.
 
 === mutex_create ===
