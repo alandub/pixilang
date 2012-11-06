@@ -1422,11 +1422,21 @@ Possible values for the action parameter:
 
 *Return value*
 
-Thread number or -1 if error occurred.
+Thread ID or -1 if error occurred.
+
+*Examples*
+{{{
+fn thread_body( $thread_id, $user_data )
+{
+  printf( "Thread code!\n" )
+}
+thread_id = thread_create( thread_body, 0 )
+thread_destroy( $thread_id, 1000 )
+}}}
 
 === thread_destroy ===
 
-*Parameters ( thread_num, timeout_ms )*
+*Parameters ( thread_id, timeout_ms )*
 
 *Return value*
 
