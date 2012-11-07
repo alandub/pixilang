@@ -1498,6 +1498,19 @@ ID клиента.
 
 ID потока или -1 в случае ошибки.
 
+*Примеры*
+{{{
+fn thread_body( $thread_id, $user_data )
+{
+  printf( "Thread code\n" )
+}
+thread_id = thread_create( thread_body, 0 ) //Создаем новый поток
+err = thread_destroy( thread_id, 1000 ) //Ждем до 1000 миллисекунд, пока поток завершится
+if err == 0 { printf( "Поток успешно завершен и закрыт\n" ) }
+if err == 1 { printf( "Тайм-аут. Стоит попробовать еще раз\n" ) }
+if err == 2 { printf( "Возникла ошибка в функции thread_destroy()\n" ) }
+}}}
+
 === thread_destroy ===
 
 Закрыть поток выполнения.
