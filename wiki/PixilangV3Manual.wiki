@@ -14,10 +14,10 @@ Container is a two-dimensional array of elements. Each element is the number in 
 
 Container structure:
  * two-dimensional table of container elements - this may be some image, text string, piece of audio, or other data;
- * key color;
+ * key color, which will be treated as transparent color (with alpha=0);
  * reference to a container with alpha-channel;
  * additional data:
-   * properties (use get_prop(), set_prop(), remove_props() to access them);
+   * properties (use get_prop(), set_prop(), remove_props(), or a . (dot) operator to access them);
    * animation (use Animation functions to access it).
 
 The new container can be created with the new() function or returned by some other function. There are two ways to remove the container:
@@ -680,6 +680,8 @@ Reset container flags.
 
 Get property value of the container. Each container can have unlimited number of properties.
 
+Another way to get a property - use a . (dot) operator. Example: value = image.fps
+
 *Parameters ( pixi, prop_name, def_value )*
  * pixi - number of a container;
  * prop_name - property name;
@@ -693,6 +695,8 @@ Value of selected property.
 
 Set property value of the container.
 
+Another way to set a property - use a . (dot) operator. Example: image.fps = 30
+
 *Parameters ( pixi, prop_name, value )*
  * pixi - number of a container;
  * prop_name - property name;
@@ -703,6 +707,9 @@ Set property value of the container.
 p = new( 8, 8, INT32 ) //Create a new container
 set_prop( p, "speed", 777 ) //Add "speed" property to this container
 v = get_prop( p, "speed" ) //Read the value of "speed" property
+//Or more simple way:
+p.speed = 777
+v = p.speed
 }}}
 
 === remove_props ===
