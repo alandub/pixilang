@@ -1131,7 +1131,7 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 Split a container (with pixels) by color channels (red, green, blue) and vice versa.
 
-*Parameters ( direction, image, red_channel, green_channel, blue_channel )
+*Parameters ( direction, image, red_channel, green_channel, blue_channel )*
  * direction: 0 - from image to RGB; 1 - from RGB to image;
  * image - source/destination container of type PIXEL;
  * red_channel - container with red components of the image (optional; can be -1);
