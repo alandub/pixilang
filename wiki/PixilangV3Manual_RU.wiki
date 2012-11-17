@@ -814,7 +814,7 @@ c = load( "smile.jpg" )
 if c >= 0
 {
   //Получаем формат загруженного файла:
-  file_format = get_prop( c, "file_format" )
+  file_format = c.file_format
   //Возможные значения переменной file_format:
   //  FORMAT_RAW;
   //  FORMAT_JPEG;
