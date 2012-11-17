@@ -766,7 +766,7 @@ b = a + 4
 c = load( "smile.jpg" )
 if c >= 0
 {
-  file_format = get_prop( c, "file_format" ) //FORMAT_RAW / FORMAT_JPEG / ...
+  file_format = c.file_format //FORMAT_RAW / FORMAT_JPEG / ...
   if file_format == FORMAT_WAVE
   {
     printf( "This is audio file\n" )
