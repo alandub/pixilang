@@ -1127,6 +1127,30 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 *Parameters ( type, power, color, x, y, xsize, ysize, x_step, y_step )*
 
+=== split_rgb ===
+
+Split a container (with pixels) by color channels (red, green, blue) and vice versa.
+
+*Parameters ( direction, image, red_channel, green_channel, blue_channel )
+ * direction: 0 - from image to RGB; 1 - from RGB to image;
+ * image - source/destination container of type PIXEL;
+ * red_channel - container with red components of the image (optional; can be -1);
+ * green_channel - container with green components of the image (optional; can be -1);
+ * blue_channel - container with blue components of the image (optional; can be -1).
+
+*Examples*
+{{{
+img = load( "some_image.jpg" )
+xsize = get_xsize( img )
+ysize = get_ysize( img )
+r = new( xsize, ysize, INT16 )
+g = new( xsize, ysize, INT16 )
+b = new( xsize, ysize, INT16 )
+split_rgb( 0, img, r, g, b ) //Convert image to RGB
+//Get red value (from 0 to 255) of the first pixel:
+value = r[ 0 ]
+}}}
+
 == OpenGL ==
 
 === set_gl_callback ===
