@@ -1250,6 +1250,8 @@ Reset transformation.
 === t_rotate ===
 
 *Parameters ( angle, x, y, z )*
+ * angle - specifies the angle of rotation, in degrees;
+ * x, y, z - specify the x, y, and z coordinates of a vector, respectively.
 
 === t_translate ===
 
