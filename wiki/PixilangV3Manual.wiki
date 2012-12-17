@@ -1054,7 +1054,17 @@ pixi( image, 90, 20, GREEN, 0.5, 0.5 )
 
 === triangles3d ===
 
+Draw array of triangles.
+
+* Parameters ( vertices, triangles ) * 
+ * vertices - container of vertices; width = 8; height = number of vertices; vertex data format: X, Y, Z, TextureX, TextureY, Unused, Unused, Unused;
+ * triangles - container of triangles; width = 8; height = number of triangles; triangle data format: NumberOfVertex1, NumberOfVertex2, NumberOfVertex3, Color, Texture (or -1), Transparency (0..255), Unused, Order (triangles with lower Order value will be drawn first).
+
 === sort_triangles3d ===
+
+Sort triangles by Z value.
+
+* Parameters ( vertices, triangles ) * 
 
 === set_key_color === 
 
