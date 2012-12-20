@@ -171,6 +171,8 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
 
 == Container types ==
 
+64-bit types are not supported by default. But they can be enabled in pixilang.h for the custom build of Pixilang.
+
  * INT - signed integer (size depends on the version of Pixilang);
  * INT8 - signed integer (8 bit); range: -128 to 127;
  * INT16 - signed integer (16 bit); range: -32768 to 32767;
