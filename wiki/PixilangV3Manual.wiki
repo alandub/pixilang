@@ -332,11 +332,11 @@ Constants for the set_quit_action() function:
 == Data processing operations ==
 
 For op_cn() function:
- * OP_MIN - {{{retval = min( cont.elements + n )}}};
- * OP_MAX - {{{retval = max( cont.elements + n )}}};
- * OP_MAXABS - {{{retval = max( | cont.elements + n | )}}};
- * OP_LIMIT_TOP - {{{if value > n { value = n } }}};
- * OP_LIMIT_BOTTOM - {{{if value < n { value = n } }}};
+ * OP_MIN - {{{operation return value = min( C1[ i ] + N, C1[ i + 1 ] + N, ... )}}};
+ * OP_MAX - {{{operation return value = max( C1[ i ] + N, C1[ i + 1 ] + N, ... )}}};
+ * OP_MAXABS - {{{operation return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
+ * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
+ * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
  * OP_ABS - absolute value.
 
 For op_cn(), op_cc() function:
@@ -348,7 +348,7 @@ For op_cn(), op_cc() function:
  * OP_COLOR_SUB - color subtraction;
  * OP_MUL - multiplication;
  * OP_SMUL - multiplication with saturation;
- * OP_MUL_RSHIFT15 - {{{( c * n ) >> 15}}};
+ * OP_MUL_RSHIFT15 - {{{( C1[ i ] * N ) >> 15}}};
  * OP_COLOR_MUL - color multiplication;
  * OP_DIV - division;
  * OP_COLOR_DIV - color division;
@@ -365,7 +365,7 @@ For op_cc() function:
  * OP_COPY - copy.
 
 For op_ccn() function:
- * OP_MUL_DIV - {{{c * c / n}}}.
+ * OP_MUL_DIV - {{{C1[ i ] * C2[ i ] / N}}}.
 
 For generator() function:
  * OP_SIN - sinus;
@@ -1531,18 +1531,18 @@ Note: data processing functions can't work with dynamic containers.
 
 Execute data processing operation.
 Operands:
- # container C (destination);
+ # container C1 (destination);
  # numerical value N.
 
 Operation expression: 
 {{{
-for each element of C: C[ i ] = C[ i ] OP N,
+for each element of C1: C1[ i ] = C1[ i ] OP N,
 Where i - element number; OP - selected operation.
 }}}
 
-*Parameters ( opcode, C, N, x, y, xsize, ysize )*
+*Parameters ( opcode, C1, N, x, y, xsize, ysize )*
  * opcode - operation;
- * C - destination container;
+ * C1 - destination container;
  * N - numerical value;
  * x,y,xsize,ysize - region.
 
