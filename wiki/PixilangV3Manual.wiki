@@ -1530,12 +1530,17 @@ Note: data processing functions can't work with dynamic containers.
 === op_cn ===
 
 Execute data processing operation.
-Operands: 1) container (c); 2) numerical value (n).
+Operands:
+ # container C (destination);
+ # numerical value N.
 
-*Parameters ( opcode, pixi, num, x, y, xsize, ysize )*
+Operation expression: {{{for each element of C: C[ i ] = C[ i ] OP N. 
+Where i - element number; OP - selected operation.}}}
+
+*Parameters ( opcode, C, N, x, y, xsize, ysize )*
  * opcode - operation;
- * pixi - container (c);
- * num - numerical value (n);
+ * C - destination container;
+ * N - numerical value;
  * x,y,xsize,ysize - region.
 
 *Examples*
@@ -1553,33 +1558,40 @@ op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
 === op_cc ===
 
 Execute data processing operation.
-Operands: 1) container (c); 2) container (c). 
+Operands: 
+ # container C1 (destination); 
+ # container C2 (source). 
 
-Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ]}}}
+Operation expression: {{{for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ]. 
+Where i - element number; OP - selected operation.}}}
 
-*Parameters ( opcode, pixi1, pixi2 ) - for whole container pixi1*
- * pixi1 - destination;
- * pixi2 - source.
+*Parameters ( opcode, C1, C2 ) - for whole container pixi1*
+ * C1 - destination container;
+ * C2 - source container.
 
-*Parameters ( opcode, pixi1, pixi2, dest_x, src_x, xsize ) - for 1D region*
+*Parameters ( opcode, C1, C2, dest_x, src_x, xsize ) - for 1D region*
 
-*Parameters ( opcode, pixi1, pixi2, dest_x, dest_y, src_x, src_y, xsize, ysize ) - for 2D region*
+*Parameters ( opcode, C1, C2, dest_x, dest_y, src_x, src_y, xsize, ysize ) - for 2D region*
 
 === op_ccn ===
 
 Execute data processing operation.
-Operands: 1) container (c); 2) container (c) 3) numerical value (n). 
+Operands:
+ # container C1 (destination); 
+ # container C2 (source);
+ # numerical value N. 
 
-Operation expression: {{{for each element of pixi1: pixi1[ i ] = pixi1[ i ] OP pixi2[ i ] / num}}}
+Operation expression: {{{for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ] OP2 N. 
+Where i - element number; OP - selected operation; OP2 - additional operation associated with OP.}}}
 
-*Parameters ( opcode, pixi1, pixi2, num ) - for whole container pixi1*
- * pixi1 - destination;
- * pixi2 - source;
- * num - numerical value (operation parameter).
+*Parameters ( opcode, C1, C2, N ) - for whole container pixi1*
+ * C1 - destination container;
+ * C2 - source container;
+ * N - numerical value.
 
-*Parameters ( opcode, pixi1, pixi2, num, dest_x, src_x, xsize ) - for 1D region*
+*Parameters ( opcode, C1, C2, N, dest_x, src_x, xsize ) - for 1D region*
 
-*Parameters ( opcode, pixi1, pixi2, dest_x, dest_y, num, src_x, src_y, xsize, ysize ) - for 2D region*
+*Parameters ( opcode, C1, C2, dest_x, dest_y, N, src_x, src_y, xsize, ysize ) - for 2D region*
 
 === generator ===
 
