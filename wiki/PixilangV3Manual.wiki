@@ -368,8 +368,8 @@ For op_ccn() function:
  * OP_MUL_DIV - {{{C1[ i ] * C2[ i ] / N}}}.
 
 For generator() function:
- * OP_SIN - sinus;
- * OP_SIN8 - fast, but rough sinus (8bit table);
+ * OP_SIN - sine;
+ * OP_SIN8 - fast, but rough sine (8bit table);
  * OP_RAND - pseudo random (from -amp to +amp).
 
 == Sampler ==
