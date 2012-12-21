@@ -1534,8 +1534,11 @@ Operands:
  # container C (destination);
  # numerical value N.
 
-Operation expression: {{{for each element of C: C[ i ] = C[ i ] OP N. 
-Where i - element number; OP - selected operation.}}}
+Operation expression: 
+{{{
+for each element of C: C[ i ] = C[ i ] OP N. 
+Where i - element number; OP - selected operation.
+}}}
 
 *Parameters ( opcode, C, N, x, y, xsize, ysize )*
  * opcode - operation;
@@ -1562,8 +1565,11 @@ Operands:
  # container C1 (destination); 
  # container C2 (source). 
 
-Operation expression: {{{for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ]. 
-Where i - element number; OP - selected operation.}}}
+Operation expression: 
+{{{
+for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ]. 
+Where i - element number; OP - selected operation.
+}}}
 
 *Parameters ( opcode, C1, C2 ) - for whole container pixi1*
  * C1 - destination container;
@@ -1581,8 +1587,11 @@ Operands:
  # container C2 (source);
  # numerical value N. 
 
-Operation expression: {{{for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ] OP2 N. 
-Where i - element number; OP - selected operation; OP2 - additional operation associated with OP.}}}
+Operation expression: 
+{{{
+for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ] OP2 N. 
+Where i - element number; OP - selected operation; OP2 - additional operation associated with OP.
+}}}
 
 *Parameters ( opcode, C1, C2, N ) - for whole container pixi1*
  * C1 - destination container;
