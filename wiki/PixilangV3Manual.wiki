@@ -1536,7 +1536,7 @@ Operands:
 
 Operation expression: 
 {{{
-for each element of C: C[ i ] = C[ i ] OP N. 
+for each element of C: C[ i ] = C[ i ] OP N,
 Where i - element number; OP - selected operation.
 }}}
 
@@ -1567,11 +1567,11 @@ Operands:
 
 Operation expression: 
 {{{
-for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ]. 
+for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ],
 Where i - element number; OP - selected operation.
 }}}
 
-*Parameters ( opcode, C1, C2 ) - for whole container pixi1*
+*Parameters ( opcode, C1, C2 ) - for whole container C1*
  * C1 - destination container;
  * C2 - source container.
 
@@ -1589,18 +1589,18 @@ Operands:
 
 Operation expression: 
 {{{
-for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ] OP2 N. 
+for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ] OP2 N,
 Where i - element number; OP - selected operation; OP2 - additional operation associated with OP.
 }}}
 
-*Parameters ( opcode, C1, C2, N ) - for whole container pixi1*
+*Parameters ( opcode, C1, C2, N ) - for whole container C1*
  * C1 - destination container;
  * C2 - source container;
  * N - numerical value.
 
 *Parameters ( opcode, C1, C2, N, dest_x, src_x, xsize ) - for 1D region*
 
-*Parameters ( opcode, C1, C2, dest_x, dest_y, N, src_x, src_y, xsize, ysize ) - for 2D region*
+*Parameters ( opcode, C1, C2, N, dest_x, dest_y, src_x, src_y, xsize, ysize ) - for 2D region*
 
 === generator ===
 
