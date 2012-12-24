@@ -337,7 +337,9 @@ For op_cn() function:
  * OP_MAXABS - {{{op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
  * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
  * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
- * OP_ABS - absolute value.
+ * OP_ABS - absolute value;
+ * OP_COLOR_SUB2 - color subtraction with reverse order of the operands ({{{N - C1[ i ]}}};
+ * OP_DIV2 - division with reverse order of the operands ({{{N / C1[ i ]}}}.
 
 For op_cn(), op_cc() function:
  * OP_ADD - addition;
