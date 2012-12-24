@@ -360,7 +360,9 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * OP_MAXABS - {{{op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
  * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
  * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
- * OP_ABS - абсолютное значение.
+ * OP_ABS - абсолютное значение;
+ * OP_COLOR_SUB2 - то же, что OP_COLOR_SUB, но операнды поменяны местами ({{{N - C1[ i ]}}};
+ * OP_DIV - то же, что OP_DIV, но операнды поменяны местами ({{{N / C1[ i ]}}}.
 
 Для функций op_cn(), op_cc():
  * OP_ADD - сложение;
