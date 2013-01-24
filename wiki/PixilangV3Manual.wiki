@@ -785,11 +785,13 @@ if c >= 0
 
 === save ===
 
-*Parameters ( pixi, filename, format, quality )*
+*Parameters ( pixi, filename, format, options )*
  * pixi;
  * filename;
  * format;
- * quality (0 - worst; 100 - best).
+ * options:
+   * for JPEG: quality from 0 - worst to 100 - best;
+   * for GIF: flags GIF_GRAYSCALE, GIF_DITHER.
 
 *Examples*
 {{{
