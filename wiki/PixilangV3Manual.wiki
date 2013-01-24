@@ -191,7 +191,9 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
 For OpenGL acceleration:
  * GL_MIN_LINEAR;
  * GL_MAG_LINEAR;
- * GL_NICEST - use 32bit color, when possible.
+ * GL_NICEST - use 32bit color, when possible;
+ * GL_NO_XREPEAT;
+ * GL_NO_YREPEAT.
 
 == Sizes ==
 
