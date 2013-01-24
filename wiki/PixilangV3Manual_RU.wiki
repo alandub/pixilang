@@ -838,11 +838,13 @@ if c >= 0
 
 Сохранить контейнер в указанном формате.
 
-*Параметры ( pixi, filename, format, quality )*
+*Параметры ( pixi, filename, format, options )*
  * pixi;
  * filename;
  * format;
- * quality (от 0 до 100; 100 - наилучшее).
+ * options - опции (необязательный параметр):
+   * для JPEG: качество сжатия от 0 (наихудшее) до 100 (наилучшее);
+   * для GIF: сочетание флагов GIF_GRAYSCALE, GIF_DITHER.
 
 *Примеры*
 {{{
