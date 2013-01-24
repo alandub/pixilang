@@ -541,9 +541,9 @@ Clean a container (fill with zeroes or with selected values).
 
 *Parameters ( dest_cont, v, offset, count )*
  * dest_cont - container number;
- * v - value (optional; default - 0);
- * offset - offset in dest_cont (optional; default - 0);
- * count - number of elements to fill (optional; default - whole container).
+ * v - value; optional; default - 0;
+ * offset - offset in dest_cont; optional; default - 0;
+ * count - number of elements to fill; optional; default - whole container.
 
 *Examples*
 {{{
@@ -691,7 +691,7 @@ Another way to get a property - use a . (dot) operator. Example: value = image.f
 *Parameters ( pixi, prop_name, def_value )*
  * pixi - number of a container;
  * prop_name - property name;
- * def_vaule - default value, if the property is not exists (optional).
+ * def_vaule - default value, if the property is not exists; optional.
 
 *Return value*
 
@@ -1145,12 +1145,15 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 Split a container (with pixels) by color channels (red, green, blue) and vice versa.
 
-*Parameters ( direction, image, red_channel, green_channel, blue_channel )*
+*Parameters ( direction, image, red_channel, green_channel, blue_channel, image_offset, channel_offset, size )*
  * direction: 0 - from image to RGB; 1 - from RGB to image;
  * image - source/destination container of type PIXEL;
- * red_channel - container with red components of the image (optional; can be -1);
- * green_channel - container with green components of the image (optional; can be -1);
- * blue_channel - container with blue components of the image (optional; can be -1).
+ * red_channel - container with red components of the image; optional; can be -1;
+ * green_channel - container with green components of the image; optional; can be -1;
+ * blue_channel - container with blue components of the image; optional; can be -1;
+ * image_offset - offset in the image container; optional;
+ * channel_offset - offset in the channel containers; optional;
+ * size - number of pixels to split; optional.
 
 *Examples*
 {{{
@@ -1683,10 +1686,10 @@ Apply gain and DC-offset two-points envelope to selected container area. Without
  * data_cont - container with data (audio waveform, for example);
  * v1 - initial gain (0 - no signal; 32768 - original unchanged amplitude);
  * v2 - final gain (0 - no signal; 32768 - original unchanged amplitude);
- * offset - offset in the data_cont (optional; default - 0);
- * size - size of area for envelope (optional; default - whole container);
- * dc_offset1 - initial DC offset (optional; default - 0);
- * dc_offset1 - final DC offset (optional; default - 0).
+ * offset - offset in the data_cont; optional; default - 0;
+ * size - size of area for envelope; optional; default - whole container;
+ * dc_offset1 - initial DC offset; optional; default - 0;
+ * dc_offset1 - final DC offset; optional; default - 0.
 
 === fft ===
 
@@ -1720,7 +1723,7 @@ Open file dialog.
  * dialog_name;
  * mask - file type mask (examples: "gif/jpg" for .gif and .jpg files; "" for all files);
  * id - name of the file for saving the current dialog state;
- * default_name - default file name (optional).
+ * default_name - default file name; optional.
 
 *Return value*
 
@@ -1782,7 +1785,7 @@ Get symbol (function or variable) from dynamic library.
    * f - float32;
    * d - double64;
    * p - pointer;
- * calling_convention - one of the CCONV_xxx constants (optional; default - CCONV_DEFAULT).
+ * calling_convention - one of the CCONV_xxx constants; optional; default - CCONV_DEFAULT.
 
 *Return value*
 
