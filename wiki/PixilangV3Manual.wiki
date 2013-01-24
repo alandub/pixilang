@@ -1702,10 +1702,13 @@ Perform a fast fourier transform.
 For each element of dest container: {{{dest[ i ] = values[ (unsigned)src[ i ] ]}}}. 
 The dest container must have the same type as the values.
 
-*Parameters ( dest, src, values )*
+*Parameters ( dest, src, values, dest_offset, src_offset, size )*
  * dest - destination;
  * src - source;
- * values - substitution values.
+ * values - substitution values;
+ * dest_offset - offset in the destination container; optional;
+ * src_offset - offset in the source container; optional;
+ * size - number of elements to replace; optional.
 
 *Examples*
 {{{
