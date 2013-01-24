@@ -202,27 +202,28 @@ For OpenGL acceleration:
 
 == File formats ==
 
- * FORMAT_RAW.
- * FORMAT_JPEG.
- * FORMAT_PNG.
- * FORMAT_GIF.
- * FORMAT_WAVE.
+ * FORMAT_RAW;
+ * FORMAT_JPEG;
+ * FORMAT_PNG;
+ * FORMAT_GIF;
+ * FORMAT_WAVE;
+ * FORMAT_PIXICONTAINER - entire Pixilang container with properties and animation.
 
 == Colors ==
 
- * ORANGE.
- * BLACK.
- * WHITE.
- * YELLOW.
- * RED.
- * GREEN.
- * BLUE.
+ * ORANGE;
+ * BLACK;
+ * WHITE;
+ * YELLOW;
+ * RED;
+ * GREEN;
+ * BLUE;
 
 == Alignment ==
 
- * TOP.
- * BOTTOM.
- * LEFT.
+ * TOP;
+ * BOTTOM;
+ * LEFT;
  * RIGHT.
 
 == Effects ==
