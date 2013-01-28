@@ -256,7 +256,7 @@ EVT field numbers:
  * EVT_TIME - event time;
  * EVT_X (0 - center of the screen);
  * EVT_Y (0 - center of the screen);
- * EVT_KEY;
+ * EVT_KEY - ASCII code of pressed key, or one of the KEY_xxx constants;
  * EVT_SCANCODE - key scancode, or touch number for multitouch devices;
  * EVT_UNICODE.
 Event types (for the EVT_TYPE field):
