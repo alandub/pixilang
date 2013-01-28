@@ -2021,13 +2021,19 @@ Offset of the first occurrence of str2 in str1, or a -1 if str2 is not part of s
 
 === sprintf ===
 
-Writes into the container str a string consisting on a sequence of data formatted as the format argument specifies.
+Writes into the container str a string consisting on a sequence of data formatted as the format argument specifies. Detailed format description can be found here: http://en.wikipedia.org/wiki/Printf_format_string
 
 *Parameters ( str, format, ... )*
 
 *Return value*
 
 On success, the total number of characters written is returned. On failure, a negative number is returned.
+
+*Examples*
+{{{
+sprintf( str, "Some text\n" ) //Just write some text to the str
+sprintf( str, "Number: %d\n", 12 ) //Write signed decimal integer
+}}}
 
 === printf ===
 
