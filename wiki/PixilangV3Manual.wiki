@@ -6,6 +6,15 @@ Pixilang — cross-platform programming language for graphics/sound applications
 
 Pixilang programs are stored in text files (UTF8) with extensions .txt or .pixi. So you can use your favorite text editor to create/edit these files. Pixilang has no built-in editor.
 
+= Command line options =
+
+{{{
+pixilang [options] [source_file_name]
+[options]
+  -c    generate bytecode; source_file_name.pixicode file will be produced.
+        Note: *.pixicode files are architecture-dependent.
+}}}
+
 = Basics =
 
 The basis of the Pixilang - are containers and variables.
