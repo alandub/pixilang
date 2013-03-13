@@ -154,7 +154,7 @@ fn fff( $x, $y ) //Declare function fff with parameters $x and $y
 }
 }}}
 
-The following table lists the mathematical operators. Priority 0 - the highest, such operations will be executed in the first place.
+The following table lists the mathematical operators. Priority 0 - the highest, such operations will be executed first.
 || Priority || Operator || Description || Result || Example || 
 || 0 || % || Modulo (remainder) || Integer || a = b % 4 ||
 || 0 || / || Division || Floating point || a = b / 4 ||
