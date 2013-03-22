@@ -265,6 +265,10 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 Типы эффектов для функции effector():
  * EFF_NOISE - шум;
+ * EFF_SPREAD_LEFT - случайные сдвиги пикселей влево;
+ * EFF_SPREAD_RIGHT - случайные сдвиги пикселей вправо;
+ * EFF_SPREAD_UP - случайные сдвиги пикселей вверх; 
+ * EFF_SPREAD_DOWN - случайные сдвиги пикселей вниз;
  * EFF_HBLUR - горизонтальное размывание;
  * EFF_VBLUR - вертикальное размывание;
  * EFF_COLOR - сплошная заливка одним цветом.
@@ -936,7 +940,17 @@ if fl >= 0
 
 === copy_file ===
 
+Скопировать файл из source_filename в destination_filename.
+
 *Параметры ( source_filename, destination_filename )*
+
+=== create_directory ===
+
+Создать директорию.
+
+*Параметры ( directory_name, mode )*
+ * directory_name - имя создаваемой директории;
+ * mode - режим доступа (только для тех систем, где это поддерживается); опциональный.
 
 == Графика ==
 
