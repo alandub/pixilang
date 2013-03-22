@@ -1771,6 +1771,14 @@ Container number with selected file name. Or -1 if file not selected. Container 
 
 Open window with global Pixilang preferences.
 
+== Network ==
+
+=== open_url ===
+
+Open web browser window with selected URL.
+
+*Parameters ( url_string )*
+
 == Native code ==
 
 === dlopen ===
