@@ -241,6 +241,10 @@ For OpenGL acceleration:
 
 Effect types for effector() function:
  * EFF_NOISE - noise;
+ * EFF_SPREAD_LEFT - random pixel shift to the left;
+ * EFF_SPREAD_RIGHT - random pixel shift to the right;
+ * EFF_SPREAD_UP - random pixel shift to the top;
+ * EFF_SPREAD_DOWN - random pixel shift to the bottom;
  * EFF_HBLUR - horizontal blur;
  * EFF_VBLUR - vertical blur;
  * EFF_COLOR - color fill.
@@ -883,6 +887,12 @@ Get the size of selected file.
 === copy_file ===
 
 *Parameters ( source_filename, destination_filename )*
+
+=== create_directory ===
+
+*Parameters ( directory_name, mode )*
+ * directory_name;
+ * mode - system specific mode; optional.
 
 == Graphics ==
 
