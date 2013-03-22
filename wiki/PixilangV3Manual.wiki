@@ -1767,6 +1767,10 @@ Open file dialog.
 
 Container number with selected file name. Or -1 if file not selected. Container must be deleted manually.
 
+=== prefs_dialog ===
+
+Open window with global Pixilang preferences.
+
 == Native code ==
 
 === dlopen ===
