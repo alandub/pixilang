@@ -680,6 +680,17 @@ type = get_type( p ) //Save its element's type to the "type" variable
 remove( p )
 }}}
 
+=== get_flags ===
+
+Get container flags. 
+List of supported flags is here: [PixilangV3Manual#Container_flags]
+
+*Parameters ( pixi )*
+
+*Return value*
+
+Container flags.
+
 === set_flags ===
 
 Set container flags. 
