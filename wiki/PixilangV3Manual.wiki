@@ -915,6 +915,12 @@ Draw current screen on display and delay for selected number of milliseconds.
  * delay - pause length in milliseconds;
  * x, y, xsize, ysize - region of the screen; optional parameters.
 
+=== vsync ===
+
+Enable/disable vertical synchronization (when possible). vsync(1) - enable. vsync(0) - disable.
+
+*Parameters ( enable )*
+
 === set_screen ===
 
 Set current screen. Number of the default screen container is 0.
