@@ -467,7 +467,7 @@ These properties can be created after the load() function:
 
 = Built-in functions =
 
-== Containers & memory management ==
+== Containers ==
 
 === new ===
 
