@@ -515,6 +515,13 @@ p = new() //Create new container
 remove( p ) //Remove it
 }}}
 
+=== remove_with_alpha ===
+
+Remove the container and its alpha channel (linked container).
+
+*Parameters ( pixi )*
+ * pixi - number of a container.
+
 === resize ===
 
 Resize a container.
