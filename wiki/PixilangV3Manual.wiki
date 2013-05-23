@@ -979,6 +979,173 @@ Get the size of selected file.
  * directory_name;
  * mode - system specific mode; optional.
 
+=== fopen ===
+
+The fopen() function shall open the file whose pathname is the string pointed to by _filename_, and associates a stream with it.
+
+*Parameters ( filename, mode )*
+ * filename;
+ * mode:
+   * r or rb - open file for reading;
+   * w or wb - truncate to zero length or create file for writing;
+   * a or ab - append; open or create file for writing at end-of-file;
+   * r+ or rb+ or r+b - open file for update (reading and writing);
+   * w+ or wb+ or w+b - truncate to zero length or create file for update;
+   * a+ or ab+ or a+b - append; open or create file for update, writing at end-of-file.
+
+*Return value*
+
+Upon successful completion, fopen() shall return ID of the object controlling the stream. Otherwise, 0 shall be returned.
+
+*Examples*
+{{{
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading
+fclose( f ) //...and close it.
+}}}
+
+=== fclose ===
+
+The fclose() function shall cause the stream to be flushed and the associated file to be closed.
+
+*Parameters ( stream )*
+
+*Return value*
+
+Upon successful completion, fclose() shall return 0.
+
+*Examples*
+{{{
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
+c = fgetc( f ) //Get a byte from this file.
+fclose( f ) //Close the stream.
+}}}
+
+=== fputc ===
+
+Put a byte on a stream.
+
+*Parameters ( c, stream )*
+
+*Examples*
+{{{
+f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
+fputc( 0x12, f ) //Put a byte 0x12 to this file.
+fclose( f ) //Close the stream.
+}}}
+
+=== fputs ===
+
+Put a string on a stream.
+
+*Parameters ( s, stream )*
+
+*Examples*
+{{{
+f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
+str = "Hello!"
+fputc( str, f ) //Put a string "Hello!" to this file.
+fclose( f ) //Close the stream.
+}}}
+
+=== fwrite ===
+
+The fwrite() function shall write, from the container _data_, up to _size_ bytes, to the stream pointed to by _stream_.
+
+*Parameters ( data, size, stream )*
+
+*Return value*
+
+The fwrite() function shall return the number of bytes successfully written, which may be less than _size_ if a write error is encountered.
+
+*Examples*
+{{{
+f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
+str = "Hello!"
+fwrite( str, 2, f ) //Put first two bytes from the string "Hello!" to this file.
+fclose( f ) //Close the stream.
+}}}
+
+=== fgetc ===
+
+Get a byte from a stream.
+
+*Parameters ( stream )*
+
+*Return value*
+
+Upon successful completion, fgetc() shall return the next byte from the input stream pointed to by _stream_.
+
+=== fgets ===
+
+Get a string from a stream.
+
+*Parameters ( s, n, stream )*
+
+*Examples*
+{{{
+string = new( 256, 1, INT8 )
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
+fgets( string, 256, f ) //Get a string from this file.
+fclose( f ) //Close the stream.
+}}}
+
+=== fread ===
+
+The fread() function shall read into the container pointed to by _data_ up to _size_ bytes, from the stream pointed to by _stream_.
+
+*Parameters ( data, size, stream )*
+
+*Return value*
+
+Upon successful completion, fread() shall return the number of bytes successfully read which is less than _size_ only if a read error or end-of-file is encountered.
+
+=== feof ===
+
+Test end-of-file indicator on a stream.
+
+*Parameters ( stream )*
+
+*Return value*
+
+The feof() function shall return non-zero if and only if the end-of-file indicator is set for _stream_.
+
+=== fflush ===
+
+Flush a stream.
+
+*Parameters ( stream )*
+
+=== fseek ===
+
+Reposition a file-position indicator in a stream.
+
+*Parameters ( stream, offset, origin )*
+ * stream;
+ * offset;
+ * origin:
+   * SEEK_SET - beginning of file;
+   * SEEK_CUR - current position of the file pointer;
+   * SEEK_END - end of file.
+
+=== ftell ===
+
+Return a file offset in a stream.
+
+*Parameters ( stream )*
+
+*Return value*
+
+Upon successful completion, ftell() shall return the current value of the file-position indicator for the stream measured in bytes from the beginning of the file.
+
+*Examples*
+{{{
+//One of the ways to get the file size:
+f = fopen( "/tmp/data.txt", "rb" )
+fseek( f, 0, SEEK_END )
+size_of_file = ftell( f )
+fclose( f )
+}}}
+
 == Graphics ==
 
 === frame ===
@@ -1928,173 +2095,6 @@ Call the function from dynamic library.
 *Parameters ( lib_id, symbol_id, optional_function_parameters )*
 
 == System functions (compatibility with POSIX) ==
-
-=== fopen ===
-
-The fopen() function shall open the file whose pathname is the string pointed to by _filename_, and associates a stream with it.
-
-*Parameters ( filename, mode )*
- * filename;
- * mode:
-   * r or rb - open file for reading;
-   * w or wb - truncate to zero length or create file for writing;
-   * a or ab - append; open or create file for writing at end-of-file;
-   * r+ or rb+ or r+b - open file for update (reading and writing);
-   * w+ or wb+ or w+b - truncate to zero length or create file for update;
-   * a+ or ab+ or a+b - append; open or create file for update, writing at end-of-file.
-
-*Return value*
-
-Upon successful completion, fopen() shall return ID of the object controlling the stream. Otherwise, 0 shall be returned.
-
-*Examples*
-{{{
-f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading
-fclose( f ) //...and close it.
-}}}
-
-=== fclose ===
-
-The fclose() function shall cause the stream to be flushed and the associated file to be closed.
-
-*Parameters ( stream )*
-
-*Return value*
-
-Upon successful completion, fclose() shall return 0.
-
-*Examples*
-{{{
-f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
-c = fgetc( f ) //Get a byte from this file.
-fclose( f ) //Close the stream.
-}}}
-
-=== fputc ===
-
-Put a byte on a stream.
-
-*Parameters ( c, stream )*
-
-*Examples*
-{{{
-f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
-fputc( 0x12, f ) //Put a byte 0x12 to this file.
-fclose( f ) //Close the stream.
-}}}
-
-=== fputs ===
-
-Put a string on a stream.
-
-*Parameters ( s, stream )*
-
-*Examples*
-{{{
-f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
-str = "Hello!"
-fputc( str, f ) //Put a string "Hello!" to this file.
-fclose( f ) //Close the stream.
-}}}
-
-=== fwrite ===
-
-The fwrite() function shall write, from the container _data_, up to _size_ bytes, to the stream pointed to by _stream_.
-
-*Parameters ( data, size, stream )*
-
-*Return value*
-
-The fwrite() function shall return the number of bytes successfully written, which may be less than _size_ if a write error is encountered.
-
-*Examples*
-{{{
-f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
-str = "Hello!"
-fwrite( str, 2, f ) //Put first two bytes from the string "Hello!" to this file.
-fclose( f ) //Close the stream.
-}}}
-
-=== fgetc ===
-
-Get a byte from a stream.
-
-*Parameters ( stream )*
-
-*Return value*
-
-Upon successful completion, fgetc() shall return the next byte from the input stream pointed to by _stream_.
-
-=== fgets ===
-
-Get a string from a stream.
-
-*Parameters ( s, n, stream )*
-
-*Examples*
-{{{
-string = new( 256, 1, INT8 )
-f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
-fgets( string, 256, f ) //Get a string from this file.
-fclose( f ) //Close the stream.
-}}}
-
-=== fread ===
-
-The fread() function shall read into the container pointed to by _data_ up to _size_ bytes, from the stream pointed to by _stream_.
-
-*Parameters ( data, size, stream )*
-
-*Return value*
-
-Upon successful completion, fread() shall return the number of bytes successfully read which is less than _size_ only if a read error or end-of-file is encountered.
-
-=== feof ===
-
-Test end-of-file indicator on a stream.
-
-*Parameters ( stream )*
-
-*Return value*
-
-The feof() function shall return non-zero if and only if the end-of-file indicator is set for _stream_.
-
-=== fflush ===
-
-Flush a stream.
-
-*Parameters ( stream )*
-
-=== fseek ===
-
-Reposition a file-position indicator in a stream.
-
-*Parameters ( stream, offset, origin )*
- * stream;
- * offset;
- * origin:
-   * SEEK_SET - beginning of file;
-   * SEEK_CUR - current position of the file pointer;
-   * SEEK_END - end of file.
-
-=== ftell ===
-
-Return a file offset in a stream.
-
-*Parameters ( stream )*
-
-*Return value*
-
-Upon successful completion, ftell() shall return the current value of the file-position indicator for the stream measured in bytes from the beginning of the file.
-
-*Examples*
-{{{
-//One of the ways to get the file size:
-f = fopen( "/tmp/data.txt", "rb" )
-fseek( f, 0, SEEK_END )
-size_of_file = ftell( f )
-fclose( f )
-}}}
 
 === system ===
 
