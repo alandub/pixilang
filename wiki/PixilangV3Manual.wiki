@@ -2094,7 +2094,7 @@ Call the function from dynamic library.
 
 *Parameters ( lib_id, symbol_id, optional_function_parameters )*
 
-== System functions (compatibility with POSIX) ==
+== System functions ==
 
 === system ===
 
@@ -2124,7 +2124,7 @@ Returns the container with selected argument.
 
 *Examples*
 {{{
-if argc >= 4 
+if argc() >= 4 
 {
   a = argv( 3 )
   remove( a )
@@ -2134,6 +2134,8 @@ if argc >= 4
 === exit ===
 
 Quit from Pixilang.
+
+*Parameters ( exit_code )*
 
 *Examples*
 {{{
