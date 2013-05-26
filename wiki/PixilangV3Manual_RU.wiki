@@ -937,7 +937,8 @@ if c >= 0
   //  FORMAT_PNG;
   //  FORMAT_GIF;
   //  FORMAT_WAVE;
-  //  или еще какое-то из раздела Типы файлов.
+  //  FORMAT_PIXICONTAINER;
+  //  или еще какое-то из раздела "Типы файлов".
 }
 }}}
 
@@ -948,7 +949,7 @@ if c >= 0
 *Параметры ( pixi, filename, format, options )*
  * pixi;
  * filename;
- * format;
+ * format (FORMAT_RAW, FORMAT_JPEG, FORMAT_PNG, FORMAT_GIF, FORMAT_WAVE, FORMAT_PIXICONTAINER);
  * options - опции (необязательный параметр):
    * для JPEG: качество сжатия от 0 (наихудшее) до 100 (наилучшее);
    * для GIF: сочетание флагов GIF_GRAYSCALE, GIF_DITHER.
