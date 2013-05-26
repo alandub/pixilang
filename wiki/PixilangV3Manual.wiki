@@ -886,7 +886,7 @@ if c >= 0
 *Parameters ( pixi, filename, format, options )*
  * pixi;
  * filename;
- * format;
+ * format (FORMAT_RAW, FORMAT_JPEG, FORMAT_PNG, FORMAT_GIF, FORMAT_WAVE, FORMAT_PIXICONTAINER);
  * options:
    * for JPEG: quality from 0 - worst to 100 - best;
    * for GIF: flags GIF_GRAYSCALE, GIF_DITHER.
