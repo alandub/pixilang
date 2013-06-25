@@ -271,6 +271,7 @@ EVT field numbers:
  * EVT_Y (0 - center of the screen);
  * EVT_KEY - ASCII code of pressed key, or one of the KEY_xxx constants;
  * EVT_SCANCODE - key scancode, or touch number for multitouch devices;
+ * EVT_PRESSURE - touch pressure (normal - 1024);
  * EVT_UNICODE.
 Event types (for the EVT_TYPE field):
  * EVT_MOUSEBUTTONDOWN - first touch;
