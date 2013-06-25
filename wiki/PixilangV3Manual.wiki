@@ -220,6 +220,12 @@ For OpenGL acceleration:
  * FORMAT_WAVE;
  * FORMAT_PIXICONTAINER - entire Pixilang container with properties and animation.
 
+== Load/Save options ==
+
+GIF saving:
+ * GIF_GRAYSCALE;
+ * GIF_DITHER.
+
 == Colors ==
 
  * ORANGE;
