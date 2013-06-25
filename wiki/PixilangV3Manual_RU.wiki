@@ -240,6 +240,12 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * FORMAT_WAVE;
  * FORMAT_PIXICONTAINER - весь контейнер целиком (со свойствами и анимацией).
 
+== Опции для load() и save() ==
+
+Сохранение GIF:
+ * GIF_GRAYSCALE;
+ * GIF_DITHER.
+
 == Цвета ==
 
  * ORANGE - ораньжевый;
