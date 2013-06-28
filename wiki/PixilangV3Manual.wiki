@@ -1379,6 +1379,14 @@ Attach a container with alpha channel to another container. Alpha channel should
 
 === get_alpha ===
 
+Get linked container with the alpha channel.
+
+*Parameters ( cont )*
+
+*Return value*
+
+Container number or -1 (if no alpha channel).
+
 === print ===
 
 Show text on the screen.
