@@ -355,8 +355,8 @@ Constants for the set_quit_action() function:
 == Data processing operations ==
 
 For op_cn() function:
- * OP_MIN - {{{op_cn() return value = min( C1[ i ] + N, C1[ i + 1 ] + N, ... )}}};
- * OP_MAX - {{{op_cn() return value = max( C1[ i ] + N, C1[ i + 1 ] + N, ... )}}};
+ * OP_MIN - {{{op_cn() return value = min( C1[ i ], C1[ i + 1 ], ... )}}};
+ * OP_MAX - {{{op_cn() return value = max( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAXABS - {{{op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
  * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
  * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
