@@ -1966,6 +1966,7 @@ sample_info[ SMP_DEST_LEN ] = 256 //Destination length
 sample_info[ SMP_SRC ] = sample_data
 sample_info[ SMP_SRC_OFF_H ] = 0 //Sample offset (left part of fixed point value)
 sample_info[ SMP_SRC_OFF_L ] = 0 //Sample offset (right part of fixed point value from 0 to 65535)
+sample_info[ SMP_SRC_SIZE ] = 0 //Sample size (0 - whole sample)
 sample_info[ SMP_LOOP ] = 0 //Loop start
 sample_info[ SMP_LOOP_LEN ] = 128 //Loop length (or 0, if no loop)
 sample_info[ SMP_VOL1 ] = 0 //Start volume
