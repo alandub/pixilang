@@ -1987,6 +1987,7 @@ sample_info[ SMP_DEST_LEN ] = 256 //Размер области, которую 
 sample_info[ SMP_SRC ] = sample_data
 sample_info[ SMP_SRC_OFF_H ] = 0 //Смещение сэмпла (левая часть числа с фиксированной точкой)
 sample_info[ SMP_SRC_OFF_L ] = 0 //Смещение сэмпла (правая часть числа с фиксированной точкой, от 0 до 65535)
+sample_info[ SMP_SRC_SIZE ] = 0 //Размер сэмпла (0 - весь сэмпл целиком)
 sample_info[ SMP_LOOP ] = 0 //Начало лупа (повторяемого участка сэмпла)
 sample_info[ SMP_LOOP_LEN ] = 128 //Длина лупа (или 0, если луп отключен)
 sample_info[ SMP_VOL1 ] = 0 //Начальная громкость
