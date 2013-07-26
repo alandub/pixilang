@@ -1945,7 +1945,7 @@ generator( OP_SIN, img, 0, 1, 0.1, 0.1 )
 generator( OP_SIN8, img, 0, 1, 0.1, 0.1 )
 
 //Generate a sine wave to 8...128 elements of the container img:
-generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 128 )
+generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 120 )
 
 //Generate a sine wave to region (8,8,32,32) of the container img:
 generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 8, 32, 32 )
