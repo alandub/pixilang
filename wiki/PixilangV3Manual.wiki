@@ -1675,6 +1675,26 @@ Remove all GL-specific data from the container. This data will be created automa
 
 *Parameters ( container )*
 
+=== gl_draw_arrays ===
+
+Hybrid of the OpenGL functions glColor4ub(), glBindTexture(), glVertexPointer(), glColorPointer(), glTexCoordPointer(), glDrawArrays().
+
+*Parameters ( mode, first, count, color_r, color_g, color_b, color_a, texture, vertex_array, color_array, texcoord_array )*
+ * mode - what kind of primitives to render (GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP and so on);
+ * first - starting index in the enabled arrays;
+ * count - number of indices to be rendered;
+ * color_r, color_g, color_b, color_a - RGBA color (only if color_array is not specified);
+ * texture - container with texture, or -1;
+ * vertex_array - INT8, INT16 or FLOAT32 container with vertices;
+ * color_array - INT8 or FLOAT32 container with colors; optional;
+ * texcoord_array - INT8, INT16 or FLOAT32 container with texture coordinates; optional.
+
+=== gl_blend_func ===
+
+Full analog of the OpenGL function glBlendFunc() (specify pixel arithmetic).
+
+*Parameters ( sfactor, dfactor )*
+
 == Animation ==
 
 === pack_frame ===
