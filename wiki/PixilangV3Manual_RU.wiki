@@ -1704,6 +1704,26 @@ set_gl_callback( -1 ) //Удалить gl_callback
 
 *Параметры ( container )*
 
+=== gl_draw_arrays ===
+
+Гибрид OpenGL функций glColor4ub(), glBindTexture(), glVertexPointer(), glColorPointer(), glTexCoordPointer(), glDrawArrays().
+
+*Параметры ( mode, first, count, color_r, color_g, color_b, color_a, texture, vertex_array, color_array, texcoord_array )*
+ * mode - режим рисования (GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP и т.д.);
+ * first - номер первой вершины в указанных массивах;
+ * count - количество вершин;
+ * color_r, color_g, color_b, color_a - цвет RGBA (только, если не задан color_array);
+ * texture - контейнер с текстурой, или -1;
+ * vertex_array - контейнер типа INT8, INT16 или FLOAT32 с вершинами;
+ * color_array - контейнер типа INT8 или FLOAT32 с RGBA цветами вершин; опциональный;
+ * texcoord_array - контейнер типа INT8, INT16 или FLOAT32 с текстурными координатами; опциональный.
+
+=== gl_blend_func ===
+
+Полный аналог OpenGL функции glBlendFunc().
+
+*Параметры ( sfactor, dfactor )*
+
 == Анимация контейнеров ==
 
 === pack_frame ===
