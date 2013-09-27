@@ -204,6 +204,14 @@ For OpenGL acceleration:
  * GL_NO_XREPEAT;
  * GL_NO_YREPEAT.
 
+== Container resizing flags ==
+
+ * RESIZE_INTERP1 - rough resizing;
+ * RESIZE_INTERP2 - resize with linear interpolation;
+ * RESIZE_UNSIGNED_INTERP2;
+ * RESIZE_COLOR_INTERP1;
+ * RESIZE_COLOR_INTERP2.
+
 == Sizes ==
 
  * INT_SIZE - max size (in bytes) of the signed integer;
