@@ -987,7 +987,7 @@ Save container to the file.
 
 *Return value*
 
-0 if successful.
+0 on success.
 
 *Examples*
 {{{
@@ -1005,7 +1005,7 @@ Save container to the stream (opened by fopen() or fopen_mem()).
 
 *Return value*
 
-0 if successful.
+0 on success.
 
 === get_real_path ===
 
@@ -1119,6 +1119,16 @@ Upon successful completion, fopen() shall return ID of the object controlling th
 f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading
 fclose( f ) //...and close it.
 }}}
+
+=== fopen_mem ===
+
+Open the _data_ container as file.
+
+*Parameters ( data )*
+
+*Return value*
+
+Upon successful completion, fopen_mem() shall return ID of the object controlling the stream. Otherwise, 0 shall be returned.
 
 === fclose ===
 
@@ -1262,6 +1272,16 @@ fseek( f, 0, SEEK_END )
 size_of_file = ftell( f )
 fclose( f )
 }}}
+
+=== setxattr ===
+
+Set an extended attribute value of the file.
+
+*Parameters ( path, attr_name, data, data_size_in_bytes, flags )*
+
+*Return value*
+
+0 on success, or -1 in case of error.
 
 == Graphics ==
 
