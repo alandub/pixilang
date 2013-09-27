@@ -1715,7 +1715,7 @@ set_gl_callback( -1 ) //Удалить gl_callback
  * color_r, color_g, color_b, color_a - цвет RGBA (только, если не задан color_array);
  * texture - контейнер с текстурой, или -1;
  * vertex_array - контейнер типа INT8, INT16 или FLOAT32 с вершинами;
- * color_array - контейнер типа INT8 или FLOAT32 с RGBA цветами вершин; опциональный;
+ * color_array - контейнер типа INT8 или FLOAT32 с RGBA цветами вершин, или -1; опциональный;
  * texcoord_array - контейнер типа INT8, INT16 или FLOAT32 с текстурными координатами; опциональный.
 
 === gl_blend_func ===
