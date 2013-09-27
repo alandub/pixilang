@@ -397,7 +397,7 @@ For op_cc() function:
 
 For op_ccn() function:
  * OP_MUL_DIV - {{{C1[ i ] * C2[ i ] / N}}};
- * OP_MUL_RSHIFT - multiplication with bitwise right shift {{{( C1[ i ] * C2[ i ] ) >> N}}}.
+ * OP_MUL_RSHIFT - {{{( C1[ i ] * C2[ i ] ) >> N}}} (multiplication with bitwise right shift).
 
 For generator() function:
  * OP_SIN - sine;
