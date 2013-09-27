@@ -918,6 +918,26 @@ Same as sprintf, but the destination - STDOUT.
 
 *Parameters ( format, ... )*
 
+=== fsprintf ===
+
+Print formatted output to the stream (opened by fopen() or fopen_mem()).
+
+*Parameters ( stream, format, ... )*
+
+=== logf ===
+
+Send formatted output to the Pixilang log buffer.
+
+*Parameters ( format, ... )*
+
+=== get_log ===
+
+Get the Pixilang log buffer.
+
+*Return value*
+
+Number of the new container with log buffer. Don't forget to remove this container manually.
+
 == Working with files ==
 
 === load ===
