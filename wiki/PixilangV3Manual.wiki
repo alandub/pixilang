@@ -443,7 +443,7 @@ Sample info flags:
 
 == Various ==
 
- * PIXILANG_VERSION - Pixilang version ((major<<24) + (minor<<16) + (minor2<<16) + minor3);
+ * PIXILANG_VERSION - Pixilang version ((major<<24) + (minor<<16) + (minor2<<16) + minor3); example: PIXILANG_VERSION = 0x03040700 for v3.4.7;
  * OS_NAME - container with system name (examples: "ios"; "win32", "linux");
  * ARCH_NAME - container with architecture name (examples: "x86", "x86_64", "arm", "mips");
  * CURRENT_PATH;
