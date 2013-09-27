@@ -457,7 +457,7 @@ Sample info flags:
  * WINDOW_YSIZE - user's window height (in pixels);
  * FPS - frames per second;
  * PPI - pixels per inch;
- * UI_SCALE - UI scale (defined in the global preferences by user); use it to scale your UI elements; for example: {{{button_size = PPI * UI_SCALE * 0.5}}}.
+ * UI_SCALE - UI scale (defined by user in the global preferences); use it to scale your UI elements; for example: {{{button_size = PPI * UI_SCALE * 0.5}}}.
 
 = Reserved container properties =
 
