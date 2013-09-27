@@ -239,6 +239,14 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * INT_MAX - максимальное положительное целое; 
  * COLORBITS - количество бит на пиксель.
 
+== ZLib ==
+
+Уровни компрессии:
+ * Z_NO_COMPRESSION;
+ * Z_BEST_SPEED;
+ * Z_BEST_COMPRESSION;
+ * Z_DEFAULT_COMPRESSION.
+
 == Типы файлов ==
 
  * FORMAT_RAW;
@@ -294,6 +302,30 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * EFF_HBLUR - горизонтальное размывание;
  * EFF_VBLUR - вертикальное размывание;
  * EFF_COLOR - сплошная заливка одним цветом.
+
+== OpenGL ==
+
+Режимы для gl_draw_arrays() (аналог функции glDrawArrays()):
+ * GL_POINTS;
+ * GL_LINE_STRIP;
+ * GL_LINE_LOOP;
+ * GL_LINES;
+ * GL_TRIANGLE_STRIP;
+ * GL_TRIANGLE_FAN;
+ * GL_TRIANGLES.
+
+Константы для gl_blend_func() (аналог функции glBlendFunc()):
+ * GL_ZERO;
+ * GL_ONE;
+ * GL_SRC_COLOR;
+ * GL_ONE_MINUS_SRC_COLOR;
+ * GL_DST_COLOR;
+ * GL_ONE_MINUS_DST_COLOR;
+ * GL_SRC_ALPHA;
+ * GL_ONE_MINUS_SRC_ALPHA;
+ * GL_DST_ALPHA;
+ * GL_ONE_MINUS_DST_ALPHA;
+ * GL_SRC_ALPHA_SATURATE.
 
 == Звук ==
 
