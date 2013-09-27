@@ -219,6 +219,14 @@ For OpenGL acceleration:
  * INT_MAX - max positive integer;
  * COLORBITS - number of bits per pixel.
 
+== ZLib ==
+
+Compression levels:
+ * Z_NO_COMPRESSION;
+ * Z_BEST_SPEED;
+ * Z_BEST_COMPRESSION;
+ * Z_DEFAULT_COMPRESSION.
+
 == File formats ==
 
  * FORMAT_RAW;
@@ -270,6 +278,30 @@ Effect types for effector() function:
  * EFF_HBLUR - horizontal blur;
  * EFF_VBLUR - vertical blur;
  * EFF_COLOR - color fill.
+
+== OpenGL ==
+
+gl_draw_arrays() (analog of the glDrawArrays()) modes:
+ * GL_POINTS;
+ * GL_LINE_STRIP;
+ * GL_LINE_LOOP;
+ * GL_LINES;
+ * GL_TRIANGLE_STRIP;
+ * GL_TRIANGLE_FAN;
+ * GL_TRIANGLES.
+
+gl_blend_func() (analog of the glBlendFunc()) operations:
+ * GL_ZERO;
+ * GL_ONE;
+ * GL_SRC_COLOR;
+ * GL_ONE_MINUS_SRC_COLOR;
+ * GL_DST_COLOR;
+ * GL_ONE_MINUS_DST_COLOR;
+ * GL_SRC_ALPHA;
+ * GL_ONE_MINUS_SRC_ALPHA;
+ * GL_DST_ALPHA;
+ * GL_ONE_MINUS_DST_ALPHA;
+ * GL_SRC_ALPHA_SATURATE.
 
 == Audio ==
 
