@@ -797,7 +797,7 @@ Remove all properties of the selected container.
 
 *Parameters ( source, level )*
  * source - container that will be compressed;
- * level - compression level (Z_NO_COMPRESSION, Z_BEST_SPEED, Z_BEST_COMPRESSION, Z_DEFAULT_COMPRESSION); optional.
+ * level - Zlib compression level (Z_NO_COMPRESSION, Z_BEST_SPEED, Z_BEST_COMPRESSION, Z_DEFAULT_COMPRESSION); optional.
 
 *Return value*
 
