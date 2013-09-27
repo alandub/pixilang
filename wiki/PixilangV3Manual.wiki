@@ -2181,6 +2181,10 @@ Apply gain and DC-offset two-points envelope to selected container area. Without
  * dc_offset1 - initial DC offset; optional; default - 0;
  * dc_offset1 - final DC offset; optional; default - 0.
 
+=== gradient ===
+
+*Parameters ( container, val1, val2, val3, val4, x, y, xsize, ysize, x_step, y_step )*
+
 === fft ===
 
 Perform a fast fourier transform.
