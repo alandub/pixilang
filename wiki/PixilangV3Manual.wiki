@@ -942,6 +942,14 @@ Number of the new container with log buffer. Don't forget to remove this contain
 
 === load ===
 
+Load container from the file.
+
+*Parameters ( filename, options )*
+
+*Return value*
+
+Number of the new loaded container, or -1 in case of error.
+
 *Examples*
 {{{
 c = load( "smile.jpg" )
@@ -955,7 +963,19 @@ if c >= 0
 }
 }}}
 
+=== fload ===
+
+Load container from the stream (opened by fopen() or fopen_mem()).
+
+*Parameters ( stream, options )*
+
+*Return value*
+
+Number of the new loaded container, or -1 in case of error.
+
 === save ===
+
+Save container to the file.
 
 *Parameters ( pixi, filename, format, options )*
  * pixi;
@@ -965,6 +985,10 @@ if c >= 0
    * for JPEG: quality from 0 - worst to 100 - best;
    * for GIF: flags GIF_GRAYSCALE, GIF_DITHER.
 
+*Return value*
+
+0 if successful.
+
 *Examples*
 {{{
 c = load( "smile.jpg" )
@@ -972,6 +996,16 @@ save( c, "smile.png", FORMAT_PNG )
 save( c, "smile2.jpg", FORMAT_JPEG ) //Quality = 85 (default)
 save( c, "smile3.jpg", FORMAT_JPEG, 100 ) //Quality = 100
 }}}
+
+=== fsave ===
+
+Save container to the stream (opened by fopen() or fopen_mem()).
+
+*Parameters ( pixi, stream, format, options )*
+
+*Return value*
+
+0 if successful.
 
 === get_real_path ===
 
