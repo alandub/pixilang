@@ -467,7 +467,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 == Разное ==
 
- * PIXILANG_VERSION - версия Pixilang (major*100000 + minor*100);
+ * PIXILANG_VERSION - версия Pixilang ((major<<24) + (minor<<16) + (minor2<<16) + minor3); например, если версия языка = 3.4.7, то PIXILANG_VERSION будет 0x03040700;
  * OS_NAME - контейнер с названием операционной системы, в которой запущен Pixilang (примеры: "ios"; "win32", "linux");
  * ARCH_NAME - контейнер с названием архитектуры процессора (примеры: "x86", "x86_64", "arm", "mips");
  * CURRENT_PATH;
