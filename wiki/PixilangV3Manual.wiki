@@ -230,9 +230,17 @@ For OpenGL acceleration:
 
 == Load/Save options ==
 
+ * LOAD_FIRST_FRAME - load first frame only.
+
 GIF saving:
  * GIF_GRAYSCALE;
  * GIF_DITHER.
+
+JPEG saving:
+ * JPEG_H1V1 - YCbCr, no subsampling (H1V1, YCbCr 1x1x1, 3 blocks per MCU);
+ * JPEG_H2V1 - YCbCr, H2V1 subsampling (YCbCr 2x1x1, 4 blocks per MCU);
+ * JPEG_H2V2 - YCbCr, H2V2 subsampling (YCbCr 4x1x1, 6 blocks per MCU); default;
+ * JPEG_TWOPASS - number of passes = 2.
 
 == Colors ==
 
