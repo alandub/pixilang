@@ -789,6 +789,29 @@ Remove all properties of the selected container.
 
 *Parameters ( pixi )*
 
+=== show_memory_debug_messages ===
+
+*Parameters ( enable )*
+
+=== zlib_pack ===
+
+*Parameters ( source, level )*
+ * source - container that will be compressed;
+ * level - compression level (Z_NO_COMPRESSION, Z_BEST_SPEED, Z_BEST_COMPRESSION, Z_DEFAULT_COMPRESSION); optional.
+
+*Return value*
+
+Number of the new compressed container (not the source) or -1 in case of error.
+
+=== zlib_unpack ===
+
+*Parameters ( source )*
+ * source - container that will be decompressed.
+
+*Return value*
+
+Number of the new decompressed container (not the source) or -1 in case of error.
+
 == Strings ==
 
 === num_to_str ===
