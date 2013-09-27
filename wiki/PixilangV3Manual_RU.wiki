@@ -250,9 +250,17 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
 
 == Опции для load() и save() ==
 
+ * LOAD_FIRST_FRAME - загрузить только первый кадр.
+
 Сохранение GIF:
  * GIF_GRAYSCALE;
  * GIF_DITHER.
+
+Сохранение JPEG:
+ * JPEG_H1V1 - YCbCr, no subsampling (H1V1, YCbCr 1x1x1, 3 blocks per MCU);
+ * JPEG_H2V1 - YCbCr, H2V1 subsampling (YCbCr 2x1x1, 4 blocks per MCU);
+ * JPEG_H2V2 - YCbCr, H2V2 subsampling (YCbCr 4x1x1, 6 blocks per MCU); default;
+ * JPEG_TWOPASS - удвоенное количество проходов.
 
 == Цвета ==
 
