@@ -1087,6 +1087,15 @@ Get the size of selected file.
  * directory_name;
  * mode - system specific mode; optional.
 
+=== set_disk0 ===
+
+Use the _stream_ (opened by fopen() or fopen_mem()) as virtual disk 0:/ . _stream_ must point to the opened TAR archive.
+
+*Parameters ( stream )*
+ * stream - stream, or 0 if you want to disable disk 0:/
+
+=== get_disk0 ===
+
 === fopen ===
 
 The fopen() function shall open the file whose pathname is the string pointed to by _filename_, and associates a stream with it.
