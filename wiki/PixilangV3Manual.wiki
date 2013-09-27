@@ -1485,6 +1485,12 @@ Apply an effect to selected screen area. Coordinates of this function can't be c
 
 *Parameters ( type, power, color, x, y, xsize, ysize, x_step, y_step )*
 
+=== color_gradient ===
+
+Draw a color gradient.
+
+*Parameters ( color1, transp1, color2, transp2, color3, transp3, color4, transp4, x, y, xsize, ysize, x_step, y_step )*
+
 === split_rgb ===
 
 Split a container (with pixels) by color channels (red, green, blue) and vice versa.
@@ -1511,6 +1517,10 @@ split_rgb( 0, img, r, g, b ) //Convert image to RGB
 //Get red value (from 0 to 255) of the first pixel:
 value = r[ 0 ]
 }}}
+
+=== split_ycbcr ===
+
+Same as split_rgb() but for YCbCr conversion.
 
 == OpenGL ==
 
