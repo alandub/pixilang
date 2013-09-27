@@ -801,7 +801,7 @@ Remove all properties of the selected container.
 
 *Return value*
 
-Number of the new compressed container (not the source) or -1 in case of error.
+Number of the new compressed container (created from the source) or -1 in case of error.
 
 === zlib_unpack ===
 
@@ -810,7 +810,7 @@ Number of the new compressed container (not the source) or -1 in case of error.
 
 *Return value*
 
-Number of the new decompressed container (not the source) or -1 in case of error.
+Number of the new decompressed container (created from the source) or -1 in case of error.
 
 == Strings ==
 
