@@ -950,7 +950,7 @@ Same as sprintf, but the destination - STDOUT.
 
 *Parameters ( format, ... )*
 
-=== fsprintf ===
+=== fprintf ===
 
 Print formatted output to the stream (opened by fopen() or fopen_mem()).
 
