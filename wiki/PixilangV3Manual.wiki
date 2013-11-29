@@ -55,8 +55,8 @@ c[ 2, 2 ] = WHITE //Assign the white color to a pixel with coordinates x=2 y=2.
 remove( c ) //Remove this container
 }}}
 {{{
-str = "Hello" //"Hello" is the container with five characters.
-//Such containers with strings are created on the stage of compilation of your program. 
+str = "Hello" //"Hello" is the string container with five 8-bit characters (UTF-8 encoding).
+//This container (with string) will be created during the bytecode generation once.
 //You don't need to delete them manually.
 str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
 }}}
