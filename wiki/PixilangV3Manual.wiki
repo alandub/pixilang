@@ -56,7 +56,7 @@ remove( c ) //Remove this container
 }}}
 {{{
 str = "Hello" //"Hello" is the string container with five 8-bit characters (UTF-8 encoding).
-//This container (with string) will be created during the bytecode generation once.
+//This container (with string) will be created only once, during the bytecode generation.
 //You don't need to delete them manually.
 str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
 }}}
