@@ -43,7 +43,7 @@ Numbers can be described in different formats. Examples:
  * 0b100101011 - binary;
  * #FF9080 - color, as in HTML; base format is #RRGGBB, where RR - red intensity (from 00 to FF), GG - green intensity; BB - blue intensity.
 
-*The simplest example of the use of containers and variables*
+*Examples*
 {{{
 x = new( 4 ) //Create a new container with 4 pixels. Store its ID into the variable x.
 x[ 2 ] = WHITE //Assign the white color to a pixel with number 2.
