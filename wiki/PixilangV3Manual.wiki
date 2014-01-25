@@ -2221,13 +2221,25 @@ New container with the filter.
  * a - container with the feedforward filter coefficients;
  * b - container with the feedback filter coefficients; optional; can be -1;
  * rshift - bitwise right shift for fixed point computations; optional;
- * flags - for future use.
+ * flags - for future use; optional.
 
 *Return value*
 
 0 if success.
 
 === apply_filter ===
+
+*Parameters ( filter, output, input, flags, offset, size )*
+ * filter;
+ * output - output container;
+ * input - input container;
+ * flags - for future use; optional;
+ * offset - output and input offset; optional;
+ * size - size of the processed block; optional.
+
+*Return value*
+
+0 if success.
 
 === replace_values ===
 
