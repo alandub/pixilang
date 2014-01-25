@@ -2144,6 +2144,27 @@ generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 120 )
 generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 8, 32, 32 )
 }}}
 
+=== wavetable_generator ===
+
+Very fast multichannel sampler, where the sample is always looped and fixed-size (256 for 8bit data, or 32768 for 16bit data).
+
+*Parameters ( dest, dest_offset, dest_length, table, amp, amp_delta, pos, pos_delta, gen_offset, gen_step, gen_count )*
+ * dest - audio destination (INT16 or FLOAT32 container);
+ * dest_offset;
+ * dest_length;
+ * table - table with waveform (supported formats: 256 x INT8, 32768 x INT16, 32768 x FLOAT32);
+ * amp - INT32 array of amplitudes (fixed point 16.16);
+ * amp_delta - INT32 array of amplitude delta values (fixed point 16.16);
+ * pos - INT32 array of wavetable positions (fixed point 16.16);
+ * pos_delta - INT32 array of wavetable position delta values (fixed point 16.16);
+ * gen_offset - number of the first generator;
+ * gen_step - play every gen_step generator;
+ * gen_count - total number of generators to play.
+
+*Return value*
+
+0 if success.
+
 === sampler ===
 
 *Parameters ( sample_info )*
