@@ -2224,8 +2224,10 @@ sampler( sample_info ) //Записываем сэмпл с выбранными
 === new_filter ===
 
 Создать новый фильтр, в основе которого следующая функция:
-{{{output[ n ] = ( a[ 0 ] * input[ n ] + a[ 1 ] * input[ n - 1 ] + ... + a[ a_count - 1 ] * input[ n - a_count - 1 ]
-                                    + b[ 0 ] * output[ n - 1 ] + ... + b[ b_count - 1 ] * output[ n - b_count - 1 ] ) >> rshift;}}}
+{{{
+output[ n ] = ( a[ 0 ] * input[ n ] + a[ 1 ] * input[ n - 1 ] + ... + a[ a_count - 1 ] * input[ n - a_count - 1 ]
+                                    + b[ 0 ] * output[ n - 1 ] + ... + b[ b_count - 1 ] * output[ n - b_count - 1 ] ) >> rshift;
+}}}
 
 *Параметры ( flags_for_future_use )*
 
