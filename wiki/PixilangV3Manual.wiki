@@ -2219,7 +2219,7 @@ New container with the filter.
 *Parameters ( filter, a, b, rshift, flags )*
  * filter;
  * a - container with the feedforward filter coefficients;
- * b - container with the feedback filter coefficients; optional; can be -1;
+ * b - container with the feedback filter coefficients; optional; can be -1 (for FIR filters);
  * rshift - bitwise right shift for fixed point computations; optional;
  * flags - for future use; optional.
 
