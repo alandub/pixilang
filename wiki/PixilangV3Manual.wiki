@@ -234,6 +234,7 @@ Compression levels:
  * FORMAT_PNG;
  * FORMAT_GIF;
  * FORMAT_WAVE;
+ * FORMAT_AIFF (load only);
  * FORMAT_PIXICONTAINER - entire Pixilang container with properties and animation.
 
 == Load/Save options ==
