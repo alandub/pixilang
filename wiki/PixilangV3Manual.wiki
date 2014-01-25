@@ -2192,6 +2192,41 @@ Perform a fast fourier transform.
 
 *Parameters ( inverse, im, re, size )*
 
+=== new_filter ===
+
+Create a new filter with the following function:
+{{{output[ n ] = ( a[ 0 ] * input[ n ] + a[ 1 ] * input[ n - 1 ] + ... + a[ a_count - 1 ] * input[ n - a_count - 1 ]
+                                    + b[ 0 ] * output[ n - 1 ] + ... + b[ b_count - 1 ] * output[ n - b_count - 1 ] ) >> rshift;}}}
+
+*Parameters ( flags_for_future_use )*
+
+*Return value*
+
+New container with the filter.
+
+=== remove_filter ===
+
+*Parameters ( filter )*
+
+=== reset_filter ===
+
+*Parameters ( filter )*
+
+=== init_filter ===
+
+*Parameters ( filter, a, b, rshift, flags )*
+ * filter;
+ * a - container with the feedforward filter coefficients;
+ * b - container with the feedback filter coefficients; optional; can be -1;
+ * rshift - bitwise right shift for fixed point computations; optional;
+ * flags - for future use.
+
+*Return value*
+
+0 if success.
+
+=== apply_filter ===
+
 === replace_values ===
 
 For each element of dest container: {{{dest[ i ] = values[ (unsigned)src[ i ] ]}}}. 
