@@ -1056,6 +1056,7 @@ if c >= 0
   //  FORMAT_PNG;
   //  FORMAT_GIF;
   //  FORMAT_WAVE;
+  //  FORMAT_AIFF;
   //  FORMAT_PIXICONTAINER;
   //  или еще какое-то из раздела "Типы файлов".
 }
