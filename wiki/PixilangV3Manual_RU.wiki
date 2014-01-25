@@ -254,6 +254,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * FORMAT_PNG;
  * FORMAT_GIF;
  * FORMAT_WAVE;
+ * FORMAT_AIFF (поддерживается только загрузка AIFF файлов);
  * FORMAT_PIXICONTAINER - весь контейнер целиком (со свойствами и анимацией).
 
 == Опции для load() и save() ==
