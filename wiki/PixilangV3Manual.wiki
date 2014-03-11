@@ -1320,11 +1320,17 @@ Set an extended attribute value of the file.
 
 === frame ===
 
-Draw current screen on display and delay for selected number of milliseconds.
+Draw the current screen on the display and sleep for selected number of milliseconds.
 
 *Parameters ( delay, x, y, xsize, ysize )*
  * delay - pause length in milliseconds;
  * x, y, xsize, ysize - region of the screen; optional parameters.
+
+*Return value*
+
+ * 0 - successful;
+ * -1 - no screen;
+ * -2 - timeout (graphics engine is suspended?).
 
 === vsync ===
 
