@@ -190,7 +190,6 @@ The following table lists the mathematical operators. Priority 0 - the highest, 
  * FLOAT - floating point (size depends on the version of Pixilang);
  * FLOAT32 - floating point (32 bit);
  * FLOAT64 - floating point (64 bit);
- * DYNAMIC - dynamic type (INT or FLOAT);
  * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel.
 
 == Container flags ==
@@ -555,7 +554,6 @@ Note: immediately after its creation, the container may contain some random valu
    * FLOAT - floating point (size depends on the version of Pixilang);
    * FLOAT32 - floating point (32 bit);
    * FLOAT64 - floating point (64 bit);
-   * DYNAMIC - dynamic type;
    * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
 
 *Return value*
@@ -605,7 +603,6 @@ Resize a container.
    * INT64 - signed integer (64 bit);
    * FLOAT32 - floating point (32 bit);
    * FLOAT64 - floating point (64 bit);
-   * DYNAMIC - dynamic type;
    * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
 
 *Return value*
@@ -2038,8 +2035,6 @@ rand() - get random number from 0 to 32767;
 rand_seed( seed ) - set random seed.
 
 == Data processing ==
-
-Note: data processing functions can't work with dynamic containers.
 
 === op_cn ===
 
