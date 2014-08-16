@@ -328,6 +328,10 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * GL_ONE_MINUS_DST_ALPHA;
  * GL_SRC_ALPHA_SATURATE.
 
+Глобальные OpenGL контейнеры:
+ * GL_SCREEN; вы не можете обращаться к экрану GL_SCREEN, как к массиву пикселей напрямую, но вы можете использовать для этих целей функцию copy( dest, GL_SCREEN );
+ * GL_ZBUF.
+
 == Звук ==
 
 Флаги для функции set_audio_callback():
