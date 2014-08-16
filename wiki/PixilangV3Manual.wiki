@@ -1611,7 +1611,10 @@ print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
 
 === get_text_xsize ===
 
-*Parameters ( text, align )*
+*Parameters ( text, align, max_xsize )*
+ * text;
+ * align;
+ * max_xsize; optional.
 
 *Return value*
 
@@ -1619,7 +1622,10 @@ Text width in pixels.
 
 === get_text_ysize ===
 
-*Parameters ( text, align )*
+*Parameters ( text, align, max_xsize )*
+ * text;
+ * align;
+ * max_xsize; optional.
 
 *Return value*
 
