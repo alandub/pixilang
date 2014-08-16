@@ -221,7 +221,8 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * GL_MAG_LINEAR;
  * GL_NICEST - использовать наилучшее отображение и 32-битный цвет, когда возможно;
  * GL_NO_XREPEAT;
- * GL_NO_YREPEAT.
+ * GL_NO_YREPEAT;
+ * GL_NO_ALPHA.
 
 == Флаги (опции) для функции resize() ==
 
@@ -443,12 +444,19 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * OP_MIN - {{{op_cn() return value = min( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAX - {{{op_cn() return value = max( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAXABS - {{{op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
+ * OP_SUM - сумма элементов {{{op_cn() return value = C1[ i ] + C1[ i + 1 ] + ... }}}
  * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
  * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
  * OP_ABS - абсолютное значение;
  * OP_SUB2 - вычитание с измененным порядком операндов ({{{N - C1[ i ]}}});
  * OP_COLOR_SUB2 - то же, что OP_COLOR_SUB, но с измененным порядком операндов ({{{N - C1[ i ]}}});
- * OP_DIV - то же, что OP_DIV, но с измененным порядком операндов ({{{N / C1[ i ]}}}).
+ * OP_DIV2 - то же, что OP_DIV, но с измененным порядком операндов ({{{N / C1[ i ]}}});
+ * OP_H_INTEGRAL - дискретный интеграл (по горизонтали);
+ * OP_V_INTEGRAL - дискретный интеграл (по вертикали);
+ * OP_H_DERIVATIVE - дискретная производная (по горизонтали);
+ * OP_V_DERIVATIVE - дискретная производная (по вертикали);
+ * OP_H_FLIP;
+ * OP_V_FLIP.
 
 Для функций op_cn(), op_cc():
  * OP_ADD - сложение;
