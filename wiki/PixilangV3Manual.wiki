@@ -2315,6 +2315,14 @@ The dest container must have the same type as the values.
 replace_values( scr, img8, palette )
 }}}
 
+=== copy_and_resize ===
+
+*Parameters ( dest, src, flags, dest_x, dest_y, dest_rect_xsize, dest_rect_ysize, src_x, src_y, src_rect_xsize, src_rect_ysize )*
+ * dest - destination container;
+ * src - source container;
+ * flags - flags RESIZE_xxx; optional; default = RESIZE_INTERP1;
+ * dest_x, dest_y, dest_rect_xsize, dest_rect_ysize, src_x, src_y, src_rect_xsize, src_rect_ysize - optional parameters.
+
 == Dialogs ==
 
 === file_dialog ===
