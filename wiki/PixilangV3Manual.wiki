@@ -396,6 +396,11 @@ Constants for the set_quit_action() function:
  * QA_NONE;
  * QA_CLOSE_VM.
 
+== Threads ==
+
+Flags for thread_create():
+ * THREAD_FLAG_AUTO_DESTROY - thread with this flag will be destroyed automatically.
+
 == Mathematical constants ==
 
  * M_E - e.
