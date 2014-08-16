@@ -667,7 +667,8 @@ Copy container elements from src to dest.
  * src_offset - offset in source (first element to copy);
  * count - number of elements to copy;
  * dest_step - destination writing step (default - 1);
- * src_step - source reading step (default - 1).
+ * src_step - source reading step (default - 1);
+ * flags - COPY_xxx flags; optional.
 
 *Examples*
 {{{
