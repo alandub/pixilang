@@ -201,7 +201,8 @@ For OpenGL acceleration:
  * GL_MAG_LINEAR;
  * GL_NICEST - use 32bit color, when possible;
  * GL_NO_XREPEAT;
- * GL_NO_YREPEAT.
+ * GL_NO_YREPEAT;
+ * GL_NO_ALPHA.
 
 == Container resizing flags ==
 
@@ -419,12 +420,19 @@ For op_cn() function:
  * OP_MIN - {{{op_cn() return value = min( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAX - {{{op_cn() return value = max( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAXABS - {{{op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
+ * OP_SUM - {{{op_cn() return value = C1[ i ] + C1[ i + 1 ] + ... }}}
  * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
  * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
  * OP_ABS - absolute value;
  * OP_SUB2 - subtraction with reverse order of the operands ({{{N - C1[ i ]}}});
  * OP_COLOR_SUB2 - color subtraction with reverse order of the operands ({{{N - C1[ i ]}}});
- * OP_DIV2 - division with reverse order of the operands ({{{N / C1[ i ]}}}).
+ * OP_DIV2 - division with reverse order of the operands ({{{N / C1[ i ]}}});
+ * OP_H_INTEGRAL - running sum (horizontal);
+ * OP_V_INTEGRAL - running sum (vertical);
+ * OP_H_DERIVATIVE - first difference (horizontal);
+ * OP_V_DERIVATIVE - first difference (vertical);
+ * OP_H_FLIP;
+ * OP_V_FLIP.
 
 For op_cn(), op_cc() function:
  * OP_ADD - addition;
