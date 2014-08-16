@@ -1738,6 +1738,14 @@ Full analog of the OpenGL function glBlendFunc() (specify pixel arithmetic).
 
 *Parameters ( sfactor, dfactor )*
 
+=== gl_bind_framebuffer ===
+
+Convert selected pixel container (cnum) to the OpenGL framebuffer (with attached texture) and bind it.
+All rendering operations will be redirected to this framebuffer.
+To unbind - just call this function without parameters.
+
+*Parameters ( cnum )*
+
 == Animation ==
 
 === pack_frame ===
