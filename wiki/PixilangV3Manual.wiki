@@ -661,7 +661,7 @@ Number of the new container, or -1 (error).
 
 Copy container elements from src to dest.
 
-*Parameters ( dest, src, dest_offset, src_offset, count, dest_step, src_step )*
+*Parameters ( dest, src, dest_offset, src_offset, count, dest_step, src_step, flags )*
  * dest - destination container;
  * src - source container;
  * dest_offset - offset in destination (first element to copy);
@@ -1566,11 +1566,12 @@ Container number or -1 (if no alpha channel).
 
 Show text on the screen.
 
-*Parameters ( text, x, y, color, align )* 
+*Parameters ( text, x, y, color, align, max_xsize )* 
  * text - container with text;
  * x, y - point of the alignment;
  * color;
- * align - alignment.
+ * align - alignment;
+ * max_xsize; optional.
 
 *Examples*
 {{{
@@ -1981,7 +1982,7 @@ Possible values for the action parameter:
 
 === thread_create ===
 
-*Parameters ( thread_function, user_data )*
+*Parameters ( thread_function, user_data, flags_optional )*
 
 *Return value*
 
