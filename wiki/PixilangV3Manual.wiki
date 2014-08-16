@@ -634,6 +634,12 @@ resize( p, -1, 64 ) //Resize it from 32x32 to 32x64
 remove( p ) //Remove
 }}}
 
+=== rotate ===
+
+Rotate the container by angle*90 degrees.
+
+*Параметры ( pixi, angle )*
+
 === convert_type ===
 
 Convert the type of a container.
