@@ -2350,6 +2350,16 @@ output[ n ] = ( a[ 0 ] * input[ n ] + a[ 1 ] * input[ n - 1 ] + ... + a[ a_count
 replace_values( scr, img8, palette )
 }}}
 
+=== copy_and_resize ===
+
+Скопировать (и растянуть/сжать, если нужно) указанную область контейнера src в указанную область контейнера dest.
+
+*Параметры ( dest, src, flags, dest_x, dest_y, dest_rect_xsize, dest_rect_ysize, src_x, src_y, src_rect_xsize, src_rect_ysize )*
+ * dest - куда;
+ * src - откуда;
+ * flags - флаги RESIZE_xxx; опциональный; по умолчанию - RESIZE_INTERP1;
+ * dest_x, dest_y, dest_rect_xsize, dest_rect_ysize, src_x, src_y, src_rect_xsize, src_rect_ysize - опциональные параметры.
+
 == Диалоги ==
 
 === file_dialog ===
