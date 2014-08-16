@@ -968,6 +968,8 @@ Print formatted output to the stream (opened by fopen() or fopen_mem()).
 
 *Parameters ( stream, format, ... )*
 
+== Log management ==
+
 === logf ===
 
 Send formatted output to the Pixilang log buffer.
@@ -980,7 +982,15 @@ Get the Pixilang log buffer.
 
 *Return value*
 
-Number of the new container with log buffer. Don't forget to remove this container manually.
+The new container with the log buffer. Don't forget to remove this container manually.
+
+=== get_system_log ===
+
+Get the Pixilang system log buffer.
+
+*Return value*
+
+The new container with the system log buffer. Don't forget to remove this container manually.
 
 == Working with files ==
 
