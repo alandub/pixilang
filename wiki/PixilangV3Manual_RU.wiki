@@ -684,7 +684,7 @@ remove( p ) //И удаляем
 
 Скопировать данные из контейнера src в контейнер dest.
 
-*Параметры ( dest, src, dest_offset, src_offset, count, dest_step, src_step )*
+*Параметры ( dest, src, dest_offset, src_offset, count, dest_step, src_step, flags )*
  * dest - приемник (куда);
  * src - источник (откуда);
  * dest_offset - номер первого копируемого элемента в приемнике;
@@ -1595,11 +1595,12 @@ pixi( image, 90, 20, GREEN, 0.5, 0.5 )
 
 Вывести текст на экран.
 
-*Параметры ( text, x, y, color, align )* 
+*Параметры ( text, x, y, color, align, max_xsize )* 
  * text - номер контейнера с текстом;
  * x, y - координаты точки, относительно которой происходит выравнивание;
  * color - цвет;
- * align - выравнивание.
+ * align - выравнивание;
+ * max_xsize - максимальный размер (кол-во пикселей) текста по горизонтали; опциональный.
 
 *Примеры*
 {{{
@@ -2019,7 +2020,7 @@ ID клиента.
 
 Создать новый поток выполнения, в котором сразу после создания будет запущена функция thread_function( $thread_id, $user_data )
 
-*Параметры ( thread_function, user_data )*
+*Параметры ( thread_function, user_data, flags_optional )*
 
 *Возвращаемое значение*
 
