@@ -1266,7 +1266,7 @@ fclose( f ) //Закрываем файл.
 
 === fwrite ===
 
-*Параметры ( data, size, stream )*
+*Параметры ( data, size, stream, data_offset_optional )*
 
 *Примеры*
 {{{
@@ -1284,7 +1284,7 @@ fclose( f ) //Закрываем файл.
 
 Загрузить строку текста из потока stream.
 
-*Параметры ( s, n, stream )*
+*Параметры ( s, n, stream, offset )*
 
 *Примеры*
 {{{
@@ -1300,7 +1300,7 @@ fclose( f ) //Закрываем файл.
 
 Загрузить блок данных из потока stream.
 
-*Параметры ( data, size, stream )*
+*Параметры ( data, size, stream, data_offset_optional )*
 
 === feof ===
 
