@@ -1217,7 +1217,7 @@ fclose( f ) //Close the stream.
 
 The fwrite() function shall write, from the container _data_, up to _size_ bytes, to the stream pointed to by _stream_.
 
-*Parameters ( data, size, stream )*
+*Parameters ( data, size, stream, data_offset_optional )*
 
 *Return value*
 
@@ -1245,7 +1245,7 @@ Upon successful completion, fgetc() shall return the next byte from the input st
 
 Get a string from a stream.
 
-*Parameters ( s, n, stream )*
+*Parameters ( s, n, stream, offset )*
 
 *Examples*
 {{{
@@ -1259,7 +1259,7 @@ fclose( f ) //Close the stream.
 
 The fread() function shall read into the container pointed to by _data_ up to _size_ bytes, from the stream pointed to by _stream_.
 
-*Parameters ( data, size, stream )*
+*Parameters ( data, size, stream, data_offset_optional )*
 
 *Return value*
 
