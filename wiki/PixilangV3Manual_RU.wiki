@@ -444,7 +444,7 @@ fn fff( $x, $y ) //Определяем функцию fff с параметра
  * OP_MIN - {{{op_cn() return value = min( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAX - {{{op_cn() return value = max( C1[ i ], C1[ i + 1 ], ... )}}};
  * OP_MAXABS - {{{op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )}}};
- * OP_SUM - сумма элементов {{{op_cn() return value = C1[ i ] + C1[ i + 1 ] + ... }}}
+ * OP_SUM - сумма элементов; {{{op_cn() return value = C1[ i ] + C1[ i + 1 ] + ... }}}
  * OP_LIMIT_TOP - {{{if C1[ i ] > N { C1[ i ] = N } }}};
  * OP_LIMIT_BOTTOM - {{{if C1[ i ] < N { C1[ i ] = N } }}};
  * OP_ABS - абсолютное значение;
