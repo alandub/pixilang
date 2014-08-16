@@ -304,6 +304,10 @@ gl_blend_func() (analog of the glBlendFunc()) operations:
  * GL_ONE_MINUS_DST_ALPHA;
  * GL_SRC_ALPHA_SATURATE.
 
+Global OpenGL containers:
+ * GL_SCREEN; you can't read pixels from GL_SCREEN directly, but you can use copy( destination, GL_SCREEN ) for this;
+ * GL_ZBUF.
+
 == Audio ==
 
 Flags for set_audio_callback() function:
