@@ -211,6 +211,10 @@ For OpenGL acceleration:
  * RESIZE_COLOR_INTERP1;
  * RESIZE_COLOR_INTERP2.
 
+== Container copying flags ==
+ 
+ * COPY_NO_AUTOROTATE - don't rotate pixels from GL_SCREEN.
+
 == Sizes ==
 
  * INT_SIZE - max size (in bytes) of the signed integer;
