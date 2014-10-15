@@ -1403,9 +1403,9 @@ Set container with Z-buffer. Must be INT32.
 Get color by r,g,b (red,green,blue).
 
 *Parameters ( red, green, blue )*
- * red - red intensity (from 0 до 255);
- * green - green intensity (from 0 до 255);
- * blue - blue intensity (from 0 до 255).
+ * red - red intensity (0..255);
+ * green - green intensity (0..255);
+ * blue - blue intensity (0..255).
 
 *Return value*
 
