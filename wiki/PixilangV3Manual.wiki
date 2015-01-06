@@ -2206,7 +2206,7 @@ Very fast multichannel sampler, where the sample is always looped and fixed-size
  * dest - audio destination (INT16 or FLOAT32 container);
  * dest_offset;
  * dest_length;
- * table - table with waveform (supported formats: 256 x INT8, 32768 x INT16, 32768 x FLOAT32);
+ * table - table with waveform (supported formats: 32768 x INT16, 32768 x FLOAT32);
  * amp - INT32 array of amplitudes (fixed point 16.16);
  * amp_delta - INT32 array of amplitude delta values (fixed point 16.16);
  * pos - INT32 array of wavetable positions (fixed point 16.16);
