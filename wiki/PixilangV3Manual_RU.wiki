@@ -1759,7 +1759,14 @@ set_gl_callback( -1 ) //Удалить gl_callback
 Гибрид OpenGL функций glColor4ub(), glBindTexture(), glVertexPointer(), glColorPointer(), glTexCoordPointer(), glDrawArrays().
 
 *Параметры ( mode, first, count, color_r, color_g, color_b, color_a, texture, vertex_array, color_array, texcoord_array )*
- * mode - режим рисования (GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP и т.д.);
+ * mode - режим рисования:
+   * GL_POINTS;
+   * GL_LINE_STRIP;
+   * GL_LINE_LOOP;
+   * GL_LINES;
+   * GL_TRIANGLE_STRIP;
+   * GL_TRIANGLE_FAN;
+   * GL_TRIANGLES;
  * first - номер первой вершины в указанных массивах;
  * count - количество вершин;
  * color_r, color_g, color_b, color_a - цвет RGBA (только, если не задан color_array);
