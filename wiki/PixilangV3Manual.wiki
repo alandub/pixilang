@@ -1729,7 +1729,14 @@ Remove all GL-specific data from the container. This data will be created automa
 Hybrid of the OpenGL functions glColor4ub(), glBindTexture(), glVertexPointer(), glColorPointer(), glTexCoordPointer(), glDrawArrays().
 
 *Parameters ( mode, first, count, color_r, color_g, color_b, color_a, texture, vertex_array, color_array, texcoord_array )*
- * mode - what kind of primitives to render (GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP and so on);
+ * mode - what kind of primitives to render:
+   * GL_POINTS;
+   * GL_LINE_STRIP;
+   * GL_LINE_LOOP;
+   * GL_LINES;
+   * GL_TRIANGLE_STRIP;
+   * GL_TRIANGLE_FAN;
+   * GL_TRIANGLES;
  * first - starting index in the enabled arrays;
  * count - number of indices to be rendered;
  * color_r, color_g, color_b, color_a - RGBA color (only if color_array is not specified);
