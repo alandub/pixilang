@@ -1686,7 +1686,7 @@ value = r[ 0 ]
 
 Same as split_rgb() but for YCbCr conversion.
 
-== OpenGL ==
+== OpenGL functions ==
 
 === set_gl_callback ===
 
