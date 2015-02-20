@@ -1716,7 +1716,7 @@ value = r[ 0 ]
 
 Аналогична split_rgb(), только для преобразования в/из формата YCbCr.
 
-== OpenGL ==
+== OpenGL функции ==
 
 === set_gl_callback ===
 
