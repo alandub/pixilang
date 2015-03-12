@@ -1276,6 +1276,10 @@ Get a string from a stream.
 
 *Parameters ( s, n, stream, offset )*
 
+*Return value*
+
+Length of the string.
+
 *Examples*
 {{{
 string = new( 256, 1, INT8 )
