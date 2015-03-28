@@ -609,7 +609,7 @@ Remove the container and its alpha channel (linked container).
 
 Resize a container.
 
-*Parameters ( pixi, xsize, ysize, type )*
+*Parameters ( pixi, xsize, ysize, type, flags )*
  * pixi - number of a container.
  * xsize - new width (or -1 if width not changed).
  * ysize - height (or -1 if width not changed).
@@ -621,6 +621,7 @@ Resize a container.
    * FLOAT32 - floating point (32 bit);
    * FLOAT64 - floating point (64 bit);
    * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
+ * flags - resizing flags (RESIZE_xxx); optional.
 
 *Return value*
 
