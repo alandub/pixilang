@@ -1,0 +1,2501 @@
+
+
+# What is Pixilang #
+
+Pixilang — cross-platform programming language for graphics/sound applications and experiments. Originally created by Alexander Zolotov (NightRadio) and Mik Razuvaev (Goglus) for non-programmers, demosceners and designers.
+
+Pixilang programs are stored in text files (UTF8) with extensions .txt or .pixi. So you can use your favorite text editor to create/edit these files. Pixilang has no built-in editor.
+
+# Command line options #
+
+```
+pixilang [options] [source_file_name]
+[options]
+  -c    generate bytecode; source_file_name.pixicode file will be produced.
+        Note: *.pixicode files are architecture-dependent.
+```
+
+# Basics #
+
+The basis of the Pixilang - are containers and variables.
+
+Container is a two-dimensional array of elements. Each element is the number in a specific format. Each container has one format for all its elements. Each container has its own unique ID number.
+
+Container structure:
+  * two-dimensional table of container elements - this may be some image, text string, piece of audio, or other data;
+  * key color, which will be treated as transparent color (with alpha=0);
+  * reference to a container with alpha-channel;
+  * additional data:
+    * properties (use get\_prop(), set\_prop(), remove\_props(), or a . (dot) operator to access them);
+    * animation (use Animation functions to access it).
+
+The new container can be created with the new() function or returned by some other function. There are two ways to remove the container:
+  * by user through the remove() function;
+  * automatically after the end of the program.
+There is no automatic garbage collector.
+
+Variable can contain 32-bit signed integer or 32-bit floating point number.
+
+Numbers can be described in different formats. Examples:
+  * 33 - decimal;
+  * 33.55 - decimal floating point;
+  * 0xA8BC - hexadecimal;
+  * 0b100101011 - binary;
+  * #FF9080 - color, as in HTML; base format is #RRGGBB, where RR - red intensity (from 00 to FF), GG - green intensity; BB - blue intensity.
+
+**Examples**
+```
+x = new( 4 ) //Create a new container with 4 pixels. Store its ID into the variable x.
+x[ 2 ] = WHITE //Assign the white color to a pixel with number 2.
+remove( x ) //Remove this container
+```
+```
+c = new( 4, 4 ) //Create a new 2D 4x4 pixel container. Store its ID into the variable x.
+c[ 2, 2 ] = WHITE //Assign the white color to a pixel with coordinates x=2 y=2.
+remove( c ) //Remove this container
+```
+```
+str = "Hello" //"Hello" is the string container with five 8-bit characters (UTF-8 encoding).
+//This container (with string) will be created only once, during the bytecode generation.
+//You don't need to delete them manually.
+str[ 0 ] = 'h' //Change first character from 'H' to 'h'.
+```
+```
+a = 4 //Global variable
+fn function()
+{
+  $k = 2 //Local variable
+  function2 = {
+    //Body of another function
+    $x = 899.334 //Local variable
+    //$k is not accessible here
+  }
+  //$x is not accessible here
+}
+//$k and $x are not accessible here
+```
+
+# Paths and file names #
+
+```
+//File is located in several directories relative to the current location of the pixi-program:
+"folder1/folder2/folder3/prog.pixi"
+
+//File is in the current working directory
+//  for Linux/Windows/OSX: in the same folder with Pixilang; 
+//  for iOS: documents; 
+//  for WinCE: root of local filesystem (/);
+"1:/prog.pixi"
+
+//File is in the user's directory (for example /home/alex in Linux):
+"2:/prog.pixi"
+
+//File is in the temporary directory:
+"3:/prog.pixi"
+```
+
+# Built-in operators #
+
+```
+//if, else
+if a == b 
+  { /*This code is executed if a equals b*/ }
+else
+  { /*This code is executed otherwise*/ }
+if x == 4 && y == 2 
+  { /*This code is executed if x equals 4 and y equals 2*/ }
+
+//while
+a = 0
+while( a < 3 )
+{
+  //This code is executed while a less than 3
+  a + 3
+}
+
+//while + break
+a = 0
+while( a < 100 )
+{
+  if a == 10 { break } //If a = 10, break the loop
+  //Use breakX operator to break X nested loops. Example: break2
+  //Use breakall operator to break all current active loops
+  a + 1
+}
+
+//while + continue
+a = 0
+b = 0
+while( a < 100 )
+{
+  if a == 10 { a + 1 continue } //If a = 10, go to the next loop iteration 
+                                //           (ignore the next two lines of code)
+  a + 1
+  b + 1
+}
+
+//go, goto
+m1:
+a + 1
+goto m1 //Go to the m1 label
+
+//halt, stop
+halt //Stop the program here
+
+//include
+include "prog2.txt" //Include code from prog2.txt
+
+//fn
+fn fff( $x, $y ) //Declare function fff with parameters $x and $y
+{
+  //Function fff body
+  ret //Simple return from the function
+  ret( 4 ) //Return with value 4
+}
+```
+
+The following table lists the mathematical operators. Priority 0 - the highest, such operations will be executed first.
+| Priority | Operator | Description | Result | Example |
+|:---------|:---------|:------------|:-------|:--------|
+| 0        | %        | Modulo (remainder) | Integer | a = b % 4 |
+| 0        | /        | Division    | Floating point | a = b / 4 |
+| 0        | div      | Integer division | Integer | a = b div 4 |
+| 0        | `*`      | Multiplication | Depends on the operands | a = b `*` 4 |
+| 1        | +        | Addition    | Depends on the operands | a = b + 4 |
+| 1        | -        | Subtraction | Depends on the operands | a = b - 4 |
+| 2        | >>       | Bitwise right shift | Integer | a = b >> 4 |
+| 2        | <<       | Bitwise left shift | Integer | a = b << 4 |
+| 3        | ==       | Equal to    | Integer 1 or 0 | if a == b {} |
+| 3        | !=       | Not equal to | Integer 1 or 0 | if a != b {} |
+| 3        | <        | Less than   | Integer 1 or 0 | if a < b {} |
+| 3        | >        | Greater than | Integer 1 or 0 | if a > b {} |
+| 3        | <=       | Less than or equal to | Integer 1 or 0 | if a <= b {} |
+| 3        | >=       | Greater than or equal to | Integer 1 or 0 | if a >= b {} |
+| 4        | |        | Bitwise OR  | Integer | a = b | 4 |
+| 4        | ^        | Bitwise XOR | Integer | a = b ^ 4 |
+| 4        | &        | Bitwise AND | Integer | a = b & 4 |
+| 5        |  `|``|`  | Logical OR  | Integer 1 or 0 | if a `|``|` b {} |
+| 5        | &&       | Logical AND | Integer 1 or 0 | if a && b {} |
+
+# Built-in constants #
+
+## Container types ##
+
+64-bit types are not supported by default. But they can be enabled in pixilang.h for the custom build of Pixilang.
+
+  * INT - signed integer (size depends on the version of Pixilang);
+  * INT8 - signed integer (8 bit); range: -128 to 127;
+  * INT16 - signed integer (16 bit); range: -32768 to 32767;
+  * INT32 - signed integer (32 bit); range: -2147483648 to 2147483647;
+  * INT64 - signed integer (64 bit);
+  * FLOAT - floating point (size depends on the version of Pixilang);
+  * FLOAT32 - floating point (32 bit);
+  * FLOAT64 - floating point (64 bit);
+  * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel.
+
+## Container flags ##
+
+  * CFLAG\_INTERP - enable software interpolation.
+
+For OpenGL acceleration:
+  * GL\_MIN\_LINEAR;
+  * GL\_MAG\_LINEAR;
+  * GL\_NICEST - use 32bit color, when possible;
+  * GL\_NO\_XREPEAT;
+  * GL\_NO\_YREPEAT;
+  * GL\_NO\_ALPHA.
+
+## Container resizing flags ##
+
+  * RESIZE\_INTERP1 - rough resizing;
+  * RESIZE\_INTERP2 - resize with linear interpolation;
+  * RESIZE\_UNSIGNED\_INTERP2;
+  * RESIZE\_COLOR\_INTERP1;
+  * RESIZE\_COLOR\_INTERP2.
+
+## Container copying flags ##
+
+  * COPY\_NO\_AUTOROTATE - don't rotate pixels from GL\_SCREEN.
+
+## Sizes ##
+
+  * INT\_SIZE - max size (in bytes) of the signed integer;
+  * FLOAT\_SIZE - max size (in bytes) of the floating point number;
+  * INT\_MAX - max positive integer;
+  * COLORBITS - number of bits per pixel.
+
+## ZLib ##
+
+Compression levels:
+  * Z\_NO\_COMPRESSION;
+  * Z\_BEST\_SPEED;
+  * Z\_BEST\_COMPRESSION;
+  * Z\_DEFAULT\_COMPRESSION.
+
+## File formats ##
+
+  * FORMAT\_RAW;
+  * FORMAT\_JPEG;
+  * FORMAT\_PNG;
+  * FORMAT\_GIF;
+  * FORMAT\_WAVE;
+  * FORMAT\_AIFF (load only);
+  * FORMAT\_PIXICONTAINER - entire Pixilang container with properties and animation.
+
+## Load/Save options ##
+
+  * LOAD\_FIRST\_FRAME - load first frame only.
+
+GIF saving:
+  * GIF\_GRAYSCALE;
+  * GIF\_DITHER.
+
+JPEG saving:
+  * `JPEG_H1V1 - YCbCr, no subsampling (H1V1, YCbCr 1x1x1, 3 blocks per MCU);`
+  * `JPEG_H2V1 - YCbCr, H2V1 subsampling (YCbCr 2x1x1, 4 blocks per MCU);`
+  * `JPEG_H2V2 - YCbCr, H2V2 subsampling (YCbCr 4x1x1, 6 blocks per MCU); default;`
+  * `JPEG_TWOPASS - number of passes = 2.`
+
+## Colors ##
+
+  * ORANGE;
+  * BLACK;
+  * WHITE;
+  * YELLOW;
+  * RED;
+  * GREEN;
+  * BLUE;
+
+## Alignment ##
+
+  * TOP;
+  * BOTTOM;
+  * LEFT;
+  * RIGHT.
+
+## Effects ##
+
+Effect types for effector() function:
+  * EFF\_NOISE - noise;
+  * EFF\_SPREAD\_LEFT - random pixel shift to the left;
+  * EFF\_SPREAD\_RIGHT - random pixel shift to the right;
+  * EFF\_SPREAD\_UP - random pixel shift to the top;
+  * EFF\_SPREAD\_DOWN - random pixel shift to the bottom;
+  * EFF\_HBLUR - horizontal blur;
+  * EFF\_VBLUR - vertical blur;
+  * EFF\_COLOR - color fill.
+
+## OpenGL ##
+
+gl\_draw\_arrays() (analog of the glDrawArrays()) modes:
+  * GL\_POINTS;
+  * GL\_LINE\_STRIP;
+  * GL\_LINE\_LOOP;
+  * GL\_LINES;
+  * GL\_TRIANGLE\_STRIP;
+  * GL\_TRIANGLE\_FAN;
+  * GL\_TRIANGLES.
+
+gl\_blend\_func() (analog of the glBlendFunc()) operations:
+  * GL\_ZERO;
+  * GL\_ONE;
+  * GL\_SRC\_COLOR;
+  * GL\_ONE\_MINUS\_SRC\_COLOR;
+  * GL\_DST\_COLOR;
+  * GL\_ONE\_MINUS\_DST\_COLOR;
+  * GL\_SRC\_ALPHA;
+  * GL\_ONE\_MINUS\_SRC\_ALPHA;
+  * GL\_DST\_ALPHA;
+  * GL\_ONE\_MINUS\_DST\_ALPHA;
+  * GL\_SRC\_ALPHA\_SATURATE.
+
+Global OpenGL containers:
+  * GL\_SCREEN; you can't read pixels from GL\_SCREEN directly, but you can use copy( destination, GL\_SCREEN ) for this;
+  * GL\_ZBUF.
+
+## Audio ##
+
+Flags for set\_audio\_callback() function:
+  * AUDIO\_FLAG\_INTERP2 - linear interpolation (2 points).
+
+## MIDI ##
+
+Flags for midi\_get\_device(), midi\_open\_port() functions:
+  * MIDI\_PORT\_READ;
+  * MIDI\_PORT\_WRITE.
+
+## Events ##
+
+  * EVT - number of container with event, which used by get\_event() function.
+EVT field numbers:
+  * EVT\_TYPE - event type;
+  * EVT\_FLAGS - event flags;
+  * EVT\_TIME - event time;
+  * EVT\_X (0 - center of the screen);
+  * EVT\_Y (0 - center of the screen);
+  * EVT\_KEY - ASCII code of pressed key, or one of the KEY\_xxx constants;
+  * EVT\_SCANCODE - key scancode, or touch number for multitouch devices;
+  * EVT\_PRESSURE - touch pressure (normal - 1024);
+  * EVT\_UNICODE.
+Event types (for the EVT\_TYPE field):
+  * EVT\_MOUSEBUTTONDOWN - first touch;
+  * EVT\_MOUSEBUTTONUP;
+  * EVT\_MOUSEMOVE;
+  * EVT\_TOUCHBEGIN - 2th, 3th etc. touch; only for multitouch devices;
+  * EVT\_TOUCHEND;
+  * EVT\_TOUCHMOVE;
+  * EVT\_BUTTONDOWN;
+  * EVT\_BUTTONUP;
+  * EVT\_SCREENRESIZE;
+  * EVT\_QUIT - Virtual Machine will be closed; if `EVT[ EVT_SCANCODE ] = 0`, this event can't be ignored, user code must be terminated as soon as possible; if `EVT[ EVT_SCANCODE ] = 1`, this event can be ignored by user.
+Event flags (for the EVT\_FLAGS field):
+  * EVT\_FLAG\_SHIFT;
+  * EVT\_FLAG\_CTRL;
+  * EVT\_FLAG\_ALT;
+  * EVT\_FLAG\_MODE;
+  * EVT\_FLAG\_MODS (mask with all modifiers like Shift, Ctrl, etc.);
+  * EVT\_FLAG\_DOUBLECLICK.
+Event key codes (for the EVT\_KEY field):
+  * KEY\_MOUSE\_LEFT;
+  * KEY\_MOUSE\_MIDDLE;
+  * KEY\_MOUSE\_RIGHT;
+  * KEY\_MOUSE\_SCROLLUP;
+  * KEY\_MOUSE\_SCROLLDOWN;
+  * KEY\_BACKSPACE;
+  * KEY\_TAB;
+  * KEY\_ENTER;
+  * KEY\_ESCAPE;
+  * KEY\_SPACE;
+  * KEY\_F1;
+  * KEY\_F2;
+  * KEY\_F3;
+  * KEY\_F4;
+  * KEY\_F5;
+  * KEY\_F6;
+  * KEY\_F7;
+  * KEY\_F8;
+  * KEY\_F9;
+  * KEY\_F10;
+  * KEY\_F11;
+  * KEY\_F12;
+  * KEY\_UP;
+  * KEY\_DOWN;
+  * KEY\_LEFT;
+  * KEY\_RIGHT;
+  * KEY\_INSERT;
+  * KEY\_DELETE;
+  * KEY\_HOME;
+  * KEY\_END;
+  * KEY\_PAGEUP;
+  * KEY\_PAGEDOWN;
+  * KEY\_CAPS;
+  * KEY\_SHIFT;
+  * KEY\_CTRL;
+  * KEY\_ALT;
+  * KEY\_MENU;
+  * KEY\_UNKNOWN (system virtual key code = code - KEY\_UNKNOWN).
+Constants for the set\_quit\_action() function:
+  * QA\_NONE;
+  * QA\_CLOSE\_VM.
+
+## Threads ##
+
+Flags for thread\_create():
+  * THREAD\_FLAG\_AUTO\_DESTROY - thread with this flag will be destroyed automatically.
+
+## Mathematical constants ##
+
+  * M\_E - e.
+  * M\_LOG2E - log<sub>2</sub>e.
+  * M\_LOG10E - log<sub>10</sub>e.
+  * M\_LN2 - log<sub>e</sub>2.
+  * M\_LN10 - log<sub>e</sub>10.
+  * M\_PI - PI.
+  * M\_2\_SQRTPI - 2 / sqrt( PI ).
+  * M\_SQRT2 - sqrt( 2 ).
+  * M\_SQRT1\_2 - 1 / sqrt( 2 ).
+
+## Data processing operations ##
+
+For op\_cn() function:
+  * OP\_MIN - `op_cn() return value = min( C1[ i ], C1[ i + 1 ], ... )`;
+  * OP\_MAX - `op_cn() return value = max( C1[ i ], C1[ i + 1 ], ... )`;
+  * OP\_MAXABS - `op_cn() return value = max( | C1[ i ] + N |, | C1[ i + 1 ] + N |, ... )`;
+  * OP\_SUM - `op_cn() return value = C1[ i ] + C1[ i + 1 ] + ... `
+  * OP\_LIMIT\_TOP - `if C1[ i ] > N { C1[ i ] = N } `;
+  * OP\_LIMIT\_BOTTOM - `if C1[ i ] < N { C1[ i ] = N } `;
+  * OP\_ABS - absolute value;
+  * OP\_SUB2 - subtraction with reverse order of the operands (`N - C1[ i ]`);
+  * OP\_COLOR\_SUB2 - color subtraction with reverse order of the operands (`N - C1[ i ]`);
+  * OP\_DIV2 - division with reverse order of the operands (`N / C1[ i ]`);
+  * OP\_H\_INTEGRAL - running sum (horizontal);
+  * OP\_V\_INTEGRAL - running sum (vertical);
+  * OP\_H\_DERIVATIVE - first difference (horizontal);
+  * OP\_V\_DERIVATIVE - first difference (vertical);
+  * OP\_H\_FLIP;
+  * OP\_V\_FLIP.
+
+For op\_cn(), op\_cc() function:
+  * OP\_ADD - addition;
+  * OP\_SADD - addition with saturation;
+  * OP\_COLOR\_ADD - color addition;
+  * OP\_SUB - subtraction;
+  * OP\_SSUB - subtraction with saturation;
+  * OP\_COLOR\_SUB - color subtraction;
+  * OP\_MUL - multiplication;
+  * OP\_SMUL - multiplication with saturation;
+  * OP\_MUL\_RSHIFT15 - `( C1[ i ] * N ) >> 15`;
+  * OP\_COLOR\_MUL - color multiplication;
+  * OP\_DIV - division;
+  * OP\_COLOR\_DIV - color division;
+  * OP\_AND - bitwise AND;
+  * OP\_OR - bitwise OR;
+  * OP\_XOR - bitwise XOR;
+  * OP\_LSHIFT - bitwise left shift;
+  * OP\_RSHIFT - bitwise right shift;
+  * OP\_EQUAL;
+  * OP\_LESS;
+  * OP\_GREATER;
+  * OP\_COPY - copy;
+  * OP\_COPY\_LESS - copy only if `C1[ i ] < C2[ i ]`;
+  * OP\_COPY\_GREATER - copy only if `C1[ i ] > C2[ i ]`.
+
+For op\_cc() function:
+  * OP\_BMUL - `if C2[ i ] == 0 { C1[ i ] = 0 } `;
+  * OP\_EXCHANGE;
+  * OP\_COMPARE - comparison; return value: 0 indicates that the contents are equal; 1 indicates that the first element that does not match in both containers has a greater value in C1 than in C2; -1 indicates the opposite.
+
+For op\_ccn() function:
+  * OP\_MUL\_DIV - `C1[ i ] * C2[ i ] / N`;
+  * OP\_MUL\_RSHIFT - `( C1[ i ] * C2[ i ] ) >> N` (multiplication with bitwise right shift).
+
+For generator() function:
+  * OP\_SIN - sine;
+  * OP\_SIN8 - fast, but rough sine (8bit table);
+  * OP\_RAND - pseudo random (from -amp to +amp).
+
+## Sampler ##
+
+  * SMP\_INFO\_SIZE - size of the container with sample info.
+
+Sample info field numbers:
+  * SMP\_DEST - destination container;
+  * SMP\_DEST\_OFF - destination offset;
+  * SMP\_DEST\_LEN - destination length;
+  * SMP\_SRC - container with sample;
+  * SMP\_SRC\_OFF\_H - sample offset (left part of fixed point value);
+  * SMP\_SRC\_OFF\_L - sample offset (right part of fixed point value from 0 to 65535);
+  * SMP\_SRC\_SIZE - sample size (or 0 for whole sample);
+  * SMP\_LOOP - loop start;
+  * SMP\_LOOP\_LEN - loop length (or 0, if no loop);
+  * SMP\_VOL1 - start volume (32768 = 1.0);
+  * SMP\_VOL2 - end volume (32768 = 1.0);
+  * SMP\_DELTA - delta (playing speed); fixed point `(real_value * 65536)`;
+  * SMP\_FLAGS - flags.
+
+Sample info flags:
+  * SMP\_FLAG\_INTERP2 - linear interpolation (2 points);
+  * SMP\_FLAG\_INTERP4 - cubic spline interpolation (4 points);
+  * SMP\_FLAG\_PINGPONG - ping-pong loop;
+  * SMP\_FLAG\_REVERSE - reverse direction.
+
+## Native code constants ##
+
+  * CCONV\_DEFAULT;
+  * CCONV\_CDECL;
+  * CCONV\_STDCALL;
+  * CCONV\_UNIX\_AMD64;
+  * CCONV\_WIN64.
+
+## Constants for POSIX compatibility ##
+
+  * FOPEN\_MAX;
+  * SEEK\_CUR;
+  * SEEK\_END;
+  * SEEK\_SET;
+  * EOF;
+  * STDIN;
+  * STDOUT;
+  * STDERR.
+
+## Various ##
+
+  * PIXILANG\_VERSION - Pixilang version ((major<<24) + (minor<<16) + (minor2<<16) + minor3); example: PIXILANG\_VERSION = 0x03040700 for v3.4.7;
+  * OS\_NAME - container with system name (examples: "ios"; "win32", "linux");
+  * ARCH\_NAME - container with architecture name (examples: "x86", "x86\_64", "arm", "mips");
+  * CURRENT\_PATH;
+  * USER\_PATH;
+  * TEMP\_PATH;
+  * OPENGL - 1 if OpenGL available; 0 - otherwise.
+
+# Built-in global variables #
+
+  * WINDOW\_XSIZE - user's window width (in pixels);
+  * WINDOW\_YSIZE - user's window height (in pixels);
+  * FPS - frames per second;
+  * PPI - pixels per inch;
+  * UI\_SCALE - UI scale (defined by user in the global preferences); use it to scale your UI elements; for example: `button_size = PPI * UI_SCALE * 0.5`.
+
+# Reserved container properties #
+
+These properties can be created after the load() function:
+  * sample\_rate;
+  * channels;
+  * file\_format;
+  * frames - number of frames;
+  * frame - current frame number;
+  * fps - frames per second;
+  * play - auto-play status (0/1);
+  * repeat - repeat count (-1 - infinitely);
+  * start\_time;
+  * start\_frame.
+
+# Built-in functions #
+
+## Containers (memory management) ##
+
+### new ###
+
+Create new data container.
+
+Note: immediately after its creation, the container may contain some random values. You should clean it up or fill it with useful data.
+
+**Parameters ( xsize, ysize, type )**
+  * xsize - width.
+  * ysize - height.
+  * type - type of the atomic element of the container. Valid values:
+    * INT - signed integer (size depends on the version of Pixilang);
+    * INT8 - signed integer (8 bit);
+    * INT16 - signed integer (16 bit);
+    * INT32 - signed integer (32 bit);
+    * INT64 - signed integer (64 bit);
+    * FLOAT - floating point (size depends on the version of Pixilang);
+    * FLOAT32 - floating point (32 bit);
+    * FLOAT64 - floating point (64 bit);
+    * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
+
+**Return value**
+
+Number of the container, or -1 (error).
+
+**Examples**
+```
+p = new() //Create 1x1 container. Element type = pixel.
+p = new( 4 ) //Create 4x1 container. Element type = pixel.
+p = new( 4, 4 ) //Create 4x4 container. Element type = pixel.
+p = new( 4, 4, INT32 ) //Create 4x4 container. Element type = INT32.
+```
+
+### remove ###
+
+Remove a container.
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Examples**
+```
+p = new() //Create new container
+remove( p ) //Remove it
+```
+
+### remove\_with\_alpha ###
+
+Remove the container and its alpha channel (linked container).
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+### resize ###
+
+Resize a container.
+
+**Parameters ( pixi, xsize, ysize, type, flags )**
+  * pixi - number of a container.
+  * xsize - new width (or -1 if width not changed).
+  * ysize - height (or -1 if width not changed).
+  * type - type of the atomic element of the container. Valid values:
+    * INT8 - signed integer (8 bit);
+    * INT16 - signed integer (16 bit);
+    * INT32 - signed integer (32 bit);
+    * INT64 - signed integer (64 bit);
+    * FLOAT32 - floating point (32 bit);
+    * FLOAT64 - floating point (64 bit);
+    * PIXEL - pixel; will be converted to type INTx, where x - number of bits per pixel;
+  * flags - resizing flags (RESIZE\_xxx); optional.
+
+**Return value**
+
+0 - successful; 1 - error.
+
+**Examples**
+```
+p = new( 4, 4 ) //Create new container
+resize( p, 32, 32 ) //Resize it from 4x4 to 32x1
+resize( p, -1, 64 ) //Resize it from 32x32 to 32x64
+remove( p ) //Remove
+```
+
+### rotate ###
+
+Rotate the container by angle\*90 degrees.
+
+**Параметры ( pixi, angle )**
+
+### convert\_type ###
+
+Convert the type of a container.
+
+**Parameters ( pixi, new\_type )**
+
+### clean ###
+
+Clean a container (fill with zeroes or with selected values).
+
+**Parameters ( dest\_cont, v, offset, count )**
+  * dest\_cont - container number;
+  * v - value; optional; default - 0;
+  * offset - offset in dest\_cont; optional; default - 0;
+  * count - number of elements to fill; optional; default - whole container.
+
+**Examples**
+```
+p = new() //Create new container
+clean( p ) //Clean with zero
+clean( p, 3 )
+clean( p, 3, 0, 24 ) //Fill 24 elements with value 3
+remove( p ) //Remove
+```
+
+### clone ###
+
+Make a duplicate of the container.
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Return value**
+
+Number of the new container, or -1 (error).
+
+### copy ###
+
+Copy container elements from src to dest.
+
+**Parameters ( dest, src, dest\_offset, src\_offset, count, dest\_step, src\_step, flags )**
+  * dest - destination container;
+  * src - source container;
+  * dest\_offset - offset in destination (first element to copy);
+  * src\_offset - offset in source (first element to copy);
+  * count - number of elements to copy;
+  * dest\_step - destination writing step (default - 1);
+  * src\_step - source reading step (default - 1);
+  * flags - COPY\_xxx flags; optional.
+
+**Examples**
+```
+//Copy all elements from img1 to img2:
+copy( img2, img1 )
+//Copy elements 8...200 from img1 to img2:
+copy( img2, img1, 8, 8, 200 )
+//Copy elements 8...400 from img1 to img2 with step 2:
+copy( img2, img1, 8, 8, 200, 2, 2 )
+```
+
+**Return value**
+
+Number of copied elements.
+
+### get\_size ###
+
+Get size of a container (number of elements).
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Examples**
+```
+p = new( 8, 8 ) //Create a new container 8x8
+size = get_size( p ) //Save its size to the "size" variable
+remove( p )
+```
+
+### get\_xsize ###
+
+Get width of a container.
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Examples**
+```
+p = new( 8, 8 ) //Create a new container 8x8
+xsize = get_xsize( p ) //Save its width to the "xsize" variable
+remove( p )
+```
+
+### get\_ysize ###
+
+Get height of a container.
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Examples**
+```
+p = new( 8, 8 ) //Create a new container 8x8
+ysize = get_xsize( p ) //Save its height to the "ysize" variable
+remove( p )
+```
+
+### get\_esize ###
+
+Get the size of the element of a container (in bytes).
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Examples**
+```
+p = new( 8, 8, INT32 ) //Create a new container 8x8; element type = INT32
+esize = get_esize( p ) //Save its element's size to the "esize" variable
+//Now esize = 4.
+remove( p )
+```
+
+### get\_type ###
+
+Get the type of the element of a container
+
+**Parameters ( pixi )**
+  * pixi - number of a container.
+
+**Examples**
+```
+p = new( 8, 8, FLOAT32 ) //Create a new container 8x8; element type = FLOAT32
+type = get_type( p ) //Save its element's type to the "type" variable
+//Now type = FLOAT32.
+remove( p )
+```
+
+### get\_flags ###
+
+Get container flags.
+List of supported flags is here: [PixilangV3Manual#Container\_flags](PixilangV3Manual#Container_flags.md)
+
+**Parameters ( pixi )**
+
+**Return value**
+
+Container flags.
+
+### set\_flags ###
+
+Set container flags.
+List of supported flags is here: [PixilangV3Manual#Container\_flags](PixilangV3Manual#Container_flags.md)
+
+**Parameters ( pixi, flags )**
+
+**Examples**
+```
+set_flags( img, GL_MIN_LINEAR | GL_MAG_LINEAR )
+```
+
+### reset\_flags ###
+
+Reset container flags.
+
+**Parameters ( pixi, flags )**
+
+### get\_prop ###
+
+Get property value of the container. Each container can have unlimited number of properties.
+
+Another way to get a property - use a . (dot) operator. Example: value = image.fps
+
+**Parameters ( pixi, prop\_name, def\_value )**
+  * pixi - number of a container;
+  * prop\_name - property name;
+  * def\_vaule - default value, if the property is not exists; optional.
+
+**Return value**
+
+Value of selected property.
+
+### set\_prop ###
+
+Set property value of the container.
+
+Another way to set a property - use a . (dot) operator. Example: image.fps = 30
+
+**Parameters ( pixi, prop\_name, value )**
+  * pixi - number of a container;
+  * prop\_name - property name;
+  * value.
+
+**Examples**
+```
+p = new( 8, 8, INT32 ) //Create a new container
+set_prop( p, "speed", 777 ) //Add "speed" property to this container
+v = get_prop( p, "speed" ) //Read the value of "speed" property
+//Or more simple way:
+p.speed = 777
+v = p.speed
+```
+
+### remove\_props ###
+
+Remove all properties of the selected container.
+
+**Parameters ( pixi )**
+
+### show\_memory\_debug\_messages ###
+
+**Parameters ( enable )**
+
+### zlib\_pack ###
+
+**Parameters ( source, level )**
+  * source - container that will be compressed;
+  * level - Zlib compression level (Z\_NO\_COMPRESSION, Z\_BEST\_SPEED, Z\_BEST\_COMPRESSION, Z\_DEFAULT\_COMPRESSION); optional.
+
+**Return value**
+
+Number of the new compressed container (created from the source) or -1 in case of error.
+
+### zlib\_unpack ###
+
+**Parameters ( source )**
+  * source - container that will be decompressed.
+
+**Return value**
+
+Number of the new decompressed container (created from the source) or -1 in case of error.
+
+## Strings ##
+
+### num\_to\_str ###
+
+Aliases: num2str.
+
+Convert number to string.
+
+**Parameters ( str, num )**
+  * str - container for the string;
+  * num - numeric value.
+
+**Examples**
+```
+v = 45.64
+s = ""
+num_to_str( s, v )
+fputs( s ) fputs( "\n" )
+```
+
+### str\_to\_num ###
+
+Aliases: str2num.
+
+Convert string to number.
+
+**Parameters ( str )**
+  * str - container with the string.
+
+**Return value**
+
+Numeric value.
+
+**Examples**
+```
+a = str_to_num( "-55.44" )
+b = a + 4
+```
+
+### strcat ###
+
+Appends a copy of the source string to the destination string. Both strings can be with terminating null character or without it (if the size of the container = number of characters in the string). Size of the source string can be changed after this function executes.
+
+**Parameters ( destination, source )**
+
+**Parameters ( dest, dest\_offset, source, source\_offset )**
+
+### strcmp ###
+
+Compares the string str1 to the string str2. Both strings can be with terminating null character or without it (if the size of the container = number of characters in the string).
+
+**Parameters ( str1, str2 )**
+
+**Parameters ( str1, str1\_offset, str2, str2\_offset )**
+
+**Return value**
+
+A zero value indicates that both strings are equal.
+A value greater than zero indicates that the first character that does not match has a greater value in str1 than in str2; And a value less than zero indicates the opposite.
+
+### strlen ###
+
+Returns the length of string str. String can be with terminating null character or without it (if the size of the container = number of characters in the string).
+
+**Parameters ( str )**
+
+**Parameters ( str, str\_offset )**
+
+**Return value**
+
+Length of string str.
+
+### strstr ###
+
+Returns the offset of the first occurrence of str2 in str1, or a -1 if str2 is not part of str1.
+
+**Parameters ( str1, str2 )**
+
+**Parameters ( str1, str1\_offset, str2, str2\_offset )**
+
+**Return value**
+
+Offset of the first occurrence of str2 in str1, or a -1 if str2 is not part of str1.
+
+### sprintf ###
+
+Writes into the container str a string consisting on a sequence of data formatted as the format argument specifies. Detailed format description can be found here: http://en.wikipedia.org/wiki/Printf_format_string
+
+**Parameters ( str, format, ... )**
+
+**Return value**
+
+On success, the total number of characters written is returned. On failure, a negative number is returned.
+
+**Examples**
+```
+sprintf( str, "Some text\n" ) //Just write some text to the str
+sprintf( str, "Number: %d\n", 12 ) //Write signed decimal integer
+```
+
+### printf ###
+
+Same as sprintf, but the destination - STDOUT.
+
+**Parameters ( format, ... )**
+
+### fprintf ###
+
+Print formatted output to the stream (opened by fopen() or fopen\_mem()).
+
+**Parameters ( stream, format, ... )**
+
+## Log management ##
+
+### logf ###
+
+Send formatted output to the Pixilang log buffer.
+
+**Parameters ( format, ... )**
+
+### get\_log ###
+
+Get the Pixilang log buffer.
+
+**Return value**
+
+The new container with the log buffer. Don't forget to remove this container manually.
+
+### get\_system\_log ###
+
+Get the Pixilang system log buffer.
+
+**Return value**
+
+The new container with the system log buffer. Don't forget to remove this container manually.
+
+## Working with files ##
+
+### load ###
+
+Load container from the file.
+
+**Parameters ( filename, options )**
+
+**Return value**
+
+Number of the new loaded container, or -1 in case of error.
+
+**Examples**
+```
+c = load( "smile.jpg" )
+if c >= 0
+{
+  file_format = c.file_format //FORMAT_RAW / FORMAT_JPEG / ...
+  if file_format == FORMAT_WAVE
+  {
+    printf( "This is audio file\n" )
+  }
+}
+```
+
+### fload ###
+
+Load container from the stream (opened by fopen() or fopen\_mem()).
+
+**Parameters ( stream, options )**
+
+**Return value**
+
+Number of the new loaded container, or -1 in case of error.
+
+### save ###
+
+Save container to the file.
+
+**Parameters ( pixi, filename, format, options )**
+  * pixi;
+  * filename;
+  * format (FORMAT\_RAW, FORMAT\_JPEG, FORMAT\_PNG, FORMAT\_GIF, FORMAT\_WAVE, FORMAT\_PIXICONTAINER);
+  * options:
+    * for JPEG: quality from 0 - worst to 100 - best;
+    * for GIF: flags GIF\_GRAYSCALE, GIF\_DITHER.
+
+**Return value**
+
+0 on success.
+
+**Examples**
+```
+c = load( "smile.jpg" )
+save( c, "smile.png", FORMAT_PNG )
+save( c, "smile2.jpg", FORMAT_JPEG ) //Quality = 85 (default)
+save( c, "smile3.jpg", FORMAT_JPEG, 100 ) //Quality = 100
+```
+
+### fsave ###
+
+Save container to the stream (opened by fopen() or fopen\_mem()).
+
+**Parameters ( pixi, stream, format, options )**
+
+**Return value**
+
+0 on success.
+
+### get\_real\_path ###
+
+Convert Pixilang-style path (e.g. 1:/img.png) to the real filesystem path.
+
+**Parameters ( path )**
+
+**Return value**
+
+Container with real filesystem path. Must be freed with remove().
+
+**Examples**
+```
+filename = "1:/some_file"
+realpath = get_real_path( filename )
+printf( "File name: %s; Real path: %s\n", filename, realpath )
+remove( realpath )
+```
+
+### new\_flist ###
+### remove\_flist ###
+### get\_flist\_name ###
+### get\_flist\_type ###
+### flist\_next ###
+
+Functions for getting a list of files.
+
+**Examples**
+```
+path = CURRENT_PATH
+mask = -1 //Examples: "txt/doc", "avi"; or -1 for all files.
+fl = new_flist( path, mask )
+if fl >= 0
+{
+  printf( "Some files found in %s\n", path )
+  while( 1 )
+  {
+    file_name = get_flist_name( fl )
+    file_type = get_flist_type( fl ) //0 - file; 1 - directory;
+    if file_type == 0
+    {
+      printf( "FILE %s%s\n", path, file_name )
+    }
+    else
+    {
+      printf( "DIR  %s%s\n", path, file_name )
+    }
+    if flist_next( fl ) == 0 //Go to the next file
+    {
+      //No more files
+      break
+    }
+  }
+  remove_flist( fl )
+}
+```
+
+### get\_file\_size ###
+
+Get the size of selected file.
+
+**Parameters ( filename )**
+
+### remove\_file ###
+
+**Parameters ( filename )**
+
+### rename\_file ###
+
+**Parameters ( old\_filename, new\_filename )**
+
+### copy\_file ###
+
+**Parameters ( source\_filename, destination\_filename )**
+
+### create\_directory ###
+
+**Parameters ( directory\_name, mode )**
+  * directory\_name;
+  * mode - system specific mode; optional.
+
+### set\_disk0 ###
+
+Use the _stream_ (opened by fopen() or fopen\_mem()) as virtual disk 0:/ . _stream_ must point to the opened TAR archive.
+
+**Parameters ( stream )**
+  * stream - stream, or 0 if you want to disable disk 0:/
+
+### get\_disk0 ###
+
+### fopen ###
+
+The fopen() function shall open the file whose pathname is the string pointed to by _filename_, and associates a stream with it.
+
+**Parameters ( filename, mode )**
+  * filename;
+  * mode:
+    * r or rb - open file for reading;
+    * w or wb - truncate to zero length or create file for writing;
+    * a or ab - append; open or create file for writing at end-of-file;
+    * r+ or rb+ or r+b - open file for update (reading and writing);
+    * w+ or wb+ or w+b - truncate to zero length or create file for update;
+    * a+ or ab+ or a+b - append; open or create file for update, writing at end-of-file.
+
+**Return value**
+
+Upon successful completion, fopen() shall return ID of the object controlling the stream. Otherwise, 0 shall be returned.
+
+**Examples**
+```
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading
+fclose( f ) //...and close it.
+```
+
+### fopen\_mem ###
+
+Open the _data_ container as file.
+
+**Parameters ( data )**
+
+**Return value**
+
+Upon successful completion, fopen\_mem() shall return ID of the object controlling the stream. Otherwise, 0 shall be returned.
+
+### fclose ###
+
+The fclose() function shall cause the stream to be flushed and the associated file to be closed.
+
+**Parameters ( stream )**
+
+**Return value**
+
+Upon successful completion, fclose() shall return 0.
+
+**Examples**
+```
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
+c = fgetc( f ) //Get a byte from this file.
+fclose( f ) //Close the stream.
+```
+
+### fputc ###
+
+Put a byte on a stream.
+
+**Parameters ( c, stream )**
+
+**Examples**
+```
+f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
+fputc( 0x12, f ) //Put a byte 0x12 to this file.
+fclose( f ) //Close the stream.
+```
+
+### fputs ###
+
+Put a string on a stream.
+
+**Parameters ( s, stream )**
+
+**Examples**
+```
+f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
+str = "Hello!"
+fputc( str, f ) //Put a string "Hello!" to this file.
+fclose( f ) //Close the stream.
+```
+
+### fwrite ###
+
+The fwrite() function shall write, from the container _data_, up to _size_ bytes, to the stream pointed to by _stream_.
+
+**Parameters ( data, size, stream, data\_offset\_optional )**
+
+**Return value**
+
+The fwrite() function shall return the number of bytes successfully written, which may be less than _size_ if a write error is encountered.
+
+**Examples**
+```
+f = fopen( "/tmp/data.txt", "wb" ) //Open file data.txt for writing.
+str = "Hello!"
+fwrite( str, 2, f ) //Put first two bytes from the string "Hello!" to this file.
+fclose( f ) //Close the stream.
+```
+
+### fgetc ###
+
+Get a byte from a stream.
+
+**Parameters ( stream )**
+
+**Return value**
+
+Upon successful completion, fgetc() shall return the next byte from the input stream pointed to by _stream_.
+
+### fgets ###
+
+Get a string from a stream.
+
+**Parameters ( s, n, stream, offset )**
+
+**Return value**
+
+Length of the string.
+
+**Examples**
+```
+string = new( 256, 1, INT8 )
+f = fopen( "/tmp/data.txt", "rb" ) //Open file data.txt for reading.
+fgets( string, 256, f ) //Get a string from this file.
+fclose( f ) //Close the stream.
+```
+
+### fread ###
+
+The fread() function shall read into the container pointed to by _data_ up to _size_ bytes, from the stream pointed to by _stream_.
+
+**Parameters ( data, size, stream, data\_offset\_optional )**
+
+**Return value**
+
+Upon successful completion, fread() shall return the number of bytes successfully read which is less than _size_ only if a read error or end-of-file is encountered.
+
+### feof ###
+
+Test end-of-file indicator on a stream.
+
+**Parameters ( stream )**
+
+**Return value**
+
+The feof() function shall return non-zero if and only if the end-of-file indicator is set for _stream_.
+
+### fflush ###
+
+Flush a stream.
+
+**Parameters ( stream )**
+
+### fseek ###
+
+Reposition a file-position indicator in a stream.
+
+**Parameters ( stream, offset, origin )**
+  * stream;
+  * offset;
+  * origin:
+    * SEEK\_SET - beginning of file;
+    * SEEK\_CUR - current position of the file pointer;
+    * SEEK\_END - end of file.
+
+### ftell ###
+
+Return a file offset in a stream.
+
+**Parameters ( stream )**
+
+**Return value**
+
+Upon successful completion, ftell() shall return the current value of the file-position indicator for the stream measured in bytes from the beginning of the file.
+
+**Examples**
+```
+//One of the ways to get the file size:
+f = fopen( "/tmp/data.txt", "rb" )
+fseek( f, 0, SEEK_END )
+size_of_file = ftell( f )
+fclose( f )
+```
+
+### setxattr ###
+
+Set an extended attribute value of the file.
+
+**Parameters ( path, attr\_name, data, data\_size\_in\_bytes, flags )**
+
+**Return value**
+
+0 on success, or -1 in case of error.
+
+## Graphics ##
+
+### frame ###
+
+Draw the current screen on the display and sleep for selected number of milliseconds.
+
+**Parameters ( delay, x, y, xsize, ysize )**
+  * delay - pause length in milliseconds;
+  * x, y, xsize, ysize - region of the screen; optional parameters.
+
+**Return value**
+
+  * 0 - successful;
+  * -1 - no screen;
+  * -2 - timeout (graphics engine is suspended?).
+
+### vsync ###
+
+Enable/disable vertical synchronization (when possible). vsync(1) - enable. vsync(0) - disable.
+
+**Parameters ( enable )**
+
+### set\_screen ###
+
+Set current screen. Number of the default screen container is 0.
+
+**Parameters ( pixi )**
+  * pixi - container with image which will be the screen.
+
+### get\_screen ###
+
+Get current screen.
+
+**Return value**
+
+Container's number.
+
+### set\_zbuf ###
+
+**Parameters ( zbuf\_container )**
+
+Set container with Z-buffer. Must be INT32.
+
+### get\_zbuf ###
+
+### clear\_zbuf ###
+
+### get\_color ###
+
+Get color by r,g,b (red,green,blue).
+
+**Parameters ( red, green, blue )**
+  * red - red intensity (0..255);
+  * green - green intensity (0..255);
+  * blue - blue intensity (0..255).
+
+**Return value**
+
+Color.
+
+### get\_red ###
+
+Get red component intensity in a selected color.
+
+**Parameters ( color )**
+
+**Return value**
+
+Red component intensity. From 0 to 255.
+
+### get\_green ###
+
+Get green component intensity in a selected color.
+
+**Parameters ( color )**
+
+**Return value**
+
+Green component intensity. From 0 to 255.
+
+### get\_blue ###
+
+Get blue component intensity in a selected color.
+
+**Parameters ( color )**
+
+**Return value**
+
+Blue component intensity. From 0 to 255.
+
+### get\_blend ###
+
+Get an intermediate color value between two selected colors.
+
+**Parameters ( c1, c2, v )**
+  * c1 - first color;
+  * с2 - second color;
+  * v - position between c1 and c2; 0 - closer to c1; 255 - closer to c2.
+
+**Return value**
+
+Intermediate color.
+
+### transp ###
+
+Set transparency.
+
+**Parameters ( t )**
+  * t - transparency from 0 to 255.
+
+### get\_transp ###
+
+### clear ###
+
+Clear current screen.
+
+**Parameters ( color )**
+
+### dot ###
+
+Draw a dot.
+
+**Parameters ( x, y, color )**
+
+### dot3d ###
+
+Draw a dot in 3D.
+
+**Parameters ( x, y, z, color )**
+
+### get\_dot ###
+
+Get a dot's color.
+
+**Parameters ( x, y )**
+
+**Return value**
+
+Color.
+
+### get\_dot3d ###
+
+Get a dot's color in 3D.
+
+**Parameters ( x, y, z )**
+
+**Return value**
+
+Color.
+
+### line ###
+
+Draw a line.
+
+**Parameters ( x1, y1, x2, y2, color )**
+
+### line3d ###
+
+Draw a line in 3D.
+
+**Parameters ( x1, y1, z1, x2, y2, z2, color )**
+
+### box ###
+
+Draw a rectangle.
+
+**Parameters ( x, y, xsize, ysize, color )**
+
+### fbox ###
+
+Draw a filled rectangle.
+
+**Parameters ( x, y, xsize, ysize, color )**
+
+### pixi ###
+
+Display the container with image.
+
+**Parameters ( pixi\_cont, x, y, color, xscale, yscale, src\_x, src\_y, src\_xsize, src\_ysize )**
+  * pixi\_cont - container number (source);
+  * x;
+  * y;
+  * color - color of the filter; optional; default value is WHITE;
+  * xscale - scaling factor (x axis); optional; default value is 1;
+  * yscale - scaling factor (y axis); optional; default value is 1;
+  * src\_x - x offset in pixi\_cont; default - 0;
+  * src\_y - y offset in pixi\_cont; default - 0;
+  * src\_xsize - width of drawable pixi\_cont region; default - width of pixi\_cont;
+  * src\_ysize - height of drawable pixi\_cont region; default - height of pixi\_cont.
+
+**Examples**
+```
+pixi( image )
+pixi( image, 10, 20 )
+pixi( image, 30, 40, GREEN )
+pixi( image, 90, 20, GREEN, 0.5, 0.5 )
+```
+
+### triangles3d ###
+
+Draw array of triangles.
+
+**Parameters ( vertices, triangles )**
+  * vertices - container of vertices; width = 8; height = number of vertices; vertex data format: `X, Y, Z, TextureX (0..Width), TextureY (0..Height), Unused, Unused, Unused`;
+  * triangles - container of triangles; width = 8; height = number of triangles; triangle data format: `NumberOfVertex1, NumberOfVertex2, NumberOfVertex3, Color, Texture (or -1), Transparency (0..255), Unused, Order (triangles with lower Order value will be drawn first)`.
+
+### sort\_triangles3d ###
+
+Sort triangles by Z value.
+
+**Parameters ( vertices, triangles )**
+
+### set\_key\_color ###
+
+Set / reset the color of transparency in the container.
+
+**Parameters ( pixi, color )**
+  * pixi - container number;
+  * color - color to be transparent; ignore this parameter if you want to disable transparent color for this container.
+
+### get\_key\_color ###
+
+### set\_alpha ###
+
+Attach a container with alpha channel to another container. Alpha channel should be of type INT8.
+
+**Parameters ( pixi, alpha )**
+  * pixi - container number;
+  * alpha - container with alpha channel; ignore this parameter if you want to disable alpha-channel for the pixi container.
+
+### get\_alpha ###
+
+Get linked container with the alpha channel.
+
+**Parameters ( cont )**
+
+**Return value**
+
+Container number or -1 (if no alpha channel).
+
+### print ###
+
+Show text on the screen.
+
+**Parameters ( text, x, y, color, align, max\_xsize )**
+  * text - container with text;
+  * x, y - point of the alignment;
+  * color;
+  * align - alignment;
+  * max\_xsize; optional.
+
+**Examples**
+```
+print( "Hello Pixi!", 0, 0 ) //color = WHITE; centered;
+print( "line1\nline2", 50, 50, RED ) //centered;
+print( "line1\nline2", -50, 50, RED, TOP | LEFT ) //alignment = top left;
+```
+
+### get\_text\_xsize ###
+
+**Parameters ( text, align, max\_xsize )**
+  * text;
+  * align;
+  * max\_xsize; optional.
+
+**Return value**
+
+Text width in pixels.
+
+### get\_text\_ysize ###
+
+**Parameters ( text, align, max\_xsize )**
+  * text;
+  * align;
+  * max\_xsize; optional.
+
+**Return value**
+
+Text height in pixels.
+
+### set\_font ###
+
+**Parameters ( first\_char\_utf32, font\_image, xchars, ychars )**
+
+### get\_font ###
+
+**Parameters ( char\_utf32 )**
+
+**Return value**
+
+Container ID with font for selected character.
+
+### effector ###
+
+Apply an effect to selected screen area. Coordinates of this function can't be changed by t\_xxx transformation functions.
+
+**Parameters ( type, power, color, x, y, xsize, ysize, x\_step, y\_step )**
+
+### color\_gradient ###
+
+Draw a color gradient.
+
+**Parameters ( color1, transp1, color2, transp2, color3, transp3, color4, transp4, x, y, xsize, ysize, x\_step, y\_step )**
+
+### split\_rgb ###
+
+Split a container (with pixels) by color channels (red, green, blue) and vice versa.
+
+**Parameters ( direction, image, red\_channel, green\_channel, blue\_channel, image\_offset, channel\_offset, size )**
+  * direction: 0 - from image to RGB; 1 - from RGB to image;
+  * image - source/destination container of type PIXEL;
+  * red\_channel - container with red components of the image; optional; can be -1;
+  * green\_channel - container with green components of the image; optional; can be -1;
+  * blue\_channel - container with blue components of the image; optional; can be -1;
+  * image\_offset - offset in the image container; optional;
+  * channel\_offset - offset in the channel containers; optional;
+  * size - number of pixels to split; optional.
+
+**Examples**
+```
+img = load( "some_image.jpg" )
+xsize = get_xsize( img )
+ysize = get_ysize( img )
+r = new( xsize, ysize, INT16 )
+g = new( xsize, ysize, INT16 )
+b = new( xsize, ysize, INT16 )
+split_rgb( 0, img, r, g, b ) //Convert image to RGB
+//Get red value (from 0 to 255) of the first pixel:
+value = r[ 0 ]
+```
+
+### split\_ycbcr ###
+
+Same as split\_rgb() but for YCbCr conversion.
+
+## OpenGL functions ##
+
+### set\_gl\_callback ###
+
+Set OpenGL frame drawing callback.
+
+**Parameters ( gl\_callback, user\_data )**
+  * gl\_callback - callback function with parameters ($user\_data); almost all graphics functions will be redirected to OpenGL within this callback;
+  * user\_data - some user-defined data that will be sent to gl\_callback() during the frame redrawing.
+
+**Examples**
+```
+fn gl_callback( $user_data )
+{
+  set_screen( GL_SCREEN ) //Enable OpenGL drawing mode
+  clear( YELLOW )
+  set_screen( 0 ) //Back to the default screen
+}
+
+set_gl_callback(
+  gl_callback, //OpenGL frame drawing function
+  0 ) //Some user-defined data
+
+while( 1 ) 
+{ 
+  while( get_event() ) { if EVT[ EVT_TYPE ] == EVT_QUIT { break2 } }
+  frame() 
+}
+
+set_gl_callback( -1 ) //Remove OpenGL callback
+```
+
+### remove\_gl\_data ###
+
+Remove all GL-specific data from the container. This data will be created automatically during the gl\_callback() execution.
+
+**Parameters ( container )**
+
+### gl\_draw\_arrays ###
+
+Hybrid of the OpenGL functions glColor4ub(), glBindTexture(), glVertexPointer(), glColorPointer(), glTexCoordPointer(), glDrawArrays().
+
+**Parameters ( mode, first, count, color\_r, color\_g, color\_b, color\_a, texture, vertex\_array, color\_array, texcoord\_array )**
+  * mode - what kind of primitives to render:
+    * GL\_POINTS;
+    * GL\_LINE\_STRIP;
+    * GL\_LINE\_LOOP;
+    * GL\_LINES;
+    * GL\_TRIANGLE\_STRIP;
+    * GL\_TRIANGLE\_FAN;
+    * GL\_TRIANGLES;
+  * first - starting index in the enabled arrays;
+  * count - number of indices to be rendered;
+  * color\_r, color\_g, color\_b, color\_a - RGBA color (only if color\_array is not specified);
+  * texture - container with texture, or -1;
+  * vertex\_array - INT8, INT16 or FLOAT32 container with vertices;
+  * color\_array - INT8 or FLOAT32 container with RGBA colors, or -1; optional;
+  * texcoord\_array - INT8, INT16 or FLOAT32 container with texture coordinates; optional.
+
+### gl\_blend\_func ###
+
+Full analog of the OpenGL function glBlendFunc() (specify pixel arithmetic).
+
+**Parameters ( sfactor, dfactor )**
+
+### gl\_bind\_framebuffer ###
+
+Convert selected pixel container (cnum) to the OpenGL framebuffer (with attached texture) and bind it.
+All rendering operations will be redirected to this framebuffer.
+To unbind - just call this function without parameters.
+
+**Parameters ( cnum )**
+
+## Animation ##
+
+### pack\_frame ###
+
+Pack current frame (from container data to hidden storage with frames). Frame number must be stored in the "frame" container property.
+
+**Parameters ( pixi )**
+
+### unpack\_frame ###
+
+Unpack current frame (from hidden storage with frames to container data). Frame number must be stored in the "frame" container property.
+
+**Parameters ( pixi )**
+
+### create\_anim ###
+
+Create the hidden storage with frames (animation) in the selected container.
+
+**Parameters ( pixi )**
+
+### remove\_anim ###
+
+Remove the hidden storage with frames (animation) from the selected container.
+
+**Parameters ( pixi )**
+
+### clone\_frame ###
+
+Clone current frame. Frame number must be stored in the "frame" container property.
+
+**Parameters ( pixi )**
+
+### remove\_frame ###
+
+Remove current frame. Frame number must be stored in the "frame" container property.
+
+**Parameters ( pixi )**
+
+### play ###
+
+Enable auto-play mode. Frame will be changed automatically during the pixi() function call.
+
+**Parameters ( pixi )**
+
+### stop ###
+
+Disable auto-play mode.
+
+**Parameters ( pixi )**
+
+## Transformation ##
+
+Coordinate system transformation.
+
+### t\_reset ###
+
+Reset transformation.
+
+### t\_rotate ###
+
+**Parameters ( angle, x, y, z )**
+  * angle - specifies the angle of rotation, in degrees;
+  * x, y, z - specify the x, y, and z coordinates of a vector, respectively.
+
+### t\_translate ###
+
+**Parameters ( x, y, z )**
+
+### t\_scale ###
+
+**Parameters ( x, y, z )**
+
+### t\_push\_matrix ###
+
+Save current transformation matrix to the stack.
+
+### t\_pop\_matrix ###
+
+Restore previous saved transformation matrix from the stack.
+
+### t\_get\_matrix ###
+
+Get transformation matrix (4x4 FLOAT).
+
+**Parameters ( matrix\_container )**
+
+### t\_set\_matrix ###
+
+Set transformation matrix (4x4 FLOAT).
+
+**Parameters ( matrix\_container )**
+
+### t\_mul\_matrix ###
+
+Multiply transformation matrix (4x4 FLOAT).
+`Current matrix = current matrix * matrix_container`
+
+**Parameters ( matrix\_container )**
+
+### t\_point ###
+
+Transform point (container with 3 elements of type FLOAT).
+
+**Parameters ( point\_coordinates )**
+
+## Audio ##
+
+### set\_audio\_callback ###
+
+**Parameters ( callback, userdata, freq, format, channels, flags )**
+
+**Examples**
+```
+fn audio_callback( $stream, $userdata, $channels, $frames, $time )
+{
+  generator( OP_SIN, $channels[ 0 ], 0, 32767 / 2, 0.1, 0 ) //Left channel
+  generator( OP_SIN, $channels[ 1 ], 0, 32767 / 2, 0.1, 0 ) //Right channel
+  ret(1)
+}
+//Start audio:
+set_audio_callback( audio_callback, 0, 22050, INT16, 2, AUDIO_FLAG_INTERP2 )
+```
+```
+//Stop audio:
+set_audio_callback( -1 )
+```
+
+### enable\_audio\_input ###
+
+**Parameters ( disable\_enable )**
+
+### get\_note\_freq ###
+
+**Parameters ( note, finetune )**
+  * note - note number; 0 = C-0; 1 = C#0; 2 = D-0 ...
+  * finetune - from -64 (previous note) to 64 (next note).
+
+**Return value**
+
+Note frequency in Hz.
+
+## MIDI ##
+
+### midi\_open\_client ###
+
+**Parameters ( client\_name )**
+
+**Return value**
+
+Client ID.
+
+### midi\_close\_client ###
+
+**Parameters ( client\_id )**
+
+### midi\_get\_device ###
+
+**Parameters ( client\_id, device\_num, flags )**
+
+**Return value**
+
+Selected device name, or -1 if not exists.
+
+### midi\_open\_port ###
+
+**Parameters ( client\_id, port\_name, device\_name, flags )**
+
+**Return value**
+
+Port ID.
+
+### midi\_reopen\_port ###
+
+**Parameters ( client\_id, port\_id )**
+
+### midi\_close\_port ###
+
+**Parameters ( client\_id, port\_id )**
+
+### midi\_get\_event ###
+
+**Parameters ( client\_id, port\_id, data\_cont )**
+
+**Return value**
+
+Size of current MIDI event (in bytes).
+
+### midi\_get\_event\_time ###
+
+**Parameters ( client\_id, port\_id )**
+
+**Return value**
+
+Time of current event (in system ticks).
+
+### midi\_next\_event ###
+
+Go to the next event.
+
+**Parameters ( client\_id, port\_id )**
+
+### midi\_send\_event ###
+
+**Parameters ( client\_id, port\_id, data\_cont, data\_size, t )**
+
+## Time ##
+
+### start\_timer ###
+
+Start selected timer.
+
+**Parameters ( timer\_num )**
+
+### get\_timer ###
+
+Get value (in milliseconds) of selected timer.
+
+**Parameters ( timer\_num )**
+
+**Return value**
+
+32bit value (in milliseconds) of selected timer.
+
+### get\_year ###
+
+### get\_month ###
+
+### get\_day ###
+
+### get\_hours ###
+
+### get\_minutes ###
+
+### get\_seconds ###
+
+### get\_ticks ###
+
+Get current system tick counter (32bit).
+
+### get\_tps ###
+
+Get number of system ticks per second.
+
+### sleep ###
+
+**Parameters ( delay )**
+  * delay - delay in milliseconds.
+
+## Events ##
+
+### get\_event ###
+
+Get a new event from the system.
+
+**Return value**
+
+0 - no events. 1 - event is received and placed into the container EVT.
+
+### set\_quit\_action ###
+
+Set the program's behavior when receiving event EVT\_QUIT.
+
+**Parameters ( action )**
+  * action - action number.
+
+Possible values for the action parameter:
+  * QA\_NONE - do nothing;
+  * QA\_CLOSE\_VM (default) - close the current virtual machine, but don't quit from Pixilang.
+
+## Threads ##
+
+### thread\_create ###
+
+**Parameters ( thread\_function, user\_data, flags\_optional )**
+
+**Return value**
+
+Thread ID or -1 if error occurred.
+
+**Examples**
+```
+fn thread_body( $thread_id, $user_data )
+{
+  printf( "Thread code\n" )
+}
+thread_id = thread_create( thread_body, 0 )
+err = thread_destroy( thread_id, 1000 ) //Wait for the thread to terminate
+if err == 0 { printf( "Thread closed successful\n" ) }
+if err == 1 { printf( "Time-out. Thread is not closed\n" ) }
+if err == 2 { printf( "Some error occurred in thread_destroy() function\n" ) }
+```
+
+### thread\_destroy ###
+
+**Parameters ( thread\_id, timeout\_ms )**
+  * thread\_id;
+  * timeout\_ms - time-out in milliseconds; negative values - don't try to kill the thread after timeout; INT\_MAX - infinite.
+
+**Return value**
+
+  * 0 - thread closed successfully;
+  * 1 - time-out;
+  * 2 - some error.
+
+### mutex\_create ###
+
+**Examples**
+```
+new_mutex = mutex_create()
+mutex_lock( new_mutex )
+mutex_unlock( new_mutex )
+mutex_destroy( new_mutex )
+```
+
+### mutex\_destroy ###
+
+### mutex\_lock ###
+
+### mutex\_trylock ###
+
+### mutex\_unlock ###
+
+## Mathematical ##
+
+acos( x ); acosh( x ); asin( x ); asinh( x ); atan( x ); atanh( x ); ceil( x ); cos( x ); cosh( x ); exp( x ); exp2( x ); expm1( x );
+abs( x ); floor( x ); mod( x, y ); log( x ); log2( x ); log10( x ); pow( base, exp ); sin( x ); sinh( x ); sqrt( x ); tan( x ); tanh( x );
+
+rand() - get random number from 0 to 32767;
+rand\_seed( seed ) - set random seed.
+
+## Data processing ##
+
+### op\_cn ###
+
+Execute data processing operation.
+Operands:
+  1. container C1 (destination);
+  1. numerical value N.
+
+Operation expression:
+```
+for each element of C1: C1[ i ] = C1[ i ] OP N,
+Where i - element number; OP - selected operation.
+```
+
+**Parameters ( opcode, C1, N ) - for whole container C1**
+
+**Parameters ( opcode, C1, N, x, xsize ) - for 1D region**
+
+**Parameters ( opcode, C1, N, x, y, xsize, ysize ) - for 2D region**
+
+  * opcode - operation;
+  * C1 - destination container;
+  * N - numerical value;
+  * x,y,xsize,ysize - region.
+
+**Examples**
+```
+//Add 32 to the whole container img:
+op_cn( OP_ADD, img, 32 )
+
+//Add 32 to 128..256th elements of the container img:
+op_cn( OP_ADD, img, 32, 128, 128 ) 
+
+//Add 32 to two-dimensional region (8,8,32,32) of elements:
+op_cn( OP_ADD, img, 32, 8, 8, 32, 32 )
+```
+
+### op\_cc ###
+
+Execute data processing operation.
+Operands:
+  1. container C1 (destination);
+  1. container C2 (source).
+
+Operation expression:
+```
+for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ],
+Where i - element number; OP - selected operation.
+```
+
+**Parameters ( opcode, C1, C2 ) - for whole container C1**
+
+**Parameters ( opcode, C1, C2, dest\_x, src\_x, xsize ) - for 1D region**
+
+**Parameters ( opcode, C1, C2, dest\_x, dest\_y, src\_x, src\_y, xsize, ysize ) - for 2D region**
+
+  * opcode - operation;
+  * C1 - destination container;
+  * C2 - source container;
+  * x,y,xsize,ysize - region.
+
+### op\_ccn ###
+
+Execute data processing operation.
+Operands:
+  1. container C1 (destination);
+  1. container C2 (source);
+  1. numerical value N.
+
+Operation expression:
+```
+for each element of C1: C1[ i ] = C1[ i ] OP C2[ i ] OP2 N,
+Where i - element number; OP - selected operation; OP2 - additional operation associated with OP.
+```
+
+**Parameters ( opcode, C1, C2, N ) - for whole container C1**
+
+**Parameters ( opcode, C1, C2, N, dest\_x, src\_x, xsize ) - for 1D region**
+
+**Parameters ( opcode, C1, C2, N, dest\_x, dest\_y, src\_x, src\_y, xsize, ysize ) - for 2D region**
+
+  * opcode - operation;
+  * C1 - destination container;
+  * C2 - source container;
+  * N - numerical value;
+  * x,y,xsize,ysize - region.
+
+### generator ###
+
+Generate a signal.
+
+**Parameters ( opcode, pixi, phase, amplitude, delta\_x, delta\_y, x, y, xsize, ysize )**
+  * opcode - operation;
+  * pixi - container;
+  * phase;
+  * amplitude;
+  * delta\_x;
+  * delta\_y;
+  * x,y,xsize,ysize - region.
+
+**Examples**
+```
+//Generate a sine wave to the whole container img:
+generator( OP_SIN, img, 0, 1, 0.1, 0.1 )
+
+//Generate a rough sine wave to the whole container img:
+generator( OP_SIN8, img, 0, 1, 0.1, 0.1 )
+
+//Generate a sine wave to 8...128 elements of the container img:
+generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 120 )
+
+//Generate a sine wave to region (8,8,32,32) of the container img:
+generator( OP_SIN, img, 0, 1, 0.1, 0.1, 8, 8, 32, 32 )
+```
+
+### wavetable\_generator ###
+
+Very fast multichannel sampler, where the sample is always looped and fixed-size (256 for 8bit data, or 32768 for 16bit data).
+
+**Parameters ( dest, dest\_offset, dest\_length, table, amp, amp\_delta, pos, pos\_delta, gen\_offset, gen\_step, gen\_count )**
+  * dest - audio destination (INT16 or FLOAT32 container);
+  * dest\_offset;
+  * dest\_length;
+  * table - table with waveform (supported formats: 32768 x INT16, 32768 x FLOAT32);
+  * amp - INT32 array of amplitudes (fixed point 16.16);
+  * amp\_delta - INT32 array of amplitude delta values (fixed point 16.16);
+  * pos - INT32 array of wavetable positions (fixed point 16.16);
+  * pos\_delta - INT32 array of wavetable position delta values (fixed point 16.16);
+  * gen\_offset - number of the first generator;
+  * gen\_step - play every gen\_step generator;
+  * gen\_count - total number of generators to play.
+
+**Return value**
+
+0 if success.
+
+### sampler ###
+
+**Parameters ( sample\_info )**
+
+**Examples**
+```
+sample_data = new( 256, 1, INT16 ) //16bit sample
+sample_info = new( SMP_INFO_SIZE, 1, INT32 )
+clean( sample_info )
+sample_info[ SMP_DEST ] = buffer //Destination container
+sample_info[ SMP_DEST_OFF ] = 0 //Destination offset
+sample_info[ SMP_DEST_LEN ] = 256 //Destination length
+sample_info[ SMP_SRC ] = sample_data
+sample_info[ SMP_SRC_OFF_H ] = 0 //Sample offset (left part of fixed point value)
+sample_info[ SMP_SRC_OFF_L ] = 0 //Sample offset (right part of fixed point value from 0 to 65535)
+sample_info[ SMP_SRC_SIZE ] = 0 //Sample size (0 - whole sample)
+sample_info[ SMP_LOOP ] = 0 //Loop start
+sample_info[ SMP_LOOP_LEN ] = 128 //Loop length (or 0, if no loop)
+sample_info[ SMP_VOL1 ] = 0 //Start volume
+sample_info[ SMP_VOL2 ] = 32768 //End volume (32768 = 1.0)
+sample_info[ SMP_DELTA ] = ( 1 << 16 ) //Delta; fixed point (real_value * 65536)
+sample_info[ SMP_FLAGS ] = SMP_FLAG_INTERP4 | SMP_FLAG_PINGPONG //Cubic spline interpolation and ping-pong loop
+sampler( sample_info ) //Go!
+```
+
+### envelope2p ###
+
+Apply gain and DC-offset two-points envelope to selected container area. Without clipping.
+
+**Parameters ( data\_cont, v1, v2, offset, size, dc\_offset1, dc\_offset2 )**
+  * data\_cont - container with data (audio waveform, for example);
+  * v1 - initial gain (0 - no signal; 32768 - original unchanged amplitude);
+  * v2 - final gain (0 - no signal; 32768 - original unchanged amplitude);
+  * offset - offset in the data\_cont; optional; default - 0;
+  * size - size of area for envelope; optional; default - whole container;
+  * dc\_offset1 - initial DC offset; optional; default - 0;
+  * dc\_offset1 - final DC offset; optional; default - 0.
+
+### gradient ###
+
+**Parameters ( container, val1, val2, val3, val4, x, y, xsize, ysize, x\_step, y\_step )**
+
+### fft ###
+
+Perform a fast fourier transform.
+
+**Parameters ( inverse, im, re, size )**
+
+### new\_filter ###
+
+Create a new filter with the following function:
+```
+output[ n ] = ( a[ 0 ] * input[ n ] + a[ 1 ] * input[ n - 1 ] + ... + a[ a_count - 1 ] * input[ n - a_count - 1 ]
+                                    + b[ 0 ] * output[ n - 1 ] + ... + b[ b_count - 1 ] * output[ n - b_count - 1 ] ) >> rshift;
+```
+
+**Parameters ( flags\_for\_future\_use )**
+
+**Return value**
+
+New container with the filter.
+
+### remove\_filter ###
+
+**Parameters ( filter )**
+
+### reset\_filter ###
+
+**Parameters ( filter )**
+
+### init\_filter ###
+
+**Parameters ( filter, a, b, rshift, flags )**
+  * filter;
+  * a - container with the feedforward filter coefficients;
+  * b - container with the feedback filter coefficients; optional; can be -1 (for FIR filters);
+  * rshift - bitwise right shift for fixed point computations; optional;
+  * flags - for future use; optional.
+
+**Return value**
+
+0 if success.
+
+### apply\_filter ###
+
+**Parameters ( filter, output, input, flags, offset, size )**
+  * filter;
+  * output - output container;
+  * input - input container;
+  * flags - for future use; optional;
+  * offset - output and input offset; optional;
+  * size - size of the processed block; optional.
+
+**Return value**
+
+0 if success.
+
+### replace\_values ###
+
+For each element of dest container: `dest[ i ] = values[ (unsigned)src[ i ] ]`.
+The dest container must have the same type as the values.
+
+**Parameters ( dest, src, values, dest\_offset, src\_offset, size )**
+  * dest - destination;
+  * src - source;
+  * values - substitution values;
+  * dest\_offset - offset in the destination container; optional;
+  * src\_offset - offset in the source container; optional;
+  * size - number of elements to replace; optional.
+
+**Examples**
+```
+//Convert 8-bit image with palette to the screen pixel format:
+replace_values( scr, img8, palette )
+```
+
+### copy\_and\_resize ###
+
+**Parameters ( dest, src, flags, dest\_x, dest\_y, dest\_rect\_xsize, dest\_rect\_ysize, src\_x, src\_y, src\_rect\_xsize, src\_rect\_ysize )**
+  * dest - destination container;
+  * src - source container;
+  * flags - flags RESIZE\_xxx; optional; default = RESIZE\_INTERP1;
+  * dest\_x, dest\_y, dest\_rect\_xsize, dest\_rect\_ysize, src\_x, src\_y, src\_rect\_xsize, src\_rect\_ysize - optional parameters.
+
+## Dialogs ##
+
+### file\_dialog ###
+
+Open file dialog.
+
+**Parameters ( dialog\_name, mask, id, default\_name )**
+  * dialog\_name;
+  * mask - file type mask (examples: "gif/jpg" for .gif and .jpg files; "" for all files);
+  * id - name of the file for saving the current dialog state;
+  * default\_name - default file name; optional.
+
+**Return value**
+
+Container number with selected file name. Or -1 if file not selected. Container must be deleted manually.
+
+### prefs\_dialog ###
+
+Open window with global Pixilang preferences.
+
+## Network ##
+
+### open\_url ###
+
+Open web browser window with selected URL.
+
+**Parameters ( url\_string )**
+
+## Native code ##
+
+### dlopen ###
+
+Open dynamic library (for example - .DLL file in Windows, or .SO file in Linux).
+
+**Parameters ( lib\_file\_name )**
+
+**Return value**
+
+Library ID or -1 if error occured.
+
+**Examples**
+```
+//For example we have some C function int show_info( int x, int y, void* data )
+//in mylib.dll library.
+//Let's call it from Pixilang:
+dl = dlopen( "mylib.dll" ) //Open the library
+if dl >= 0 
+{
+  f = dlsym( dl, "show_info", "iip" ) //Get the function show_info() from dynamic library
+  // "iip" - int int pointer
+  if f >= 0
+  {
+    retval = dlcall( dl, f, 1, 2, "blahblah" ) //Call the function show_info() with parameters 1, 2, "blahblah"
+  }
+  dlclose( dl ) //Close the library
+}
+```
+
+### dlclose ###
+
+Close dynamic library.
+
+**Parameters ( lib\_id )**
+
+### dlsym ###
+
+Get symbol (function or variable) from dynamic library.
+
+**Parameters ( lib\_id, symbol\_name, format, calling\_convention )**
+  * lib\_id;
+  * symbol\_name - function/variable name;
+  * format - function format; optional; text string with the following structure: "R(P)", where the R - return value type (one ascii character), P - parameter types (multiple ascii characters or empty); below is a list of characters that are used for the construction of this string:
+    * v - void;
+    * c - signed int8;
+    * C - unsigned int8
+    * s - signed int16;
+    * S - unsigned int16;
+    * i - signed int32;
+    * I - unsigned int32;
+    * l - signed int64;
+    * L - unsigned int64;
+    * f - float32;
+    * d - double64;
+    * p - pointer;
+  * calling\_convention - one of the CCONV\_xxx constants; optional; default - CCONV\_DEFAULT.
+
+**Return value**
+
+Symbol ID or -1 if error occured.
+
+### dlcall ###
+
+Call the function from dynamic library.
+
+**Parameters ( lib\_id, symbol\_id, optional\_function\_parameters )**
+
+## System functions ##
+
+### system ###
+
+Issue a OS command.
+
+**Parameters ( command )**
+
+**Return value**
+
+system() shall return the termination status of the command.
+
+**Examples**
+```
+//Remove some file:
+system( "rm /tmp/data.txt" )
+```
+
+### argc ###
+
+Returns the number of arguments.
+
+### argv ###
+
+Returns the container with selected argument.
+
+**Parameters ( n )**
+
+**Examples**
+```
+if argc() >= 4 
+{
+  a = argv( 3 )
+  remove( a )
+}
+```
+
+### exit ###
+
+Quit from Pixilang.
+
+**Parameters ( exit\_code )**
+
+**Examples**
+```
+exit( 4 ) //Exit with code 4
+```
